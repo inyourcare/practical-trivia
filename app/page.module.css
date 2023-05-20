@@ -1,0 +1,52 @@
+.container {
+  /* width: 100px;
+  height: 100px;
+  background-color: red; */
+
+  
+  /* annimation */
+  animation-duration: 10s;
+  animation-name: background-animation;
+  animation-fill-mode: forwards;
+
+  background-repeat : no-repeat;
+  /* background-size : cover; */
+  background-size: 100% 100%;
+  width: 1920px;
+  height: 0px;
+  padding-top: 100vh;
+}
+
+
+
+@keyframes background-animation {
+  from {
+    color: red;
+    /* background-color: blue; */
+    background-image: url('/images/background/beautiful-nature-3348196_1920.jpg');
+  }
+
+  25% {
+    color: green;
+    /* background-color: yellow; */
+    background-image: url('/images/background/flower-7052292_1920.jpg');
+  }
+
+  50% {
+    color: green;
+    /* background-color: yellow; */
+    background-image: url('/images/background/landscape-2459981_1920.jpg');
+  }
+
+  75% {
+    color: green;
+    /* background-color: yellow; */
+    background-image: url('/images/background/mountain-3351653_1920.jpg');
+  }
+
+  to {
+    color: black;
+    /* background-color: pupple; */
+    background-image: url('/images/background/lines-3659995_1920.jpg');
+  }
+}

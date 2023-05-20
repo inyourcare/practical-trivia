@@ -35,11 +35,6 @@ body {
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
-
-  /* annimation */
-  animation-duration: 3s;
-  animation-name: background-animation;
-  animation-fill-mode: forwards;
 }
 
 * {
@@ -58,24 +53,4 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
-}
-
-@keyframes background-animation {
-  from {
-    color: red;
-    /* background-color: blue; */
-    background-image: url('/images/carousel-test/test1.png');
-  }
-
-  50% {
-    color: green;
-    /* background-color: yellow; */
-    background-image: url('/images/carousel-test/test2.jpg');
-  }
-
-  to {
-    color: black;
-    /* background-color: pupple; */
-    background-image: url('/images/carousel-test/test3.jpg');
-  }
 }
