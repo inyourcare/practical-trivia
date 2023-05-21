@@ -9,13 +9,18 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={styles.container}>
-    {/* <div> */}
+      {/* <div> */}
       <button
-        className={`absolute top-0 left-0 bg-green-600 text-white rounded px-4 py-1 bg-opacity-25 hover:bg-opacity-100` }
+        className={`absolute top-0 left-0 bg-gray-300 text-white rounded px-4 py-1 bg-opacity-25 hover:bg-opacity-100`}
+        style={{
+          backgroundImage: `url('/images/icons/list.svg')`,
+          backgroundRepeat: `no-repeat`,
+          backgroundPosition: `center`,
+          width: `40px`,
+          height: `40px`,
+        }}
         onClick={() => setIsOpen(true)}
-      >
-        open
-      </button>
+      ></button>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
         <Card />
         <Card />
