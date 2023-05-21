@@ -22,7 +22,13 @@ export default function Home() {
         onClick={() => setIsOpen(true)}
       ></button>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-        <Card />
+        <Card
+          icon={
+            <button
+              className={`bg-green-600 text-white rounded px-4 py-1`}
+            >hello</button>
+          }
+        />
         <Card />
         <Card />
         <Card />
