@@ -21,7 +21,7 @@ export default function Home() {
         }}
         onClick={() => setIsOpen(true)}
       ></button>
-      <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Drawer header={<p>교육 상담 리스트</p>} isOpen={isOpen} setIsOpen={setIsOpen}>
         <Card
           icon={
             // Tailwind center -> flex flex-wrap justify-center items-center
