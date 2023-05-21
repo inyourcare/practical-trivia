@@ -19,27 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <Drawer
-        header={
-          <div>
-            <span>교육 상담 리스트</span>
-            {/* back to home */}
-            <Link href={"/"}>
-              <span
-                className={`relative bg-gray-300 text-white rounded px-4 py-1 bg-opacity-25 hover:bg-opacity-100`}
-                style={{
-                  backgroundImage: `url('/images/icons/house.svg')`,
-                  backgroundRepeat: `no-repeat`,
-                  backgroundPosition: `center`,
-                  width: `40px`,
-                  height: `40px`,
-                  left: '20px',
-                }}
-              ></span>
-            </Link>
-          </div>
-        }
-      >
+      <Drawer>
         <DrawerCard
           icon={
             // Tailwind center -> flex flex-wrap justify-center items-center
