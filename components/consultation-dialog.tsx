@@ -2,7 +2,8 @@
 import { useCurrentPath } from "@/hooks/current-path";
 import { ReactNode, useEffect, useState } from "react";
 import Script from "next/script";
-import DaumPostCode from "react-daum-postcode";
+import DaumPostPopupOpenBtn from "./daum-post";
+// import { DaumPostPopupOpenBtn } from "./daum-post";
 
 export default function Drawer({}: // header,
 // children,
@@ -14,33 +15,14 @@ export default function Drawer({}: // header,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = useCurrentPath();
-  const [selectedKind, setSelectedKind] = useState(pathname)
-  useEffect(()=>{
-    setSelectedKind(pathname)
-  },[pathname])
+  const [selectedKind, setSelectedKind] = useState(pathname);
+  const [address, setAddress] = useState("");
+  useEffect(() => {
+    setSelectedKind(pathname);
+  }, [pathname]);
 
-  const DaumPost = () => {
-    const handleComplete = (data: any) => {
-      let fullAddress = data.address;
-      let extraAddress = "";
-
-      const { addressType, bname, buildingName } = data;
-      if (addressType === "R") {
-        if (bname !== "") {
-          extraAddress += bname;
-        }
-        if (buildingName !== "") {
-          extraAddress += `${extraAddress !== "" && ", "}${buildingName}`;
-        }
-        fullAddress += `${extraAddress !== "" ? ` ${extraAddress}` : ""}`;
-      }
-      //fullAddress -> 전체 주소반환
-    };
-    return <DaumPostCode onComplete={handleComplete} className="post-code" />;
-  };
   return (
     <>
-      <Script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" />
       <main
         //  className={`sticky top-[30%] h-0 flex flex-wrap justify-center items-center w-full`}
         className={`sticky top-[83%] h-0 flex flex-col justify-center items-center w-full`}
@@ -64,7 +46,7 @@ export default function Drawer({}: // header,
             {/* {children} */}
 
             <form className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs">
-              <div className="w-full flex">
+              <div className="w-full flex flex-nowrap space-x-3">
                 <span className="w-1/2">
                   <label className="block text-black text-xs font-bold my-1">
                     상담 받으실 분 성함
@@ -81,7 +63,7 @@ export default function Drawer({}: // header,
                   <select
                     className="shadow appearance-none border rounded w-4/5 py-2 px-1 text-black"
                     value={selectedKind}
-                    onChange={(e)=>setSelectedKind(e.target.value)}
+                    onChange={(e) => setSelectedKind(e.target.value)}
                   >
                     <option value={""}>선택없음</option>
                     <option value={"/sangsang"}>상상코칭</option>
@@ -91,7 +73,20 @@ export default function Drawer({}: // header,
               <label className="block text-black text-xs font-bold my-1">
                 주소
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
+              <div className="flex flex-wrap space-x-3">
+                <input
+                  className="shadow appearance-none border rounded w-3/5 py-2 px-1 text-black"
+                  value={address}
+                  readOnly
+                />
+                <input
+                  className="shadow appearance-none border rounded w-1/5 py-2 px-1 text-black ml-1"
+                  placeholder="상세주소입력"
+                />
+                <span className="shadow appearance-none border">
+                  <DaumPostPopupOpenBtn setAddress={setAddress} />
+                </span>
+              </div>
               <label className="block text-black text-xs font-bold my-1">
                 전화번호
               </label>
@@ -108,8 +103,8 @@ export default function Drawer({}: // header,
                 placeholder="수업이 필요한 이유, 약점과 강점, 공부 성향 등"
               />
             </form>
-            <button className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-3">
-              <p className="text-xs font-bold">상담예약</p>
+            <button className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold">
+              예약하기
             </button>
           </div>
         </section>
