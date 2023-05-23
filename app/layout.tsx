@@ -48,7 +48,47 @@ export default function RootLayout({
             targetLink="/sangsang/"
           />
         </Drawer>
-        <Dialog btnTitle="문의하기" />
+        <Dialog
+          btnTitle="문의하기"
+          // header={<span className="text-3xl font-semibold">문의하기</span>}
+        >
+          {/* <div>
+            <div>이름 <input/></div>
+            <div>주소 <input/></div>
+            <div>전화번호 <input/></div>
+            <div>기타사항 <textarea/></div>
+          </div> */}
+          <form className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs">
+            <label className="block text-black text-xs font-bold my-1">
+              상담 받으실 분 성함
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+              placeholder="예) 이름:홍길동"
+            />
+            <label className="block text-black text-xs font-bold my-1">
+              주소
+            </label>
+            <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
+            <label className="block text-black text-xs font-bold my-1">
+              전화번호
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+              placeholder="예) 이름:010-1234-1234"
+            />
+            <label className="block text-black text-xs font-bold my-1">
+              기타사항
+            </label>
+            <textarea
+              className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+              rows={4}
+            />
+          </form>
+          <button className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-3">
+            <p className="text-xs font-bold">상담예약</p>
+          </button>
+        </Dialog>
         {children}
       </body>
     </html>
