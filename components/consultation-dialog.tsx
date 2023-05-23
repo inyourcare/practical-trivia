@@ -54,8 +54,9 @@ export default function Drawer({}: // header,
                   <label className="block text-black text-xs font-bold my-1">
                     문의하실 분야
                   </label>
-                  <select className="shadow appearance-none border rounded w-4/5 py-2 px-1 text-black">
-                    <option>{pathname}</option>
+                  <select className="shadow appearance-none border rounded w-4/5 py-2 px-1 text-black" value={pathname}>
+                    <option selected>선택하세요</option>
+                    <option value={'/sangsang'}>상상코칭</option>
                   </select>
                 </span>
               </div>
