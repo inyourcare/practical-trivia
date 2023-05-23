@@ -83,6 +83,7 @@ export default function RootLayout({
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
               rows={4}
+              placeholder="수업이 필요한 이유, 약점과 강점, 공부 성향 등"
             />
           </form>
           <button className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-3">
