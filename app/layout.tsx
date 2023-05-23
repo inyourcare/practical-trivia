@@ -48,7 +48,7 @@ export default function RootLayout({
             targetLink="/sangsang/"
           />
         </Drawer>
-        <Dialog/>
+        <Dialog btnTitle="문의하기" />
         {children}
       </body>
     </html>

@@ -4,9 +4,11 @@ import { ReactNode, useEffect, useState } from "react";
 export default function Drawer({
   header,
   children,
+  btnTitle,
 }: {
   header?: ReactNode;
   children?: ReactNode;
+  btnTitle: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   // const pathname = usePathname();
@@ -27,7 +29,7 @@ export default function Drawer({
           }
           onClick={() => setIsOpen(true)}
         >
-          <span className={`text-white font-semibold`}>문의하기</span>
+          <span className={`text-white font-semibold`}>{btnTitle}</span>
         </button>
       </div>
       {/* </div> */}
