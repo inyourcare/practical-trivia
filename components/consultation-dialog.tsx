@@ -3,6 +3,7 @@ import { useCurrentPath } from "@/hooks/current-path";
 import { ReactNode, useEffect, useState } from "react";
 import Script from "next/script";
 import DaumPostPopupOpenBtn from "./daum-post";
+import { useDaumPostcodePopup } from "react-daum-postcode";
 // import { DaumPostPopupOpenBtn } from "./daum-post";
 
 export default function Drawer({}: // header,
@@ -20,6 +21,28 @@ export default function Drawer({}: // header,
   useEffect(() => {
     setSelectedKind(pathname);
   }, [pathname]);
+
+  const open = useDaumPostcodePopup(
+    "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+  );
+  const handleComplete = (data: any) => {
+    let fullAddress = data.address;
+    let extraAddress = "";
+  
+    if (data.addressType === "R") {
+      if (data.bname !== "") {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== "") {
+        extraAddress +=
+          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+    }
+  
+    // console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
+    setAddress(fullAddress);
+  };
 
   return (
     <>
@@ -46,13 +69,13 @@ export default function Drawer({}: // header,
             {/* {children} */}
 
             <form className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs">
-              <div className="w-full flex flex-nowrap space-x-3">
+              <div className="w-full flex flex-nowrap justify-between">
                 <span className="w-1/2">
                   <label className="block text-black text-xs font-bold my-1">
                     상담 받으실 분 성함
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-4/5 py-2 px-1 text-black"
+                    className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
                     placeholder="예) 이름:홍길동"
                   />
                 </span>
@@ -61,7 +84,7 @@ export default function Drawer({}: // header,
                     문의하실 분야
                   </label>
                   <select
-                    className="shadow appearance-none border rounded w-4/5 py-2 px-1 text-black"
+                    className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
                     value={selectedKind}
                     onChange={(e) => setSelectedKind(e.target.value)}
                   >
@@ -73,19 +96,20 @@ export default function Drawer({}: // header,
               <label className="block text-black text-xs font-bold my-1">
                 주소
               </label>
-              <div className="flex flex-wrap space-x-3">
+              <div className="flex flex-wrap justify-between">
                 <input
-                  className="shadow appearance-none border rounded w-3/5 py-2 px-1 text-black"
+                  className="shadow appearance-none border rounded w-8/12 py-2 px-1 text-black"
                   value={address}
                   readOnly
+                  onClick={()=>open({ onComplete: handleComplete })}
                 />
                 <input
-                  className="shadow appearance-none border rounded w-1/5 py-2 px-1 text-black ml-1"
+                  className="shadow appearance-none border rounded w-4/12 py-2 px-1 text-black"
                   placeholder="상세주소입력"
                 />
-                <span className="shadow appearance-none border">
+                {/* <span className="shadow appearance-none border">
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
-                </span>
+                </span> */}
               </div>
               <label className="block text-black text-xs font-bold my-1">
                 전화번호
