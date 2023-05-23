@@ -17,24 +17,17 @@ export default function Drawer({
     <>
       {/* <div className={`absolute h-screen w-full bg-green-300 opacity-0`}> */}
       <div
-        className={`sticky top-[90%] h-0 flex flex-wrap justify-center items-center`}
+        className={`sticky top-[90%] h-0 opacity-25 hover:opacity-100 flex flex-wrap justify-center items-center`}
       >
         <button
           className={
-            `bg-gray-300 rounded bg-opacity-25 hover:bg-opacity-100 
-            xl:w-[55px] xl:h-[55px] w-10 h-10 `
+            `bg-sul-btn rounded-xl
+            xl:w-[700px] xl:h-[60px] w-[700px] h-[60px]`
             // bg-[url('/images/icons/list.svg')] bg-no-repeat bg-center`
-          }
-          style={
-            {
-              // backgroundImage: `url('/images/icons/list.svg')`,
-              // backgroundRepeat: `no-repeat`,
-              // backgroundPosition: `center`,
-            }
           }
           onClick={() => setIsOpen(true)}
         >
-          문의하기
+          <span className={`text-white font-semibold`}>문의하기</span>
         </button>
       </div>
       {/* </div> */}
