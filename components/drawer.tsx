@@ -25,14 +25,16 @@ export default function Drawer({
     <>
       <div className={`sticky top-0 left-0 h-0`}>
         <button
-          className={`sticky top-0 left-0 bg-gray-300 text-white rounded px-4 py-1 bg-opacity-25 hover:bg-opacity-100`}
-          style={{
-            backgroundImage: `url('/images/icons/list.svg')`,
-            backgroundRepeat: `no-repeat`,
-            backgroundPosition: `center`,
-            width: `40px`,
-            height: `40px`,
-          }}
+          className={`bg-gray-300 rounded bg-opacity-25 hover:bg-opacity-100 
+          xl:w-[55px] xl:h-[55px] w-10 h-10 
+          bg-[url('/images/icons/list.svg')] bg-no-repeat bg-center`}
+          style={
+            {
+              // backgroundImage: `url('/images/icons/list.svg')`,
+              // backgroundRepeat: `no-repeat`,
+              // backgroundPosition: `center`,
+            }
+          }
           onClick={() => setIsOpen(true)}
         ></button>
       </div>
