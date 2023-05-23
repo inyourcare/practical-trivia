@@ -1,6 +1,8 @@
 "use client";
 import { useCurrentPath } from "@/hooks/current-path";
 import { ReactNode, useEffect, useState } from "react";
+import Script from "next/script";
+import DaumPostCode from "react-daum-postcode";
 
 export default function Drawer({}: // header,
 // children,
@@ -12,11 +14,33 @@ export default function Drawer({}: // header,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = useCurrentPath();
-  // useEffect(() => {
-  //   setIsOpen(false);
-  // }, [pathname]);
+  const [selectedKind, setSelectedKind] = useState(pathname)
+  useEffect(()=>{
+    setSelectedKind(pathname)
+  },[pathname])
+
+  const DaumPost = () => {
+    const handleComplete = (data: any) => {
+      let fullAddress = data.address;
+      let extraAddress = "";
+
+      const { addressType, bname, buildingName } = data;
+      if (addressType === "R") {
+        if (bname !== "") {
+          extraAddress += bname;
+        }
+        if (buildingName !== "") {
+          extraAddress += `${extraAddress !== "" && ", "}${buildingName}`;
+        }
+        fullAddress += `${extraAddress !== "" ? ` ${extraAddress}` : ""}`;
+      }
+      //fullAddress -> 전체 주소반환
+    };
+    return <DaumPostCode onComplete={handleComplete} className="post-code" />;
+  };
   return (
     <>
+      <Script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" />
       <main
         //  className={`sticky top-[30%] h-0 flex flex-wrap justify-center items-center w-full`}
         className={`sticky top-[83%] h-0 flex flex-col justify-center items-center w-full`}
@@ -54,9 +78,13 @@ export default function Drawer({}: // header,
                   <label className="block text-black text-xs font-bold my-1">
                     문의하실 분야
                   </label>
-                  <select className="shadow appearance-none border rounded w-4/5 py-2 px-1 text-black" value={pathname}>
-                    <option selected>선택하세요</option>
-                    <option value={'/sangsang'}>상상코칭</option>
+                  <select
+                    className="shadow appearance-none border rounded w-4/5 py-2 px-1 text-black"
+                    value={selectedKind}
+                    onChange={(e)=>setSelectedKind(e.target.value)}
+                  >
+                    <option value={""}>선택없음</option>
+                    <option value={"/sangsang"}>상상코칭</option>
                   </select>
                 </span>
               </div>
