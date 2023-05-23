@@ -21,7 +21,7 @@ export default function DrawerCard({
         <div className="rounded-full bg-gray-400 h-12 w-12 overflow-auto">
           {icon}
         </div>
-        <div className="flex-1 space-y-4 py-1">
+        <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
           {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
           <div className="h-4 w-3/4"><Link href={targetLink}>{title}</Link></div>
           <div className="space-y-2">
