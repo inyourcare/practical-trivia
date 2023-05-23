@@ -57,9 +57,10 @@ export default function Drawer({
         >
           <article className="relative w-screen max-w-lg pb-10 flex flex-col space-y-6 overflow-y-scroll h-full">
             <header className="p-4 font-bold text-lg">
-              <div>
+              <div className="flex justify-between flex-row ">
                 <span>교육 상담 리스트</span>
                 {/* back to home */}
+                <div className="mx-10">
                 <Link href={"/"}>
                   <span
                     className={`relative bg-gray-300 text-white rounded px-4 py-1 bg-opacity-25 hover:bg-opacity-100`}
@@ -85,6 +86,7 @@ export default function Drawer({
                   }}
                   onClick={() => setIsOpen(false)}
                 ></span>
+                </div>
               </div>
             </header>
             {children}
