@@ -1,7 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 
 export default function Drawer({
   header,
@@ -11,23 +17,25 @@ export default function Drawer({
   children?: ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname()
-  useEffect(()=>{
-    setIsOpen(false)
-  },[pathname])
+  const pathname = usePathname();
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
   return (
     <>
-      <button
-        className={`absolute top-0 left-0 bg-gray-300 text-white rounded px-4 py-1 bg-opacity-25 hover:bg-opacity-100`}
-        style={{
-          backgroundImage: `url('/images/icons/list.svg')`,
-          backgroundRepeat: `no-repeat`,
-          backgroundPosition: `center`,
-          width: `40px`,
-          height: `40px`,
-        }}
-        onClick={() => setIsOpen(true)}
-      ></button>
+      <div className={`sticky top-0 left-0 h-0`}>
+        <button
+          className={`sticky top-0 left-0 bg-gray-300 text-white rounded px-4 py-1 bg-opacity-25 hover:bg-opacity-100`}
+          style={{
+            backgroundImage: `url('/images/icons/list.svg')`,
+            backgroundRepeat: `no-repeat`,
+            backgroundPosition: `center`,
+            width: `40px`,
+            height: `40px`,
+          }}
+          onClick={() => setIsOpen(true)}
+        ></button>
+      </div>
 
       <main
         className={
@@ -73,7 +81,7 @@ export default function Drawer({
                     height: `40px`,
                     left: "20px",
                   }}
-                  onClick={()=>setIsOpen(false)}
+                  onClick={() => setIsOpen(false)}
                 ></span>
               </div>
             </header>
