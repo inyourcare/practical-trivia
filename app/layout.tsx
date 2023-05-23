@@ -1,7 +1,8 @@
-import Drawer from "@/components/drawer";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Drawer from "@/components/drawer";
 import DrawerCard from "@/components/drawer-card";
+import Dialog from "@/components/dialog";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,7 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>
+      {/* <body className={inter.className}> */}
+      <body>
         <Drawer>
           <DrawerCard
             icon={
@@ -46,6 +48,7 @@ export default function RootLayout({
             targetLink="/sangsang/"
           />
         </Drawer>
+        <Dialog/>
         {children}
       </body>
     </html>
