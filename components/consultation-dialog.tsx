@@ -28,7 +28,7 @@ export default function Drawer({}: // header,
   const handleComplete = (data: any) => {
     let fullAddress = data.address;
     let extraAddress = "";
-  
+
     if (data.addressType === "R") {
       if (data.bname !== "") {
         extraAddress += data.bname;
@@ -39,9 +39,27 @@ export default function Drawer({}: // header,
       }
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
     }
-  
+
     // console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
     setAddress(fullAddress);
+  };
+
+  useEffect(() => {
+    // window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+    if (window.Kakao){
+      console.log('kakao instance')
+      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+    }else {
+      console.log('no kakao instance',window.Kakao)
+    }
+    
+  }, []);
+
+  const kakaoSendScrap = () => {
+    const { Kakao, location } = window;
+    Kakao.Link.sendScrap({
+      requestUrl: location.href,
+    });
   };
 
   return (
@@ -101,7 +119,7 @@ export default function Drawer({}: // header,
                   className="shadow appearance-none border rounded w-8/12 py-2 px-1 text-black"
                   value={address}
                   readOnly
-                  onClick={()=>open({ onComplete: handleComplete })}
+                  onClick={() => open({ onComplete: handleComplete })}
                 />
                 <input
                   className="shadow appearance-none border rounded w-4/12 py-2 px-1 text-black"
@@ -127,7 +145,10 @@ export default function Drawer({}: // header,
                 placeholder="수업이 필요한 이유, 약점과 강점, 공부 성향 등"
               />
             </form>
-            <button className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold">
+            <button
+              className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
+              onClick={()=>kakaoSendScrap()}
+            >
               예약하기
             </button>
           </div>

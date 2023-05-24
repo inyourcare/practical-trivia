@@ -6,8 +6,16 @@ import Dialog from "@/components/consultation-dialog";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCurrentPath } from "@/hooks/current-path";
+import Script from "next/script";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
+
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 
 export const metadata = {
   title: "실용주의 잡학사전의 공부 컨설팅",
@@ -24,6 +32,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      {/* <Head> */}
+      <head>
+        <script
+          defer
+          src="https://developers.kakao.com/sdk/js/kakao.min.js"
+        ></script>
+        {/* <Script src="https://developers.kakao.com/sdk/js/kakao.min.js" />  */}
+      </head>
+      {/* </Head> */}
+      
       {/* <body className={inter.className}> */}
       <body>
         <Drawer>
@@ -50,7 +68,7 @@ export default function RootLayout({
             targetLink="/sangsang/"
           />
         </Drawer>
-        <Dialog/>
+        <Dialog />
         {children}
       </body>
     </html>
