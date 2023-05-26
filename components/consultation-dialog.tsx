@@ -142,6 +142,7 @@ export default function Drawer({}: // header,
                     className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
                     placeholder="예) 이름:홍길동"
                     name="name"
+                    required
                   />
                 </span>
                 <span className="w-1/2">
@@ -153,6 +154,7 @@ export default function Drawer({}: // header,
                     value={selectedKind}
                     onChange={(e) => setSelectedKind(e.target.value)}
                     name="kindKey"
+                    required
                   >
                     <option value={""}>선택없음</option>
                     <option value={"/sangsang"}>상상코칭</option>
@@ -170,11 +172,13 @@ export default function Drawer({}: // header,
                   readOnly
                   onClick={() => open({ onComplete: handleComplete })}
                   name="address"
+                  required
                 />
                 <input
                   className="shadow appearance-none border rounded w-4/12 py-2 px-1 text-black"
                   placeholder="상세주소입력"
                   name="address2"
+                  required
                 />
                 {/* <span className="shadow appearance-none border">
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
@@ -187,6 +191,7 @@ export default function Drawer({}: // header,
                 className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
                 placeholder="예) 이름:010-1234-1234"
                 name="phone"
+                required
               />
               <label className="block text-black text-xs font-bold my-1">
                 기타사항
@@ -194,15 +199,14 @@ export default function Drawer({}: // header,
               <textarea
                 className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
                 rows={4}
-                placeholder="수업이 필요한 이유, 약점과 강점, 공부 성향 등"
+                placeholder="전화 가능 시간, 수업이 필요한 이유, 약점과 강점, 공부 성향 등"
                 name="description"
               />
-              <input
+              <button
                 className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
                 type="submit"
                 value="submit"
-                required
-              />
+              >예약하기</button>
             </form>
           </div>
         </section>
