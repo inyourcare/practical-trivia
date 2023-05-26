@@ -189,7 +189,9 @@ export default function Drawer({}: // header,
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
-                placeholder="예) 이름:010-1234-1234"
+                // placeholder="예) 이름:010-1234-1234"
+                type="tel"
+                placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxLength={13}
                 name="phone"
                 required
               />
