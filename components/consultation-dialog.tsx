@@ -1,6 +1,6 @@
 "use client";
 import { useCurrentPath } from "@/hooks/current-path";
-import { ReactNode, useEffect, useState } from "react";
+import { FormEvent, ReactNode, useEffect, useRef, useState } from "react";
 import Script from "next/script";
 import DaumPostPopupOpenBtn from "./daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
@@ -61,11 +61,37 @@ export default function Drawer({}: // header,
     });
   };
 
-  var templateParams = {
-    from_name: "James",
-    to_name: "Dollin",
-    message: "Check this out!",
-    email: "inyourcaretube@gmail.com"
+  // var templateParams = {
+  //   from_name: "James",
+  //   to_name: "Dollin",
+  //   message: "Check this out!",
+  //   email: "inyourcaretube@gmail.com",
+  // };
+
+  const form = useRef<HTMLFormElement>(null);
+
+  const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_NEXT_PUBLIC_MAIL_SERVER_KEY as string,
+          process.env.NEXT_PUBLIC_MAIL_TEMPLATE_KEY as string,
+          form.current ? form.current : "",
+          process.env.NEXT_PUBLIC_MAIL_PRIVATE_KEY as string
+        )
+        .then(
+          function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+          },
+          function (error) {
+            console.log("FAILED...", error);
+          }
+        );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -92,7 +118,11 @@ export default function Drawer({}: // header,
           <div className="m-5">
             {/* {children} */}
 
-            <form className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs">
+            <form
+              className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs"
+              ref={form}
+              onSubmit={(e) => onSubmitForm(e)}
+            >
               <div className="w-full flex flex-nowrap justify-between">
                 <span className="w-1/2">
                   <label className="block text-black text-xs font-bold my-1">
@@ -101,6 +131,7 @@ export default function Drawer({}: // header,
                   <input
                     className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
                     placeholder="예) 이름:홍길동"
+                    name="name"
                   />
                 </span>
                 <span className="w-1/2">
@@ -111,6 +142,7 @@ export default function Drawer({}: // header,
                     className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
                     value={selectedKind}
                     onChange={(e) => setSelectedKind(e.target.value)}
+                    name="kind"
                   >
                     <option value={""}>선택없음</option>
                     <option value={"/sangsang"}>상상코칭</option>
@@ -126,10 +158,12 @@ export default function Drawer({}: // header,
                   value={address}
                   readOnly
                   onClick={() => open({ onComplete: handleComplete })}
+                  name="address"
                 />
                 <input
                   className="shadow appearance-none border rounded w-4/12 py-2 px-1 text-black"
                   placeholder="상세주소입력"
+                  name="address2"
                 />
                 {/* <span className="shadow appearance-none border">
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
@@ -141,6 +175,7 @@ export default function Drawer({}: // header,
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
                 placeholder="예) 이름:010-1234-1234"
+                name="phone"
               />
               <label className="block text-black text-xs font-bold my-1">
                 기타사항
@@ -149,9 +184,16 @@ export default function Drawer({}: // header,
                 className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
                 rows={4}
                 placeholder="수업이 필요한 이유, 약점과 강점, 공부 성향 등"
+                name="description"
+              />
+              <input
+                className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
+                type="submit"
+                value="submit"
+                required
               />
             </form>
-            <button
+            {/* <button
               className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
               // onClick={() => kakaoSendScrap()}
               onClick={() => {
@@ -174,7 +216,7 @@ export default function Drawer({}: // header,
               }}
             >
               예약하기
-            </button>
+            </button> */}
           </div>
         </section>
         <button
