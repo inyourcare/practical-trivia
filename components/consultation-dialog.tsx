@@ -26,7 +26,7 @@ export default function Drawer({}: // header,
 
   useEffect(() => {
     const kindDict: TranslatedWords = { "/sangsang": "상상코칭" };
-    setKoreanKind(kindDict[selectedKind]||"");
+    setKoreanKind(kindDict[selectedKind] || "");
   }, [selectedKind]);
   useEffect(() => {
     setSelectedKind(pathname);
@@ -51,7 +51,7 @@ export default function Drawer({}: // header,
     }
 
     // console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
-    setAddress(fullAddress);
+    if (fullAddress) setAddress(fullAddress);
   };
 
   useEffect(() => {
@@ -161,7 +161,7 @@ export default function Drawer({}: // header,
                   </select>
                 </span>
               </div>
-              <input hidden value={koreanKind} readOnly name="kind"/>
+              <input hidden value={koreanKind} readOnly name="kind" />
               <label className="block text-black text-xs font-bold my-1">
                 주소
               </label>
@@ -206,7 +206,9 @@ export default function Drawer({}: // header,
                 className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
                 type="submit"
                 value="submit"
-              >예약하기</button>
+              >
+                예약하기
+              </button>
             </form>
           </div>
         </section>
