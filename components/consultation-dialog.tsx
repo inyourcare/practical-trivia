@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from "react";
 import Script from "next/script";
 import DaumPostPopupOpenBtn from "./daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
+import emailjs from "@emailjs/browser";
 
 export default function Drawer({}: // header,
 // children,
@@ -45,13 +46,12 @@ export default function Drawer({}: // header,
 
   useEffect(() => {
     // window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
-    if (window.Kakao){
-      console.log('kakao instance')
+    if (window.Kakao) {
+      console.log("kakao instance");
       window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
-    }else {
-      console.log('no kakao instance',window.Kakao)
+    } else {
+      console.log("no kakao instance", window.Kakao);
     }
-    
   }, []);
 
   const kakaoSendScrap = () => {
@@ -59,6 +59,13 @@ export default function Drawer({}: // header,
     Kakao.Link.sendScrap({
       requestUrl: location.href,
     });
+  };
+
+  var templateParams = {
+    from_name: "James",
+    to_name: "Dollin",
+    message: "Check this out!",
+    email: "inyourcaretube@gmail.com"
   };
 
   return (
@@ -146,7 +153,25 @@ export default function Drawer({}: // header,
             </form>
             <button
               className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
-              onClick={()=>kakaoSendScrap()}
+              // onClick={() => kakaoSendScrap()}
+              onClick={() => {
+                emailjs
+                  .send(
+                    process.env
+                      .NEXT_PUBLIC_NEXT_PUBLIC_MAIL_SERVER_KEY as string,
+                    process.env.NEXT_PUBLIC_MAIL_TEMPLATE_KEY as string,
+                    templateParams,
+                    process.env.NEXT_PUBLIC_MAIL_PRIVATE_KEY as string
+                  )
+                  .then(
+                    function (response) {
+                      console.log("SUCCESS!", response.status, response.text);
+                    },
+                    function (error) {
+                      console.log("FAILED...", error);
+                    }
+                  );
+              }}
             >
               예약하기
             </button>
