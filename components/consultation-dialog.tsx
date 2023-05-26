@@ -4,7 +4,6 @@ import { ReactNode, useEffect, useState } from "react";
 import Script from "next/script";
 import DaumPostPopupOpenBtn from "./daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
-// import { DaumPostPopupOpenBtn } from "./daum-post";
 
 export default function Drawer({}: // header,
 // children,
