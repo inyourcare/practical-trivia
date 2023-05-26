@@ -18,6 +18,16 @@ export default function Drawer({}: // header,
   const pathname = useCurrentPath();
   const [selectedKind, setSelectedKind] = useState(pathname);
   const [address, setAddress] = useState("");
+  const [koreanKind, setKoreanKind] = useState("");
+
+  type TranslatedWords = {
+    [key: string]: string;
+  };
+
+  useEffect(() => {
+    const kindDict: TranslatedWords = { "/sangsang": "상상코칭" };
+    setKoreanKind(kindDict[selectedKind]||"");
+  }, [selectedKind]);
   useEffect(() => {
     setSelectedKind(pathname);
   }, [pathname]);
@@ -142,13 +152,14 @@ export default function Drawer({}: // header,
                     className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
                     value={selectedKind}
                     onChange={(e) => setSelectedKind(e.target.value)}
-                    name="kind"
+                    name="kindKey"
                   >
                     <option value={""}>선택없음</option>
                     <option value={"/sangsang"}>상상코칭</option>
                   </select>
                 </span>
               </div>
+              <input hidden value={koreanKind} readOnly name="kind"/>
               <label className="block text-black text-xs font-bold my-1">
                 주소
               </label>
