@@ -193,30 +193,6 @@ export default function Drawer({}: // header,
                 required
               />
             </form>
-            {/* <button
-              className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
-              // onClick={() => kakaoSendScrap()}
-              onClick={() => {
-                emailjs
-                  .send(
-                    process.env
-                      .NEXT_PUBLIC_NEXT_PUBLIC_MAIL_SERVER_KEY as string,
-                    process.env.NEXT_PUBLIC_MAIL_TEMPLATE_KEY as string,
-                    templateParams,
-                    process.env.NEXT_PUBLIC_MAIL_PRIVATE_KEY as string
-                  )
-                  .then(
-                    function (response) {
-                      console.log("SUCCESS!", response.status, response.text);
-                    },
-                    function (error) {
-                      console.log("FAILED...", error);
-                    }
-                  );
-              }}
-            >
-              예약하기
-            </button> */}
           </div>
         </section>
         <button
