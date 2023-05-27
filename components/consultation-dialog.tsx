@@ -5,6 +5,7 @@ import Script from "next/script";
 import DaumPostPopupOpenBtn from "./daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import emailjs from "@emailjs/browser";
+import { addUser } from "@/prisma/add-user";
 
 export default function Drawer({}: // header,
 // children,
@@ -81,26 +82,67 @@ export default function Drawer({}: // header,
 
   const form = useRef<HTMLFormElement>(null);
 
-  const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
+  // const test = async () => {
+  //   // fetch(`/api/test`, {method: "GET",}).then(()=>{console.log('good')})
+  //   fetch(`/api/user/create`, {method: "GET",}).then(()=>{console.log('good')})
+  //   // await fetch(`http://localhost:3000/api/test`, {method: "GET",}).then(()=>{console.log('good')})
+  // }
+
+  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsProcessing(true);
-
     try {
-      emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_NEXT_PUBLIC_MAIL_SERVER_KEY as string,
-          process.env.NEXT_PUBLIC_MAIL_TEMPLATE_KEY as string,
-          form.current ? form.current : "",
-          process.env.NEXT_PUBLIC_MAIL_PRIVATE_KEY as string
-        )
-        .then(
-          function (response) {
-            console.log("SUCCESS!", response.status, response.text);
-          },
-          function (error) {
-            console.log("FAILED...", error);
-          }
-        )
+      const fetchBody = {
+        name: (
+          form.current?.querySelector("input[name='name']") as HTMLInputElement
+        ).value,
+        kind: (
+          form.current?.querySelector("input[name='kind']") as HTMLInputElement
+        ).value,
+        address: (
+          form.current?.querySelector(
+            "input[name='address']"
+          ) as HTMLInputElement
+        ).value,
+        address2: (
+          form.current?.querySelector(
+            "input[name='address2']"
+          ) as HTMLInputElement
+        ).value,
+        phone: (
+          form.current?.querySelector("input[name='phone']") as HTMLInputElement
+        ).value,
+        description: (
+          form.current?.querySelector(
+            "textarea[name='description']"
+          ) as HTMLInputElement
+        ).value,
+      };
+      console.debug("fetchBody::", fetchBody);
+      await fetch(`/api/user/create`, {
+        method: "POST",
+        body: JSON.stringify(fetchBody),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((user) => {
+          console.debug("user create successfully::", user);
+          return emailjs
+            .sendForm(
+              process.env.NEXT_PUBLIC_NEXT_PUBLIC_MAIL_SERVER_KEY as string,
+              process.env.NEXT_PUBLIC_MAIL_TEMPLATE_KEY as string,
+              form.current ? form.current : "",
+              process.env.NEXT_PUBLIC_MAIL_PRIVATE_KEY as string
+            )
+            .then(
+              function (response) {
+                console.log("SUCCESS!", response.status, response.text);
+              },
+              function (error) {
+                console.log("FAILED...", error);
+              }
+            );
+        })
+        .then(()=>{alert('예약이 완료 되었습니다! :D')})
         .finally(() => setIsProcessing(false));
     } catch (error) {
       console.log(error);
@@ -138,7 +180,10 @@ export default function Drawer({}: // header,
             >
               <div className="w-full flex flex-nowrap justify-between">
                 <span className="w-1/2">
-                  <label className="block text-black text-xs font-bold my-1">
+                  <label
+                    className="block text-black text-xs font-bold my-1"
+                    // onClick={() => test()}
+                  >
                     상담 받으실 분 성함
                   </label>
                   <input
