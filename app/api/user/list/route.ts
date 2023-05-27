@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   const body = await request.json();
-  console.log("user list api - request body::",body);
+  console.log("user list api - request body::", body);
   const { page, limit, lastId, conditions } = body;
   console.log("user list api - page,limit,conditions", page, limit, conditions);
 
@@ -41,11 +41,14 @@ export async function POST(request: Request) {
     //         email: 'admin@sotong.co.kr'
     //     }
     // },
-    // orderBy: [{
-    //     groupId: 'desc',
-    // }, {
-    //     step: 'asc'
-    // }],
+    orderBy: [
+      {
+        createdAt: "desc",
+      },
+      {
+        name: "asc",
+      },
+    ],
     // include: {
     //     creator: {
     //         select: {
