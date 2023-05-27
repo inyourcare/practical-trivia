@@ -20,21 +20,28 @@ export default function Drawer({}: // header,
   const [address, setAddress] = useState("");
   const [koreanKind, setKoreanKind] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [invisible,setInvisible] = useState(false);
+  const [invisible, setInvisible] = useState(false);
+  const [kindDict] = useState<TranslatedWords>({
+    "/sangsang": "상상코칭",
+    "/goodo": "공부구도",
+  });
 
   type TranslatedWords = {
     [key: string]: string;
   };
 
   useEffect(() => {
-    const kindDict: TranslatedWords = { "/sangsang": "상상코칭" };
+    // const kindDict: TranslatedWords = {
+    //   "/sangsang": "상상코칭",
+    //   "/goodo": "공부구도",
+    // };
     setKoreanKind(kindDict[selectedKind] || "");
-  }, [selectedKind]);
+  }, [selectedKind, kindDict]);
   useEffect(() => {
-    if (pathname==='/contactinfo'){
-      setInvisible(true)
+    if (pathname === "/contactinfo") {
+      setInvisible(true);
     } else {
-      setInvisible(false)
+      setInvisible(false);
     }
     setSelectedKind(pathname);
   }, [pathname]);
@@ -149,7 +156,7 @@ export default function Drawer({}: // header,
         })
         .then(() => {
           alert("예약이 완료 되었습니다! :D");
-          setIsOpen(false)
+          setIsOpen(false);
         })
         .finally(() => setIsProcessing(false));
     } catch (error) {
@@ -161,7 +168,10 @@ export default function Drawer({}: // header,
     <>
       <main
         //  className={`sticky top-[30%] h-0 flex flex-wrap justify-center items-center w-full`}
-        className={`sticky top-[83%] h-0 flex flex-col justify-center items-center w-full ` + (invisible?`hidden`:``)}
+        className={
+          `sticky top-[83%] h-0 flex flex-col justify-center items-center w-full ` +
+          (invisible ? `hidden` : ``)
+        }
         // className={`sticky bottom-[75%] h-0 flex flex-col justify-center items-center w-full`}
       >
         <section
@@ -213,7 +223,8 @@ export default function Drawer({}: // header,
                     required
                   >
                     <option value={""}>선택없음</option>
-                    <option value={"/sangsang"}>상상코칭</option>
+                    <option value={"/sangsang"}>{kindDict["/sangsang"]}</option>
+                    <option value={"/goodo"}>{kindDict["/goodo"]}</option>
                   </select>
                 </span>
               </div>
