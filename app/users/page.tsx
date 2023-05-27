@@ -6,13 +6,15 @@ import { useEffect, useState } from "react";
 export default function UsersHome() {
   const [state, setState] = useState({
     users: [] as User[],
+    curPage: 0,
+    totalPage: 0,
   });
   const getUserList = async () =>
     await fetch(`/api/user/list`, {
       method: "POST",
       body: JSON.stringify({
-        // page: 0,
-        // limit: 1000,
+        page: state.curPage,
+        limit: 20,
         // conditions: {
         // creator: {
         // email: 'admin@sotong.co.kr'
@@ -27,8 +29,13 @@ export default function UsersHome() {
     }).then(async (result) => {
       const { users, pages } = await result.json();
       console.log(users, pages);
-      setState({ ...state, users: users });
+      setState({ ...state, users: users, totalPage: pages });
     });
+
+  useEffect(() => {
+    getUserList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.curPage]);
   return (
     <>
       <div>
@@ -88,6 +95,22 @@ export default function UsersHome() {
               ))}
             </tbody>
           </table>
+          <div className="w-full flex justify-center">
+            <span>
+              <input
+                className="text-right border border-indigo-600"
+                type="number"
+                onChange={(e) =>
+                  setState({ ...state, curPage: Number(e.target.value) })
+                }
+                value={state.curPage}
+              />
+              /
+            </span>
+            <span className="text-right border border-indigo-600">
+              {state.totalPage - 1}
+            </span>
+          </div>
         </div>
       </div>
     </>
