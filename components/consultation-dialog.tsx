@@ -170,138 +170,144 @@ export default function Drawer({}: // header,
       <main
         //  className={`sticky top-[30%] h-0 flex flex-wrap justify-center items-center w-full`}
         className={
-          `sticky top-[83%] h-0 flex flex-col justify-center items-center w-full ` +
+          `fixed y-0 left-0 w-full h-[100vh] pointer-events-none` +
           (invisible ? `hidden` : ``)
         }
         // className={`sticky bottom-[75%] h-0 flex flex-col justify-center items-center w-full`}
       >
-        <section
-          className={
-            "absolute bottom-0 w-3/5 min-h-[500px] bg-gray-100 rounded-xl border border-black " +
-            // "w-3/5 min-h-3/5 bg-gray-100 rounded-xl border border-black " +
-            (isOpen ? "visible" : "invisible")
-          }
-        >
-          <header className="flex flex-row-reverse m-5 justify-between">
-            <button
-              className={`w-5 h-5 bg-[url('/images/icons/x.svg')] bg-no-repeat bg-center bg-cover cursor-pointer `}
-              onClick={() => setIsOpen(false)}
-            ></button>
-            {/* {header} */}
-          </header>
-          <div className="m-5">
-            {/* {children} */}
+        <div className="sticky top-[83%] flex flex-col justify-center items-center w-full pointer-events-auto">
+          <section
+            className={
+              "absolute bottom-0 w-3/5 min-h-[500px] bg-gray-100 rounded-xl border border-black " +
+              // "w-3/5 min-h-3/5 bg-gray-100 rounded-xl border border-black " +
+              (isOpen ? "visible" : "invisible")
+            }
+          >
+            <header className="flex flex-row-reverse m-5 justify-between">
+              <button
+                className={`w-5 h-5 bg-[url('/images/icons/x.svg')] bg-no-repeat bg-center bg-cover cursor-pointer `}
+                onClick={() => setIsOpen(false)}
+              ></button>
+              {/* {header} */}
+            </header>
+            <div className="m-5">
+              {/* {children} */}
 
-            <form
-              className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs"
-              ref={form}
-              onSubmit={(e) => onSubmitForm(e)}
-            >
-              <div className="w-full flex flex-nowrap justify-between">
-                <span className="w-1/2">
-                  <label
-                    className="block text-black text-xs font-bold my-1"
-                    // onClick={() => test()}
-                  >
-                    상담 받으실 분 성함
-                  </label>
+              <form
+                className="bg-gray-200 shadow-md rounded px-3 pt-3 pb-8 w-full text-xs"
+                ref={form}
+                onSubmit={(e) => onSubmitForm(e)}
+              >
+                <div className="w-full flex flex-nowrap justify-between">
+                  <span className="w-1/2">
+                    <label
+                      className="block text-black text-xs font-bold my-1"
+                      // onClick={() => test()}
+                    >
+                      상담 받으실 분 성함
+                    </label>
+                    <input
+                      className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
+                      placeholder="예) 이름:홍길동"
+                      name="name"
+                      required
+                    />
+                  </span>
+                  <span className="w-1/2">
+                    <label className="block text-black text-xs font-bold my-1">
+                      문의하실 분야
+                    </label>
+                    <select
+                      className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
+                      value={selectedKind}
+                      onChange={(e) => setSelectedKind(e.target.value)}
+                      name="kindKey"
+                      required
+                    >
+                      <option value={""}>선택없음</option>
+                      <option value={"/sangsang"}>
+                        {kindDict["/sangsang"]}
+                      </option>
+                      <option value={"/goodo"}>{kindDict["/goodo"]}</option>
+                      <option value={"/howcoding"}>
+                        {kindDict["/howcoding"]}
+                      </option>
+                    </select>
+                  </span>
+                </div>
+                <input hidden value={koreanKind} readOnly name="kind" />
+                <label className="block text-black text-xs font-bold my-1">
+                  주소
+                </label>
+                <div className="flex flex-wrap justify-between">
                   <input
-                    className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
-                    placeholder="예) 이름:홍길동"
-                    name="name"
+                    className="shadow appearance-none border rounded w-8/12 py-2 px-1 text-black"
+                    value={address}
+                    readOnly
+                    onClick={() => open({ onComplete: handleComplete })}
+                    name="address"
                     required
                   />
-                </span>
-                <span className="w-1/2">
-                  <label className="block text-black text-xs font-bold my-1">
-                    문의하실 분야
-                  </label>
-                  <select
-                    className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
-                    value={selectedKind}
-                    onChange={(e) => setSelectedKind(e.target.value)}
-                    name="kindKey"
+                  <input
+                    className="shadow appearance-none border rounded w-4/12 py-2 px-1 text-black"
+                    placeholder="상세주소입력"
+                    name="address2"
                     required
-                  >
-                    <option value={""}>선택없음</option>
-                    <option value={"/sangsang"}>{kindDict["/sangsang"]}</option>
-                    <option value={"/goodo"}>{kindDict["/goodo"]}</option>
-                    <option value={"/howcoding"}>{kindDict["/howcoding"]}</option>
-                  </select>
-                </span>
-              </div>
-              <input hidden value={koreanKind} readOnly name="kind" />
-              <label className="block text-black text-xs font-bold my-1">
-                주소
-              </label>
-              <div className="flex flex-wrap justify-between">
-                <input
-                  className="shadow appearance-none border rounded w-8/12 py-2 px-1 text-black"
-                  value={address}
-                  readOnly
-                  onClick={() => open({ onComplete: handleComplete })}
-                  name="address"
-                  required
-                />
-                <input
-                  className="shadow appearance-none border rounded w-4/12 py-2 px-1 text-black"
-                  placeholder="상세주소입력"
-                  name="address2"
-                  required
-                />
-                {/* <span className="shadow appearance-none border">
+                  />
+                  {/* <span className="shadow appearance-none border">
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
                 </span> */}
-              </div>
-              <label className="block text-black text-xs font-bold my-1">
-                전화번호
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
-                // placeholder="예) 이름:010-1234-1234"
-                type="tel"
-                placeholder="00*-000*-0000"
-                pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
-                maxLength={13}
-                name="phone"
-                required
-              />
-              <label className="block text-black text-xs font-bold my-1">
-                기타사항
-              </label>
-              <textarea
-                className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
-                rows={4}
-                placeholder="전화 가능 시간, 수업이 필요한 이유, 약점과 강점, 공부 성향 등"
-                name="description"
-              />
-              <button
-                className={
-                  "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-                  ""
-                  // (isProcessing ? "disabled" : "")
-                }
-                type="submit"
-                value="submit"
-                disabled={isProcessing}
-              >
-                예약하기
-              </button>
-            </form>
-          </div>
-        </section>
-        <button
-          className={
-            `absolute top-[10px] bg-sul-btn rounded-xl opacity-25 hover:opacity-100 ` +
-            `w-3/5 min-h-[50px] my-10`
-            // `w-3/5 min-h-1/5 my-10`
-            // bg-[url('/images/icons/list.svg')] bg-no-repeat bg-center`
-          }
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {/* <span className={`text-white font-semibold`}>{btnTitle}</span> */}
-          <span className={`text-white font-semibold`}>{"문의하기"}</span>
-        </button>
+                </div>
+                <label className="block text-black text-xs font-bold my-1">
+                  전화번호
+                </label>
+                <input
+                  className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+                  // placeholder="예) 이름:010-1234-1234"
+                  type="tel"
+                  placeholder="00*-000*-0000"
+                  pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
+                  maxLength={13}
+                  name="phone"
+                  required
+                />
+                <label className="block text-black text-xs font-bold my-1">
+                  기타사항
+                </label>
+                <textarea
+                  className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+                  rows={4}
+                  placeholder="전화 가능 시간, 수업이 필요한 이유, 약점과 강점, 공부 성향 등"
+                  name="description"
+                />
+                <button
+                  className={
+                    "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+                    ""
+                    // (isProcessing ? "disabled" : "")
+                  }
+                  type="submit"
+                  value="submit"
+                  disabled={isProcessing}
+                >
+                  예약하기
+                </button>
+              </form>
+            </div>
+          </section>
+          <button
+            className={
+              `absolute top-[10px] bg-sul-btn rounded-xl opacity-25 hover:opacity-100 ` +
+              `w-3/5 min-h-[50px] my-10`
+              // `w-3/5 min-h-1/5 my-10`
+              // bg-[url('/images/icons/list.svg')] bg-no-repeat bg-center`
+            }
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {/* <span className={`text-white font-semibold`}>{btnTitle}</span> */}
+            <span className={`text-white font-semibold`}>{"문의하기"}</span>
+          </button>
+        </div>
       </main>
     </>
   );
