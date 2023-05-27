@@ -162,7 +162,7 @@ export default function Drawer({}: // header,
     <>
       <main
         //  className={`sticky top-[30%] h-0 flex flex-wrap justify-center items-center w-full`}
-        className={`sticky top-[83%] h-0 flex flex-col justify-center items-center w-full ` + (invisible?`invisible`:``)}
+        className={`sticky top-[83%] h-0 flex flex-col justify-center items-center w-full ` + (invisible?`hidden`:``)}
         // className={`sticky bottom-[75%] h-0 flex flex-col justify-center items-center w-full`}
       >
         <section
