@@ -15,7 +15,7 @@ export default function SangSangHome() {
               backgroundRepeat: `no-repeat`,
               backgroundPosition: `center`,
               backgroundSize: "100% 100%",
-              maxWidth: '1920px',
+              maxWidth: "1080px",
               width: "100%",
               height: "0px",
               paddingTop: `${Math.round(Number(order.at(1)))*100}%`,
