@@ -21,7 +21,7 @@ export default function Drawer({
 
   const pathname = usePathname();
   useEffect(() => {
-    if (pathname === "/users") {
+    if (pathname === "/contactinfo") {
       setInvisible(true);
     } else {
       setInvisible(false);

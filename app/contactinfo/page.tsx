@@ -1,16 +1,16 @@
-"use client";
-import { PrismaClient, User } from "@prisma/client";
+"use client"
+import { PrismaClient, ContactInfo } from "@prisma/client";
 import { InferGetStaticPropsType } from "next";
 import { useEffect, useState } from "react";
 
-export default function UsersHome() {
+export default function contactinfoHome() {
   const [state, setState] = useState({
-    users: [] as User[],
+    contactinfos: [] as ContactInfo[],
     curPage: 0,
     totalPage: 0,
   });
-  const getUserList = async () =>
-    await fetch(`/api/user/list`, {
+  const getContactInfoList = async () =>
+    await fetch(`/api/contactinfo/list`, {
       method: "POST",
       body: JSON.stringify({
         page: state.curPage,
@@ -27,22 +27,22 @@ export default function UsersHome() {
       }),
       headers: { "Content-Type": "application/json" },
     }).then(async (result) => {
-      const { users, pages } = await result.json();
-      console.log(users, pages);
-      setState({ ...state, users: users, totalPage: pages });
+      const { contactinfos, pages } = await result.json();
+      console.log(contactinfos, pages);
+      setState({ ...state, contactinfos: contactinfos, totalPage: pages });
     });
 
   useEffect(() => {
-    getUserList();
+    getContactInfoList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.curPage]);
   return (
     <>
       <div>
-        {/* {state.users?.map((user) => (
-          <div key={user.id}>{user.name}</div>
+        {/* {state.contactInfos?.map((contactInfo) => (
+          <div key={contactInfo.id}>{contactInfo.name}</div>
         ))} */}
-        <button onClick={getUserList}>refresh</button>
+        <button onClick={getContactInfoList}>refresh</button>
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -72,25 +72,25 @@ export default function UsersHome() {
               </tr>
             </thead>
             <tbody>
-              {state.users?.map((user) => (
-                // <div key={user.id}>{user.name}</div>
+              {state.contactinfos?.map((contactinfo) => (
+                // <div key={contactInfo.id}>{contactInfo.name}</div>
                 <tr
-                  key={user.id}
+                  key={contactinfo.id}
                   className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
                 >
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {user.name}
+                    {contactinfo.name}
                   </th>
-                  <td className="px-6 py-4">{user.kind}</td>
-                  <td className="px-6 py-4">{user.phone}</td>
-                  <td className="px-6 py-4">{user.address}</td>
-                  <td className="px-6 py-4">{user.address2}</td>
-                  <td className="px-6 py-4">{user.description}</td>
-                  <td className="px-6 py-4">{user.createdAt.toString()}</td>
-                  {/* <td className="px-6 py-4">{user.createdAt.getDate()}</td> */}
+                  <td className="px-6 py-4">{contactinfo.kind}</td>
+                  <td className="px-6 py-4">{contactinfo.phone}</td>
+                  <td className="px-6 py-4">{contactinfo.address}</td>
+                  <td className="px-6 py-4">{contactinfo.address2}</td>
+                  <td className="px-6 py-4">{contactinfo.description}</td>
+                  <td className="px-6 py-4">{contactinfo.createdAt.toString()}</td>
+                  {/* <td className="px-6 py-4">{contactInfo.createdAt.getDate()}</td> */}
                 </tr>
               ))}
             </tbody>

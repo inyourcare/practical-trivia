@@ -5,7 +5,6 @@ import Script from "next/script";
 import DaumPostPopupOpenBtn from "./daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import emailjs from "@emailjs/browser";
-import { addUser } from "@/prisma/add-user";
 
 export default function Drawer({}: // header,
 // children,
@@ -32,7 +31,7 @@ export default function Drawer({}: // header,
     setKoreanKind(kindDict[selectedKind] || "");
   }, [selectedKind]);
   useEffect(() => {
-    if (pathname==='/users'){
+    if (pathname==='/contact-info'){
       setInvisible(true)
     } else {
       setInvisible(false)
@@ -90,7 +89,7 @@ export default function Drawer({}: // header,
 
   // const test = async () => {
   //   // fetch(`/api/test`, {method: "GET",}).then(()=>{console.log('good')})
-  //   fetch(`/api/user/create`, {method: "GET",}).then(()=>{console.log('good')})
+  //   fetch(`/api/contactInfo/create`, {method: "GET",}).then(()=>{console.log('good')})
   //   // await fetch(`http://localhost:3000/api/test`, {method: "GET",}).then(()=>{console.log('good')})
   // }
 
@@ -125,13 +124,13 @@ export default function Drawer({}: // header,
         ).value,
       };
       console.debug("fetchBody::", fetchBody);
-      await fetch(`/api/user/create`, {
+      await fetch(`/api/contactinfo/create`, {
         method: "POST",
         body: JSON.stringify(fetchBody),
         headers: { "Content-Type": "application/json" },
       })
-        .then((user) => {
-          console.debug("user create successfully::", user);
+        .then((contactInfo) => {
+          console.debug("contactInfo create successfully::", contactInfo);
           return emailjs
             .sendForm(
               process.env.NEXT_PUBLIC_NEXT_PUBLIC_MAIL_SERVER_KEY as string,

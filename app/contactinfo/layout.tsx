@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 
-export default function UsersLayout({
+export default function ContactInfoLayout({
   children,
 }: {
   children: React.ReactNode;

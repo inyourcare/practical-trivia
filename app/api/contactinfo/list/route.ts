@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient, User } from "@prisma/client";
+import { PrismaClient, ContactInfo } from "@prisma/client";
 import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   const body = await request.json();
-  console.log("user list api - request body::", body);
+  console.log("contactinfo list api - request body::", body);
   const { page, limit, lastId, conditions } = body;
-  console.log("user list api - page,limit,conditions", page, limit, conditions);
+  console.log("contactinfo list api - page,limit,conditions", page, limit, conditions);
 
   const whereConditions = {
     // deleted: false,
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     ...conditions,
     // ...conditionTemp
   };
-  const users = await prisma.user.findMany({
+  const contactinfos = await prisma.contactInfo.findMany({
     // skip: page * limit,
     // skip: lastId ? 1 : page * limit,
 
@@ -62,8 +62,8 @@ export async function POST(request: Request) {
     //     }
     // }
   });
-  console.debug("users list api result", users.length);
-  const total = await prisma.user.count({
+  console.debug("contactinfos list api result", contactinfos.length);
+  const total = await prisma.contactInfo.count({
     where: whereConditions,
     // where: {
     //     creator: {
@@ -73,9 +73,9 @@ export async function POST(request: Request) {
   });
   const pages =
     total === 0 ? 1 : Math.floor(total / limit) + (total % limit === 0 ? 0 : 1);
-  // res.status(200).json({ users, pages });
+  // res.status(200).json({ contactinfos, pages });
 
-  // console.log(user);
+  // console.log(contactinfo);
   await prisma.$disconnect();
-  return NextResponse.json({ users, pages });
+  return NextResponse.json({ contactinfos, pages });
 }
