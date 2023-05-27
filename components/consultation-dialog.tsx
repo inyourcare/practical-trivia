@@ -19,6 +19,7 @@ export default function Drawer({}: // header,
   const [selectedKind, setSelectedKind] = useState(pathname);
   const [address, setAddress] = useState("");
   const [koreanKind, setKoreanKind] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   type TranslatedWords = {
     [key: string]: string;
@@ -82,6 +83,7 @@ export default function Drawer({}: // header,
 
   const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsProcessing(true);
 
     try {
       emailjs
@@ -98,7 +100,8 @@ export default function Drawer({}: // header,
           function (error) {
             console.log("FAILED...", error);
           }
-        );
+        )
+        .finally(() => setIsProcessing(false));
     } catch (error) {
       console.log(error);
     }
@@ -191,7 +194,9 @@ export default function Drawer({}: // header,
                 className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
                 // placeholder="예) 이름:010-1234-1234"
                 type="tel"
-                placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxLength={13}
+                placeholder="00*-000*-0000"
+                pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}"
+                maxLength={13}
                 name="phone"
                 required
               />
@@ -205,9 +210,14 @@ export default function Drawer({}: // header,
                 name="description"
               />
               <button
-                className="absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold"
+                className={
+                  "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+                  ""
+                  // (isProcessing ? "disabled" : "")
+                }
                 type="submit"
                 value="submit"
+                disabled={isProcessing}
               >
                 예약하기
               </button>
