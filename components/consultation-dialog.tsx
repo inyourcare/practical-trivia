@@ -21,6 +21,7 @@ export default function Drawer({}: // header,
   const [address, setAddress] = useState("");
   const [koreanKind, setKoreanKind] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
+  const [invisible,setInvisible] = useState(false);
 
   type TranslatedWords = {
     [key: string]: string;
@@ -31,6 +32,11 @@ export default function Drawer({}: // header,
     setKoreanKind(kindDict[selectedKind] || "");
   }, [selectedKind]);
   useEffect(() => {
+    if (pathname==='/users'){
+      setInvisible(true)
+    } else {
+      setInvisible(false)
+    }
     setSelectedKind(pathname);
   }, [pathname]);
 
@@ -156,7 +162,7 @@ export default function Drawer({}: // header,
     <>
       <main
         //  className={`sticky top-[30%] h-0 flex flex-wrap justify-center items-center w-full`}
-        className={`sticky top-[83%] h-0 flex flex-col justify-center items-center w-full`}
+        className={`sticky top-[83%] h-0 flex flex-col justify-center items-center w-full ` + (invisible?`invisible`:``)}
         // className={`sticky bottom-[75%] h-0 flex flex-col justify-center items-center w-full`}
       >
         <section

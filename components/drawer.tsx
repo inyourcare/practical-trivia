@@ -17,13 +17,20 @@ export default function Drawer({
   children?: ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [invisible,setInvisible] = useState(false);
+
   const pathname = usePathname();
   useEffect(() => {
+    if (pathname==='/users'){
+      setInvisible(true)
+    } else {
+      setInvisible(false)
+    }
     setIsOpen(false);
   }, [pathname]);
   return (
     <>
-      <div className={`sticky top-0 left-0 h-0`}>
+      <div className={`sticky top-0 left-0 h-0 ` + (invisible?`invisible`:``)}>
         <button
           className={`bg-gray-300 rounded bg-opacity-25 hover:bg-opacity-100 
           xl:w-[55px] xl:h-[55px] w-10 h-10 
