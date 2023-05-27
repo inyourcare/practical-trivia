@@ -142,7 +142,10 @@ export default function Drawer({}: // header,
               }
             );
         })
-        .then(()=>{alert('예약이 완료 되었습니다! :D')})
+        .then(() => {
+          alert("예약이 완료 되었습니다! :D");
+          setIsOpen(false)
+        })
         .finally(() => setIsProcessing(false));
     } catch (error) {
       console.log(error);
