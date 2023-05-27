@@ -31,7 +31,7 @@ export default function Drawer({}: // header,
     setKoreanKind(kindDict[selectedKind] || "");
   }, [selectedKind]);
   useEffect(() => {
-    if (pathname==='/contact-info'){
+    if (pathname==='/contactinfo'){
       setInvisible(true)
     } else {
       setInvisible(false)
