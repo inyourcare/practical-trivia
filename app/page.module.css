@@ -8,6 +8,7 @@
   animation-name: background-animation-1920;
   animation-fill-mode: forwards;
 
+  background-image: url("/images/background/lines-3659995_1920.jpg");
   background-repeat: no-repeat;
   /* background-size : cover; */
   background-size: 100% 100%;
@@ -23,7 +24,7 @@
   opacity: 0.25;
 }
 
-@keyframes background-animation-1920 {
+/* @keyframes background-animation-1920 {
   from {
     background-image: url("/images/background/beautiful-nature-3348196_1920.jpg");
   }
@@ -101,4 +102,4 @@
   .container {
     animation-name: background-animation-640;
   }
-}
+} */
