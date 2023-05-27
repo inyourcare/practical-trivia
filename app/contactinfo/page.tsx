@@ -3,7 +3,7 @@ import { PrismaClient, ContactInfo } from "@prisma/client";
 import { InferGetStaticPropsType } from "next";
 import { useEffect, useState } from "react";
 
-export default function contactinfoHome() {
+export default function ContactinfoHome() {
   const [state, setState] = useState({
     contactinfos: [] as ContactInfo[],
     curPage: 0,
