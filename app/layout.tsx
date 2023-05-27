@@ -1,13 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Drawer from "@/components/drawer/drawer";
-import DrawerCard from "@/components/drawer/drawer-card";
 import Dialog from "@/components/consultation-dialog";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useCurrentPath } from "@/hooks/current-path";
-import Script from "next/script";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
