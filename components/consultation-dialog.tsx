@@ -24,6 +24,7 @@ export default function Drawer({}: // header,
   const [kindDict] = useState<TranslatedWords>({
     "/sangsang": "상상코칭",
     "/goodo": "공부구도",
+    "/howcoding": "하우코딩",
   });
 
   type TranslatedWords = {
@@ -225,6 +226,7 @@ export default function Drawer({}: // header,
                     <option value={""}>선택없음</option>
                     <option value={"/sangsang"}>{kindDict["/sangsang"]}</option>
                     <option value={"/goodo"}>{kindDict["/goodo"]}</option>
+                    <option value={"/howcoding"}>{kindDict["/howcoding"]}</option>
                   </select>
                 </span>
               </div>

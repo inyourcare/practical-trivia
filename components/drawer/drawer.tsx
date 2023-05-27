@@ -166,6 +166,28 @@ export default function Drawer({
                 }
                 targetLink="/goodo/"
               />
+              <DrawerCard
+                icon={
+                  // Tailwind center -> flex flex-wrap justify-center items-center
+                  <button
+                    className={`h-12 w-12 flex flex-wrap justify-center items-center bg-green-600 text-white rounded px-4 py-1`}
+                  >
+                    howcoding
+                  </button>
+                }
+                title={<p>하우코딩</p>}
+                descrision={
+                  <p className="text-sm text-gray-900 dark:text-white">
+                    이제는 필수! 코딩교육 하우코딩입니다.
+                  </p>
+                }
+                subDescrision={
+                  <p className="text-xs text-gray-900 dark:text-white">
+                    하우코딩과 함께 나도 개발자
+                  </p>
+                }
+                targetLink="/howcoding/"
+              />
             </DrawerExpansion>
           </article>
         </section>
