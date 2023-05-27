@@ -52,8 +52,8 @@ export default function Drawer({
         className={
           "fixed inset-y-0 right-0 overflow-hidden transform ease-in-out bg-gray-600 bg-opacity-0 " +
           (isOpen
-            ? "transition-all z-10 duration-500 bg-opacity-40"
-            : "transition-all duration-500 -z-10 ") +
+            ? "transition-all z-20 duration-500 bg-opacity-40"
+            : "transition-all duration-500 -z-20 ") +
           (invisible ? `hidden` : ``)
         }
       >

@@ -170,17 +170,17 @@ export default function Drawer({}: // header,
       <main
         //  className={`sticky top-[30%] h-0 flex flex-wrap justify-center items-center w-full`}
         className={
-          `fixed y-0 left-0 w-full h-[100vh] pointer-events-none` +
+          `fixed y-0 left-0 w-full h-[100vh] pointer-events-none z-10` +
           (invisible ? `hidden` : ``)
         }
         // className={`sticky bottom-[75%] h-0 flex flex-col justify-center items-center w-full`}
       >
-        <div className="sticky top-[83%] flex flex-col justify-center items-center w-full pointer-events-auto">
+        <div className="sticky top-[83%] flex flex-col justify-center items-center w-full pointer-events-auto ">
           <section
             className={
               "absolute bottom-0 w-3/5 min-h-[500px] bg-gray-100 rounded-xl border border-black " +
               // "w-3/5 min-h-3/5 bg-gray-100 rounded-xl border border-black " +
-              (isOpen ? "visible" : "invisible")
+              (isOpen ? "visible " : "invisible ")
             }
           >
             <header className="flex flex-row-reverse m-5 justify-between">

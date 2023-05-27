@@ -20,7 +20,7 @@ export default function CarouselIframes({ items }: { items: string[] }) {
   const sliderRef = useRef<HTMLDivElement>(null);
   return (
     <>
-      <div className="">
+      <div className="relative w-full">
         {/* <div className={`${styles.slider}`} ref={sliderRef}> */}
         <div
           className={`flex flex-nowrap overflow-x-scroll overflow-y-hidden`}

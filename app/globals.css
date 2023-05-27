@@ -58,9 +58,9 @@ img {
   display: block;
 }
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   display: none;
-}
+} */
 /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
 /* .scroll::-webkit-scrollbar {
   display: none;
