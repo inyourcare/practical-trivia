@@ -144,6 +144,28 @@ export default function Drawer({
                 }
                 targetLink="/sangsang/"
               />
+              <DrawerCard
+                icon={
+                  // Tailwind center -> flex flex-wrap justify-center items-center
+                  <button
+                    className={`h-12 w-12 flex flex-wrap justify-center items-center bg-green-600 text-white rounded px-4 py-1`}
+                  >
+                    9do
+                  </button>
+                }
+                title={<p>공부구도</p>}
+                descrision={
+                  <p className="text-sm text-gray-900 dark:text-white">
+                    공부하는 습관! 공부구도입니다.
+                  </p>
+                }
+                subDescrision={
+                  <p className="text-xs text-gray-900 dark:text-white">
+                    나에게 딱 맞는 공부습관
+                  </p>
+                }
+                targetLink="/goodo/"
+              />
             </DrawerExpansion>
           </article>
         </section>
