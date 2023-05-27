@@ -67,6 +67,28 @@ export default function RootLayout({
             }
             targetLink="/sangsang/"
           />
+          <DrawerCard
+            icon={
+              // Tailwind center -> flex flex-wrap justify-center items-center
+              <button
+                className={`h-12 w-12 flex flex-wrap justify-center items-center bg-green-600 text-white rounded px-4 py-1`}
+              >
+                Users
+              </button>
+            }
+            title={<p>유저즈테스트</p>}
+            descrision={
+              <p className="text-sm text-gray-900 dark:text-white">
+                아이의 미래를 위한 선택 상상코칭입니다.
+              </p>
+            }
+            subDescrision={
+              <p className="text-xs text-gray-900 dark:text-white">
+                학생 맞춤의 프리미엄 과외
+              </p>
+            }
+            targetLink="/users/"
+          />
         </Drawer>
         <Dialog />
         {children}
