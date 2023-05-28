@@ -18,15 +18,15 @@ function Pagination({postPreviews}:{postPreviews:JSX.Element[]}) {
         <span className="text-sm text-gray-700 dark:text-gray-400">
           Showing{" "}
           <span className="font-semibold text-gray-900 dark:text-white">
-            {state.idx}
+            {state.idx + 1}
           </span>{" "}
           to{" "}
           <span className="font-semibold text-gray-900 dark:text-white">
-            {Math.min(state.idx + state.splitCnt, postPreviews.length)}
+            {Math.min(state.idx + state.splitCnt, postPreviews.length) + 1}
           </span>{" "}
           of{" "}
           <span className="font-semibold text-gray-900 dark:text-white">
-            {postPreviews.length}
+            {postPreviews.length + 1}
           </span>{" "}
           Entries
         </span>
@@ -35,7 +35,7 @@ function Pagination({postPreviews}:{postPreviews:JSX.Element[]}) {
           <button
             // href={"/"}
             className="h-10 mx-auto  w-[100px] my-14 gap-2.5 inline-flex flex-col justify-center items-center rounded-lg text-center font-medium bg-[rgba(235,242,254,1)] text-[rgba(35,46,82,1)]"
-            onClick={()=>setState({...state,idx:state.idx-1})}
+            onClick={()=>setState({...state,idx:state.idx-state.splitCnt})}
             disabled={state.idx<=0}
           >
             Prev
@@ -44,7 +44,7 @@ function Pagination({postPreviews}:{postPreviews:JSX.Element[]}) {
           <button
             // href={"/"}
             className="h-10 mx-auto  w-[100px] my-14 gap-2.5 inline-flex flex-col justify-center items-center rounded-lg text-center font-medium bg-[rgba(235,242,254,1)] text-[rgba(35,46,82,1)]"
-            onClick={()=>setState({...state,idx:state.idx+1})}
+            onClick={()=>setState({...state,idx:state.idx+state.splitCnt})}
             disabled={state.idx + state.splitCnt>=postPreviews.length}
           >
             Next
