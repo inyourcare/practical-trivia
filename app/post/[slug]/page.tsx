@@ -62,7 +62,7 @@ export default async function PostHome({
       </div>
       <div className="container my-20 flex flex-col justify-center mx-auto">
         <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
-          Other interesting posts
+          다른 관련 포스팅
         </h2>
 
         {posts.filter(item=>item.id!==post.data.id && item.category.includes(post.data.category[0])).slice(0,5).map((item) => {
