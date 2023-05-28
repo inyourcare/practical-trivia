@@ -1,14 +1,15 @@
 import React from 'react';
 import Header from '../../../../components/Header';
-import Post from '../../../../components/Post';
 // import Newsletter from '../../../../components/Newsletter';
-import { posts as data } from '../../../../data/post';
 import dayjs from "dayjs";
+import getPostMetadata from '@/components/getPostMetadata';
+import PostPreview from '@/components/PostPreview';
 
 export default function PostTagHome({ params }: { params: { slug: string } }) {
 
   // const posts = data.filter((item) => item.tags[0].toLowerCase().replaceAll(" ", "-") === params.slug)
-  const posts = data.filter((item) => item.tags.filter(tag=>tag.toLowerCase().replaceAll(" ", "-") === params.slug).length>=1)
+  // const posts = data.filter((item) => item.tags.filter(tag=>tag.toLowerCase().replaceAll(" ", "-") === params.slug).length>=1)
+  const posts = getPostMetadata().filter((item) => item.tags.filter(tag=>tag.toLowerCase().replaceAll(" ", "-") === params.slug).length>=1);
   return (
 
     <>
@@ -20,12 +21,15 @@ export default function PostTagHome({ params }: { params: { slug: string } }) {
           posts.map(
             (item) => {
 
-              return <Post key={item.id}
-                tag={item.tags[0]}
+              return <PostPreview key={item.id}
+                tags={item.tags}
                 date={dayjs(item.date).format("DD MMMM , YYYY")}
                 title={item.title}
                 description={item.description}
                 image={item.image}
+                category={item.category}
+                id={item.id}
+                slug={item.slug}
               />
             }
           )

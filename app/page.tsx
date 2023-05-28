@@ -3,11 +3,15 @@ import Header from "@/components/Header";
 import Card from "@/components/drawer/drawer-card";
 import dayjs from "dayjs";
 // import { posts as data } from "../data/post";
-import { posts } from "../data/post";
-import Post from "@/components/Post";
 import Pagination from "@/components/Pagination";
+import getPostMetadata from "@/components/getPostMetadata";
+import PostPreview from "@/components/PostPreview";
 
 export default function Home() {
+  const postMetadata = getPostMetadata();
+  const postPreviews = postMetadata.map((post) => (
+    <PostPreview key={post.slug} {...post} />
+  ));
   return (
     <div>
       <Header />
@@ -16,12 +20,13 @@ export default function Home() {
           All posts
         </p>
 
-        {posts?.map((item) => {
+        {/* {posts?.map((item) => {
           let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
 
           return (
             <Post
               key={item.id}
+              id={item.id}
               tag={item.tags[0]}
               date={GetDate.toString()}
               title={item.title}
@@ -29,7 +34,8 @@ export default function Home() {
               image={item.image}
             />
           );
-        })}
+        })} */}
+        {postPreviews}
 
         <Pagination />
       </main>

@@ -1,12 +1,21 @@
 import Link from "next/link";
-import Image from 'next/image';
+import { PostMetadata } from "./PostMetadata";
 import dayjs from "dayjs";
+import Image from 'next/image';
 
-export default function Post(props: PostProps) {
-
-  let slug = 'post/' + props.title?.toLowerCase().replaceAll(" ", "-")
-
+const PostPreview = (props: PostMetadata) => {
   return (
+    // <div
+    //   className="border border-slate-300 p-4 rounded-md shadow-sm
+    // bg-white"
+    // >
+    //   <p className="text-sm text-slate-400">{props.date}</p>
+
+    //   <Link href={`/post/${props.slug}`}>
+    //     <h2 className=" text-violet-600 hover:underline mb-4">{props.title}</h2>
+    //   </Link>
+    //   <p className="text-slate-700">{props.subtitle}</p>
+    // </div>
     <div
       className={`inline-flex my-24 flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row justify-center  items-center mx-auto  text-[rgba(35,46,82,1)]  transition-all`}>
 
@@ -19,7 +28,7 @@ export default function Post(props: PostProps) {
             <div className={`rounded-l-md px-3 pt-2 pb-2.5 gap-2.5 flex justify-center items-center font-semibold bg-[rgba(235,242,254,1)] transition-all`}>
 
               <p className="uppercase m-0 text-[13px] leading-[1.2]">
-                {props.tag}
+                {props.tags.join(' / ')}
               </p>
 
             </div>
@@ -31,14 +40,14 @@ export default function Post(props: PostProps) {
             </div>
           </div>
 
-          <Link className="text-current hover:no-underline" href={`/${slug}`}>
+          <Link className="text-current hover:no-underline" href={`/post/${props.slug}`}>
             <p className="font-bold text-left m-0 text-[28px] leading-[1.3]">
               {props.title}
             </p>
           </Link>
 
         </div>
-        <Link className="text-current hover:no-underline" href={`/${slug}`}><p className="text-lg font-normal leading-normal text-left m-0"> {props.description}</p> </Link>
+        <Link className="text-current hover:no-underline" href={`/post/${props.slug}`}><p className="text-lg font-normal leading-normal text-left m-0"> {props.description}</p> </Link>
       </div>
 
       <Image src={props.image} width={300} height={210} alt={props.title}
@@ -46,15 +55,7 @@ export default function Post(props: PostProps) {
       />
 
     </div>
-
-
   );
-}
-interface PostProps {
-  tag: string;
-  date: string;
-  title: string;
-  description: string;
-  image: string;
-}
+};
 
+export default PostPreview;
