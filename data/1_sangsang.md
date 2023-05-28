@@ -5,7 +5,7 @@ description: "맞춤커리큘럼으로 공부습관을 기르는 코칭으로 �
 date: "2023-05-29T08:18:10.494Z"
 tags: ["Tutoring", "Sangsang"]
 category: ["Tutoring"]
-image: "/images/camera.jpg"
+image: "/images/1_sangsang.jpg"
 author: "실용주의 잡학사전"
 krTags: ["과외", "상상코칭"]
 ---
