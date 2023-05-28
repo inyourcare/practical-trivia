@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 
 export default function Post(props: PostProps) {
 
-  let slug = props.title?.toLowerCase().replaceAll(" ", "-")
+  let slug = 'post/' + props.title?.toLowerCase().replaceAll(" ", "-")
 
   return (
     <div
