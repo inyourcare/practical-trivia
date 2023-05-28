@@ -13,7 +13,8 @@ export default function PostTagHome({ params }: { params: { slug: string } }) {
   return (
 
     <>
-      <Header title='hidden' tag={`${params.slug}`} />
+      {/* <Header title='hidden' tag={`${params.slug}`} /> */}
+      <Header />
 
       <main className='container mx-auto flex flex-col p-3'>
 
