@@ -1,10 +1,15 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter,Roboto,Noto_Serif_KR } from "next/font/google";
 import Drawer from "@/components/drawer/drawer";
 import Dialog from "@/components/consultation-dialog";
 import Footer from "@/components/Footer";
-
+ 
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+});
 const inter = Inter({ subsets: ["latin"] });
+const notoSerifKr = Noto_Serif_KR({weight: '400',subsets: ["latin"]});
 
 declare global {
   interface Window {
@@ -38,7 +43,7 @@ export default function RootLayout({
       {/* </Head> */}
 
       {/* <body className={inter.className}> */}
-      <body>
+      <body className={notoSerifKr.className}>
         {/* <Drawer /> */}
         {/* <Dialog /> */}
         {children}

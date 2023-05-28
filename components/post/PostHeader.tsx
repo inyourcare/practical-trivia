@@ -38,7 +38,7 @@ function Header(props: PostHeaderComponent) {
 
           <div className="flex items-center flex-shrink-0">
             <p className="font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">Publish By </p>
-            {/* <Image width={32} height={32} className="h-8 w-8 mx-2 rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description" /> */}
+            <Image width={32} height={32} className="h-4 w-4 mx-2 rounded-full" src={'/images/icons/balloon-heart.svg'} alt="Image Description" />
             <p className="font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">{props.authorName}</p>
           </div>
 
