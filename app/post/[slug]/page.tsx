@@ -6,6 +6,7 @@ import { posts } from "../../../data/post";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
 import MarkdownTest from "../../markdowntest.mdx";
+import MarkdownTest2 from "../../markdowntest2.mdx";
 
 export default async function PostHome({
   params,
@@ -36,7 +37,7 @@ export default async function PostHome({
       </div>
 
       <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
-        <MarkdownTest />
+        <MarkdownTest2 />
       </div>
       <div className="container my-20 flex flex-col justify-center mx-auto">
         <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
