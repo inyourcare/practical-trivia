@@ -7,6 +7,7 @@ tags: ["Programming"]
 category: ["Programming"]
 image: "/images/software-developer.jpg"
 author: "실용주의 잡학사전"
+krTags: ["과외", "상상코칭"]
 ---
 
 I was recently granted access to the [OpenAI GPT-3 Beta](https://beta.openai.com/), a very powerful language model that can be used to do all sorts of magic like chat bot generation, article summary, and a [lot more cool stuff](https://beta.openai.com/examples).

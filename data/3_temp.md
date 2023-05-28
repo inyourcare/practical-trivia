@@ -7,6 +7,7 @@ tags: ["Conversation"]
 category: ["Conversation"]
 image: "/images/software-developer.jpg"
 author: "실용주의 잡학사전"
+krTags: ["과외", "상상코칭"]
 ---
 
 Ever since the pandemic started, I've noticed QR codes creeping into my daily life. Venue check-ins, digital menus at restaurants, and online payments.

@@ -20,6 +20,7 @@ const getPostMetadata = (): PostMetadata[] => {
       tags: matterResult.data.tags,
       category: matterResult.data.category,
       image: matterResult.data.image,
+      krTags: matterResult.data.krTags
     };
   });
 

@@ -28,7 +28,7 @@ const PostPreview = (props: PostMetadata) => {
             <div className={`rounded-l-md px-3 pt-2 pb-2.5 gap-2.5 flex justify-center items-center font-semibold bg-[rgba(235,242,254,1)] transition-all`}>
 
               <p className="uppercase m-0 text-[13px] leading-[1.2]">
-                {props.tags.join(' / ')}
+                {props.krTags.join(' / ')}
               </p>
 
             </div>

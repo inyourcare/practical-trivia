@@ -3,10 +3,11 @@ id: "1"
 title: "상상코칭으로 자기 주도 학습 훈련하자"
 description: "맞춤커리큘럼으로 공부습관을 기르는 코칭으로 아이가 점차 발전 할 수 있습니다."
 date: "2023-05-29T08:18:10.494Z"
-tags: ["Tutoring", "Conversation"]
+tags: ["Tutoring", "Sangsang"]
 category: ["Tutoring"]
 image: "/images/camera.jpg"
 author: "실용주의 잡학사전"
+krTags: ["과외", "상상코칭"]
 ---
 
 <p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">

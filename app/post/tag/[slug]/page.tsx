@@ -30,6 +30,7 @@ export default function PostTagHome({ params }: { params: { slug: string } }) {
                 category={item.category}
                 id={item.id}
                 slug={item.slug}
+                krTags={item.krTags}
               />
             }
           )
