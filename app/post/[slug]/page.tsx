@@ -65,7 +65,7 @@ export default async function PostHome({
           Other interesting posts
         </h2>
 
-        {posts.map((item) => {
+        {posts.filter(item=>item.id!==post.data.id && item.category.includes(post.data.category[0])).slice(0,5).map((item) => {
           let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
 
           return (
