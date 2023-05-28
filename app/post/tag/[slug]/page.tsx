@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../../../components/Header';
-import Post from '../../../components/Post';
+import Header from '../../../../components/Header';
+import Post from '../../../../components/Post';
 // import Newsletter from '../../../../components/Newsletter';
-import { posts as data } from '../../../data/post';
+import { posts as data } from '../../../../data/post';
 import dayjs from "dayjs";
 
 export default function PostTagHome({ params }: { params: { slug: string } }) {
