@@ -55,7 +55,7 @@ export default async function PostHome({
         />
       </div>
 
-      <div className="my-12 prose prose-stone lg:prose-lg mx-auto font-light text-gray-500 dark:text-gray-400"> 
+      <div className="my-12 prose prose-stone lg:prose-lg mx-auto"> 
       {/* first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left"> */}
         {/* <MarkdownTest2 /> */}
         <Markdown>{post.content}</Markdown>
