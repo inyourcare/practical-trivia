@@ -23,7 +23,7 @@ function Nav() {
         <Link href={"/tag/conversation"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">회화</Link>
         <Link href={"/tag/study-abroad"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">유학</Link>
         <Link href={"/tag/career"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">진로</Link>
-        <Link href={"/page/about"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">진로</Link>
+        <Link href={"/about"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">무엇입니까</Link>
 
       </nav>
       <div className="hidden sm:hidden md:hidden lg:flex xl:flex 2xl:flex flex-row justify-between items-center">
