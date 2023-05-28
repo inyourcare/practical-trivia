@@ -35,9 +35,9 @@ export default function Home() {
             />
           );
         })} */}
-        {postPreviews}
+        {/* {postPreviews} */}
 
-        <Pagination />
+        <Pagination postPreviews={postPreviews} />
       </main>
     </div>
   );

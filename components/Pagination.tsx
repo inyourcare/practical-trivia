@@ -1,28 +1,57 @@
-import React from 'react';
-import Link from 'next/link';
+"use client"
+import React, { useState } from "react";
+import Link from "next/link";
 
-function Pagination() {
-
+function Pagination({postPreviews}:{postPreviews:JSX.Element[]}) {
+  
+  const splitCnt = 3;
+  const idx = 0;
+  const initialState = {
+    splitCnt:splitCnt,idx:idx
+  }
+  const [state,setState] = useState(initialState);
 
   return (
-    <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center w-5/6 sm:w-5/6 md:w-4/6 lg:w-4/6 xl:w-4/6 2xl:w-3/6 justify-evenly mx-auto">
+    <>
+      {postPreviews.slice(state.idx, state.idx+state.splitCnt)}
+      <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row items-center w-5/6 sm:w-5/6 md:w-4/6 lg:w-4/6 xl:w-4/6 2xl:w-3/6 justify-evenly mx-auto">
+        <span className="text-sm text-gray-700 dark:text-gray-400">
+          Showing{" "}
+          <span className="font-semibold text-gray-900 dark:text-white">
+            {state.idx}
+          </span>{" "}
+          to{" "}
+          <span className="font-semibold text-gray-900 dark:text-white">
+            {Math.min(state.idx + state.splitCnt, postPreviews.length)}
+          </span>{" "}
+          of{" "}
+          <span className="font-semibold text-gray-900 dark:text-white">
+            {postPreviews.length}
+          </span>{" "}
+          Entries
+        </span>
 
-      <span className="text-sm text-gray-700 dark:text-gray-400">
-        Showing <span className="font-semibold text-gray-900 dark:text-white">1</span> to <span className="font-semibold text-gray-900 dark:text-white">10</span> of <span className="font-semibold text-gray-900 dark:text-white">100</span> Entries
-      </span>
+        <div className="inline-flex justify-evenly w-5/6 sm:w-5/6 md:w-3/6 lg:w-3/6 xl:w-4/6 2xl:w-2/6">
+          <button
+            // href={"/"}
+            className="h-10 mx-auto  w-[100px] my-14 gap-2.5 inline-flex flex-col justify-center items-center rounded-lg text-center font-medium bg-[rgba(235,242,254,1)] text-[rgba(35,46,82,1)]"
+            onClick={()=>setState({...state,idx:state.idx-1})}
+            disabled={state.idx<=0}
+          >
+            Prev
+          </button>
 
-      <div className="inline-flex justify-evenly w-5/6 sm:w-5/6 md:w-3/6 lg:w-3/6 xl:w-4/6 2xl:w-2/6">
-
-        <Link href={"/"} className="h-10 mx-auto  w-[100px] my-14 gap-2.5 inline-flex flex-col justify-center items-center rounded-lg text-center font-medium bg-[rgba(235,242,254,1)] text-[rgba(35,46,82,1)]">
-          Prev
-        </Link>
-
-        <Link href={"/"} className="h-10 mx-auto  w-[100px] my-14 gap-2.5 inline-flex flex-col justify-center items-center rounded-lg text-center font-medium bg-[rgba(235,242,254,1)] text-[rgba(35,46,82,1)]">
-          Next
-        </Link>
+          <button
+            // href={"/"}
+            className="h-10 mx-auto  w-[100px] my-14 gap-2.5 inline-flex flex-col justify-center items-center rounded-lg text-center font-medium bg-[rgba(235,242,254,1)] text-[rgba(35,46,82,1)]"
+            onClick={()=>setState({...state,idx:state.idx+1})}
+            disabled={state.idx + state.splitCnt>=postPreviews.length}
+          >
+            Next
+          </button>
+        </div>
       </div>
-    </div>
-
+    </>
   );
 }
 
