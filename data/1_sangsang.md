@@ -39,7 +39,7 @@ krTags: ["과외", "상상코칭"]
       Image caption or credit
   </p>
 </div>
-​<p className="mb-3 font-light text-gray-500 dark:text-gray-400 ">
+<p className="mb-3 font-light text-gray-500 dark:text-gray-400">
 현재 아이의 상태를 객관적으로 정확하게 진단하여 ​
 아이의 성향에 맞게 학습을 할 수 있도록 코칭해 주며, ​
 자기주도 학습훈련을 하여 ​
@@ -49,7 +49,7 @@ krTags: ["과외", "상상코칭"]
 학습 습관 관리를 해 줍니다.
 하루아침에 다되는 것은 없습니다.
 </p>
-​<p className="mb-3 font-light text-gray-500 dark:text-gray-400 ">
+<p className="mb-3 font-light text-gray-500 dark:text-gray-400">
 25년의 교육 노하우를 바탕으로 진짜 공부를 시작하도록 해 주는 ​
 온라인학원 상상코칭에서 ​
 우리아이 공부 습관을 바꿔 보시기 바랍니다.
@@ -69,7 +69,7 @@ krTags: ["과외", "상상코칭"]
     Design comps, layouts, wireframes will your clients accept that you go about things the facile way? Authorities in our business will tell in no uncertain terms that Lorem Ipsum is that huge, huge no no to forswear forever.
   </p>
 </div>
-​<p className="mb-3 font-light text-gray-500 dark:text-gray-400 ">
+<p className="mb-3 font-light text-gray-500 dark:text-gray-400">
 상담신청을 하시면 코치가 배정됩니다.
 코치가 배정되면 코치가 직접 연락을 드리고 시간을 정한 후 ​
 수업진행을 하게됩니다.
@@ -77,7 +77,7 @@ krTags: ["과외", "상상코칭"]
 AI코칭 어시스턴트는 ​
 코칭회차관리 리포트를 작성하면 자동 분석을 합니다.
 </p>
-​<p className="mb-3 font-light text-gray-500 dark:text-gray-400 ">
+<p className="mb-3 font-light text-gray-500 dark:text-gray-400">
 아이의 성향과 상황등을 정확하게 진단하고 ​
 맞춤형 학습방법과 올바른 인성 함양을 위해 ​
 코팅 질문을 제시하여 담당 코치가 ​
@@ -93,14 +93,14 @@ AI코칭 어시스턴트는 ​
 중등에서는 주요과목의 학습방법과 효과적인 정리법을 코칭해 주며, ​
 진료목표를 정하고 목표달정을 할 수 있도록 도와 줍니다.
 </p>
-​<p className="mb-3 font-light text-gray-500 dark:text-gray-400 ">
+<p className="mb-3 font-light text-gray-500 dark:text-gray-400">
 교육부가 선정한 7가지 인성을 비롯하여 인간관계를 위해 고민하며, ​
 자녀의 심리와 학교생활에 대한 궁금증을 부모님들에게 전달하여 ​
 부모님들도 믿고 맡길수 있어요.
 고등학생은 수능과 내신을 균형있게 준비 하는 것을 돕고, ​
 입시로드앱에 따라서 시기별로 해야할 일을 안내하고 준비할 수 있도록 해줘요.
 </p>
-​<p className="mb-3 font-light text-gray-500 dark:text-gray-400 ">
+<p className="mb-3 font-light text-gray-500 dark:text-gray-400">
 자신만의 원칙을 가지고 끊임없이 도전할 수 있도록 ​
 자존감도 향상 시키기도 합니다.
 아이가 만족하는 온라인학원에서 ​
@@ -108,6 +108,6 @@ AI코칭 어시스턴트는 ​
 상상코칭 :: 초중고 1:1 맞춤 라이브 화상과외, e상상코칭 1:1 개별 맞춤 온라인+방문 수업, 학습부터 진로진학, 인성 코칭까지, 내신/수능 완벽대비!
 sscoaching.co.kr 우리아이 온라인학원에서 자기주도학습 지금부터 훈련해 보세요. 클릭!!!▲▲▲ ​
 ​</p>
-​<p className="mb-3 font-light text-gray-500 dark:text-gray-400 ">
+<p className="mb-3 font-light text-gray-500 dark:text-gray-400">
 [출처] [온라인학원] 상상코칭으로 자기주도 학습 훈련하자|작성자 오색콩콩
 </p>
