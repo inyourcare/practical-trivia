@@ -2,8 +2,8 @@ import React from 'react';
 import Header from '../../../../components/Header';
 // import Newsletter from '../../../../components/Newsletter';
 import dayjs from "dayjs";
-import getPostMetadata from '@/components/getPostMetadata';
-import PostPreview from '@/components/PostPreview';
+import getPostMetadata from '@/components/post/getPostMetadata';
+import PostPreview from '@/components/post/PostPreview';
 
 export default function PostTagHome({ params }: { params: { slug: string } }) {
 

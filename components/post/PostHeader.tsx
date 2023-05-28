@@ -1,6 +1,6 @@
 import React from "react";
 import { FaAngleLeft } from "react-icons/fa";
-import Nav from "./Nav";
+import Nav from "../Nav";
 import Link from 'next/link';
 import Image from "next/image"
 function Header(props: PostHeaderComponent) {

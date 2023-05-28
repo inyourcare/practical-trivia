@@ -1,12 +1,12 @@
-import PostHeader from "../../../components/PostHeader";
+import PostHeader from "../../../components/post/PostHeader";
 import Image from "next/image";;
 import dayjs from "dayjs";
 import MarkdownTest2 from "../../markdowntest2.mdx";
 import fs from 'fs'
 import matter from "gray-matter";
-import getPostMetadata from "@/components/getPostMetadata";
+import getPostMetadata from "@/components/post/getPostMetadata";
 import Markdown from "markdown-to-jsx";
-import PostPreview from "@/components/PostPreview";
+import PostPreview from "@/components/post/PostPreview";
 
 const getPostContent = (slug: string) => {
   const folder = "data/";

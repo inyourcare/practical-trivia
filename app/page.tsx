@@ -4,8 +4,8 @@ import Card from "@/components/drawer/drawer-card";
 import dayjs from "dayjs";
 // import { posts as data } from "../data/post";
 import Pagination from "@/components/Pagination";
-import getPostMetadata from "@/components/getPostMetadata";
-import PostPreview from "@/components/PostPreview";
+import getPostMetadata from "@/components/post/getPostMetadata";
+import PostPreview from "@/components/post/PostPreview";
 
 export default function Home() {
   const postMetadata = getPostMetadata();
