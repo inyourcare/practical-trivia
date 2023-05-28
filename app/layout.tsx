@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Drawer from "@/components/drawer/drawer";
 import Dialog from "@/components/consultation-dialog";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
         {/* <Drawer /> */}
         <Dialog />
         {children}
+        <Footer/>
       </body>
     </html>
   );
