@@ -24,10 +24,11 @@ export default function Home() {
             {/* "https://www.youtube.com/embed/3vzq2_NzF_s" "https://www.youtube.com/embed/eyD4mLiP-Ow" "https://youtube.com/embed/REhoCORAl3A" */}
             <CarouselIframes
               items={[
-                "https://www.youtube.com/embed/pLt0AFEppQ8",
-                "https://www.youtube.com/embed/3vzq2_NzF_s",
-                "https://www.youtube.com/embed/eyD4mLiP-Ow",
-                "https://youtube.com/embed/REhoCORAl3A",
+                // "https://www.youtube.com/embed/pLt0AFEppQ8",
+                "https://www.youtube-nocookie.com/embed/pLt0AFEppQ8",
+                "https://www.youtube-nocookie.com/embed/3vzq2_NzF_s",
+                "https://www.youtube-nocookie.com/embed/eyD4mLiP-Ow",
+                "https://www.youtube-nocookie.com/embed/REhoCORAl3A",
               ]}
             ></CarouselIframes>
           </div>

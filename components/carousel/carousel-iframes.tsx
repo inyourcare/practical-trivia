@@ -1,5 +1,6 @@
 "use client";
-import { ReactNode, useRef, useState } from "react";
+import Image from "next/image";
+import { ReactNode, useEffect, useRef, useState } from "react";
 // import styles from "./carousel-iframes.module.css";
 
 export default function CarouselIframes({ items }: { items: string[] }) {
@@ -18,12 +19,23 @@ export default function CarouselIframes({ items }: { items: string[] }) {
     itemMargin: "10px",
   });
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+    // document.cookie = "crossCookie=bar; SameSite=None; Secure"
+    // if (window.YT) {
+    //   console.log("YT instance");
+    // } else {
+    //   console.log("no YT instance", window.YT);
+    // }
+  }, []);
+
   return (
     <>
       <div className="relative w-full">
         {/* <div className={`${styles.slider}`} ref={sliderRef}> */}
         <div
-          className={`flex flex-nowrap overflow-x-scroll overflow-y-hidden`}
+          className={`flex flex-nowrap overflow-x-auto overflow-y-hidden`}
           ref={sliderRef}
         >
           {items &&
@@ -38,17 +50,32 @@ export default function CarouselIframes({ items }: { items: string[] }) {
                 >
                   {/* <div className={}> */}
                   <div className={``}>
-                    <iframe
+                    {/* <iframe
                       width="560"
                       height="315"
                       // src="https://www.youtube.com/embed/pLt0AFEppQ8"
-                      src={item}
-                      title="YouTube video player"
+                      src={item+"?enablejsapi=1&origin=http://localhost:3000"}
+                      // title="YouTube video player"
                       // frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      // allow="autoplay; encrypted-media"
                       // allowfullscreen
                       allowFullScreen
-                    ></iframe>
+                      
+                    ></iframe> */}
+                    {/* <video
+                      width="560"
+                      height="315"
+                      webkit-playsinline=""
+                      src="blob:https://www.youtube.com/669081d9-1df0-45ef-afe1-c4729abd68c0"
+                    ></video> */}
+                    {/* <Image
+                      src={`https://img.youtube.com/vi/pLt0AFEppQ8/default.jpg`}
+                      width="560"
+                      height="315"
+                      fill
+                      alt=""
+                    /> */}
                   </div>
                 </div>
               );

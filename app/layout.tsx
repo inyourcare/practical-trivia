@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 declare global {
   interface Window {
     Kakao: any;
+    YT:any;
   }
 }
 
@@ -28,14 +29,13 @@ export default function RootLayout({
     <html lang="ko">
       {/* <Head> */}
       <head>
-        <script
-          defer
-          src="https://developers.kakao.com/sdk/js/kakao.min.js"
+        <script defer src="https://developers.kakao.com/sdk/js/kakao.min.js"
         ></script>
         {/* <Script src="https://developers.kakao.com/sdk/js/kakao.min.js" />  */}
+        {/* <script defer src="https://www.youtube.com/iframe_api"></script> */}
       </head>
       {/* </Head> */}
-      
+
       {/* <body className={inter.className}> */}
       <body>
         <Drawer />
