@@ -40,7 +40,7 @@ export default function RootLayout({
       {/* <body className={inter.className}> */}
       <body>
         {/* <Drawer /> */}
-        <Dialog />
+        {/* <Dialog /> */}
         {children}
         <Footer/>
       </body>
