@@ -6,6 +6,7 @@ date: "2023-05-29T08:18:10.494Z"
 tags: ["Programming"]
 category: ["Programming"]
 image: "/images/software-developer.jpg"
+imageAlt: ""
 author: "실용주의 잡학사전"
 krTags: ["과외", "상상코칭"]
 ---
