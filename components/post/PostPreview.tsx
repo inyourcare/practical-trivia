@@ -17,7 +17,7 @@ const PostPreview = (props: PostMetadata) => {
     //   <p className="text-slate-700">{props.subtitle}</p>
     // </div>
     <div
-      className={`inline-flex my-24 flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row justify-center  items-center mx-auto  text-[rgba(35,46,82,1)]  transition-all`}>
+      className={`w-full inline-flex my-24 flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row justify-center  items-center mx-auto  text-[rgba(35,46,82,1)]  transition-all`}>
 
       <div className="gap-3 px-0 sm:px-0 md:px-0 lg:px-3  xl:px-3  2xl:px-3  flex flex-col  items-start w-6/6 sm:w-6/6 md:w-[610px] lg:w-[610px] xl:w-[610px] 2xl:w-[610px]  mx-auto">
 
