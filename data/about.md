@@ -5,7 +5,7 @@ description: "실용주의 잡학사전 - 궁금하신가요?"
 date: "2023-05-29T08:18:10.494Z"
 tags: ["About"]
 category: ["About"]
-image: "/images/about.jpg"
+image: "/images/about3.jpg"
 imageAlt: "Tima Miroshnichenko님의 사진: https://www.pexels.com/ko-kr/photo/6550124/"
 author: "실용주의 잡학사전"
 krTags: ["About", "실용주의 잡학사전"]
