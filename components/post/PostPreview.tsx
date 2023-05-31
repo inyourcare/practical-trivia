@@ -50,7 +50,7 @@ const PostPreview = (props: PostMetadata) => {
         <Link className="text-current hover:no-underline" href={`/post/${props.slug}`}><p className="text-lg font-normal leading-normal text-left m-0"> {props.description}</p> </Link>
       </div>
 
-      <Image src={props.image} width={300} height={210} alt={props.title}
+      <Image src={props.image} width={300} height={210} alt={props.imageAlt}
         className={`rounded-lg bg-cover bg-no-repeat bg-center w-full sm:w-full md:w-full  lg:w-[300px] xl:w-[300px] 2xl:w-[300px] h-[210px] transition-all`}
       />
 

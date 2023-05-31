@@ -1,20 +1,12 @@
 import PostHeader from "../../../components/post/PostHeader";
 import Image from "next/image";;
 import dayjs from "dayjs";
-import MarkdownTest2 from "../../markdowntest2.mdx";
-import fs from 'fs'
-import matter from "gray-matter";
 import getPostMetadata from "@/components/post/getPostMetadata";
 import Markdown from "markdown-to-jsx";
 import PostPreview from "@/components/post/PostPreview";
+import getPostContent from "@/components/post/getPostContent";
 
-const getPostContent = (slug: string) => {
-  const folder = "data/";
-  const file = `${folder}${slug}.md`;
-  const content = fs.readFileSync(file, "utf8");
-  const matterResult = matter(content);
-  return matterResult;
-};
+
 
 // export const generateStaticParams = async () => {
 //   const posts = getPostMetadata();
@@ -50,7 +42,7 @@ export default async function PostHome({
           height="250"
           width="500"
           src={post.data.image}
-          alt={post.data.title}
+          alt={post.data.imageAlt}
           className="mx-auto h-[72%] w-[1424px]"
         />
       </div>
@@ -81,6 +73,7 @@ export default async function PostHome({
               image={item.image}
               slug={item.slug}
               krTags={item.krTags}
+              imageAlt={item.imageAlt}
             />
           );
         })}

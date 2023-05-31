@@ -11,5 +11,6 @@ export interface PostMetadata {
   title: string;
   description: string;
   image: string;
+  imageAlt: string;
   slug: string;
 }
