@@ -28,7 +28,7 @@ export default function SangSangHome() {
           // paddingTop: `100%`,
         }}
       >
-        <div className="w-full flex p-3">
+        <div className="w-full flex p-3 flex-col md:flex-row">
           <div className="flex-1 p-3 flex justify-center items-start">
             <Image
               width={300}
