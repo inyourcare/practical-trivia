@@ -42,7 +42,7 @@ export default function SangSangHome() {
             {/* <h1 className="mb-2">{`The Short`}</h1> */}
             <h1 className={`${styles.titleText} mb-4`}>{`짧게`}</h1>
             <p className={`${styles.text} mb-2`}>{`실용주의 잡학사전은 사람과 관계, 근원적 의문, 교육에 관심이 있습니다.`}</p>
-            <p className={`${styles.text}`}>{`자라나는 학생들이 스스로 만족하며 살아갈 수 있도록 도움을 주고자 싶습니다. 교육이 이러한 해답을 제공할 수 있다고 믿습니다.`}</p>
+            <p className={`${styles.text}`}>{`자라나는 학생들이 스스로 만족하며 살아갈 수 있도록 도움을 주고 싶습니다. 교육이 이러한 해답을 제공할 수 있다고 믿습니다.`}</p>
           </div>
           <div className="flex-1 p-3">
             <h1 className={`${styles.titleText} mb-4`}>{`길게`}</h1>
