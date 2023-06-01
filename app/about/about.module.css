@@ -1,0 +1,9 @@
+.titleText {
+  font-size: calc((1.6 - 1) * 1.2vw + 1rem);
+}
+.text {
+  font-size: calc((1.1 - 1) * 1.2vw + 1rem)
+}
+.subText {
+  font-size: calc((0.8 - 1) * 1.2vw + 1rem)
+}
