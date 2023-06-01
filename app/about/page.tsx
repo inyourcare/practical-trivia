@@ -6,6 +6,7 @@ import Image from "next/image";
 import PostHeader from "@/components/post/PostHeader";
 import Nav from "@/components/Nav";
 import styles from "./about.module.css";
+import Link from "next/link";
 
 export default function SangSangHome() {
   const post = getPostContent("about");
@@ -53,6 +54,12 @@ export default function SangSangHome() {
 
         <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
           <Markdown>{post.content}</Markdown>
+          소개 페이지 목록
+          <ul>
+            <li><Link href={`${process.env.HOST_BASE_URL}/intro/howcoding`}>하우코딩</Link></li>
+            <li><Link href={`${process.env.HOST_BASE_URL}/intro/goodo`}>공부구도</Link></li>
+            <li><Link href={`${process.env.HOST_BASE_URL}/intro/sangsang`}>상상코칭</Link></li>
+          </ul>
         </div>
       </div>
     </>
