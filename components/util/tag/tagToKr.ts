@@ -9,6 +9,7 @@ export const tagDict: TranslatedWords = {
   about: "About",
   study_abroad: "유학",
   career: "진로",
+  wawa: "와와학습센터",
 };
 
 export const translateTagsToKr = (tags: string[]) => {
