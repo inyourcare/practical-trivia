@@ -22,11 +22,11 @@ function Pagination({postPreviews}:{postPreviews:JSX.Element[]}) {
           </span>{" "}
           to{" "}
           <span className="font-semibold text-gray-900 dark:text-white">
-            {Math.min(state.idx + state.splitCnt, postPreviews.length) + 1}
+            {Math.min(state.idx + state.splitCnt, postPreviews.length)}
           </span>{" "}
           of{" "}
           <span className="font-semibold text-gray-900 dark:text-white">
-            {postPreviews.length + 1}
+            {postPreviews.length}
           </span>{" "}
           Entries
         </span>
