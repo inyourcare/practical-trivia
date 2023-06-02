@@ -1,12 +1,10 @@
 import PostHeader from "../../../components/post/PostHeader";
-import Image from "next/image";;
+import Image from "next/image";
 import dayjs from "dayjs";
 import getPostMetadata from "@/components/post/getPostMetadata";
 import Markdown from "markdown-to-jsx";
 import PostPreview from "@/components/post/PostPreview";
 import getPostContent from "@/components/post/getPostContent";
-
-
 
 // export const generateStaticParams = async () => {
 //   const posts = getPostMetadata();
@@ -28,6 +26,10 @@ export default async function PostHome({
   const slug = params.slug;
   const post = getPostContent(slug);
   const posts = getPostMetadata();
+  const postsRelated = posts.filter(
+    (item) =>
+      item.id !== post.data.id && item.category.includes(post.data.category[0])
+  );
   return (
     <>
       <PostHeader
@@ -47,17 +49,21 @@ export default async function PostHome({
         />
       </div>
 
-      <div className="my-12 prose prose-stone lg:prose-lg mx-auto"> 
-      {/* first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left"> */}
+      <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
+        {/* first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left"> */}
         {/* <MarkdownTest2 /> */}
         <Markdown>{post.content}</Markdown>
       </div>
       <div className="container my-20 flex flex-col justify-center mx-auto">
-        <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
-          다른 관련 포스팅
-        </h2>
+        {postsRelated.length > 0 ? (
+          <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
+            다른 관련 포스팅
+          </h2>
+        ) : (
+          <></>
+        )}
 
-        {posts.filter(item=>item.id!==post.data.id && item.category.includes(post.data.category[0])).slice(0,5).map((item) => {
+        {postsRelated.slice(0, 5).map((item) => {
           let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
 
           return (
