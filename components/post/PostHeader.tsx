@@ -3,6 +3,7 @@ import { FaAngleLeft } from "react-icons/fa";
 import Nav from "../Nav";
 import Link from 'next/link';
 import Image from "next/image"
+import { tagDict } from "../util/tag/tagToKr";
 function Header(props: PostHeaderComponent) {
 
   return (
@@ -20,7 +21,7 @@ function Header(props: PostHeaderComponent) {
           </Link>
 
           <span className="mx-2 font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">
-            {props.tag}
+            {tagDict[(props.tag as string).toLowerCase()]}
           </span>
 
           <time className="font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">
