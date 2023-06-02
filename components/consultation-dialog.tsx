@@ -5,6 +5,7 @@ import Script from "next/script";
 import DaumPostPopupOpenBtn from "./daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import emailjs from "@emailjs/browser";
+import { kindDict } from "./util/kind/kindToKr";
 
 export default function Drawer({}: // header,
 // children,
@@ -21,15 +22,6 @@ export default function Drawer({}: // header,
   const [koreanKind, setKoreanKind] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [invisible, setInvisible] = useState(false);
-  const [kindDict] = useState<TranslatedWords>({
-    "/sangsang": "상상코칭",
-    "/goodo": "공부구도",
-    "/howcoding": "하우코딩",
-  });
-
-  type TranslatedWords = {
-    [key: string]: string;
-  };
 
   useEffect(() => {
     // const kindDict: TranslatedWords = {
@@ -37,7 +29,7 @@ export default function Drawer({}: // header,
     //   "/goodo": "공부구도",
     // };
     setKoreanKind(kindDict[selectedKind] || "");
-  }, [selectedKind, kindDict]);
+  }, [selectedKind]);
   useEffect(() => {
     if (pathname === "/contactinfo") {
       setInvisible(true);

@@ -22,15 +22,15 @@ function Nav() {
         <Link href={"/post/tag/tutoring"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">과외</Link>
         <Link href={"/post/tag/academy"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">학원</Link>
         <Link href={"/post/tag/conversation"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">회화</Link>
-        <Link href={"/post/tag/study-abroad"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">유학</Link>
+        <Link href={"/post/tag/study_abroad"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">유학</Link>
         <Link href={"/post/tag/career"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">진로</Link>
         <Link href={"/about"} className="m-0 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">About</Link>
 
       </nav>
       <div className="hidden sm:hidden md:hidden lg:flex xl:flex 2xl:flex flex-row justify-between items-center">
 
-        <Link href="#" target="_blank" aria-disabled> <FaFacebookF className="mx-3 text-white" /> </Link>
-        <Link href="#" target="_blank" aria-disabled> <FaInstagram className="mx-3 text-white" /> </Link>
+        {/* <Link href="#" target="_blank" aria-disabled> <FaFacebookF className="mx-3 text-white" /> </Link> */}
+        {/* <Link href="#" target="_blank" aria-disabled> <FaInstagram className="mx-3 text-white" /> </Link> */}
         <Link href="https://blog.naver.com/hellothankyoubye" target="_blank"> <FaBlogger className="mx-3 text-white" /> </Link>
         <Link href="https://www.youtube.com/channel/UCrNg2TpybX3TRVK45DhZgdA" target="_blank"> <FaYoutube className="mx-3 text-white" /> </Link>
 

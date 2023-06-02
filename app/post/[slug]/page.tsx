@@ -32,7 +32,7 @@ export default async function PostHome({
     <>
       <PostHeader
         title={post.data.title}
-        tag={post.data.krTags[0]}
+        tag={post.data.tags[0]}
         date={dayjs(post.data.date).format("DD MMMM , YYYY")}
         authorName={post.data.author}
       />
@@ -72,7 +72,6 @@ export default async function PostHome({
               description={item.description}
               image={item.image}
               slug={item.slug}
-              krTags={item.krTags}
               imageAlt={item.imageAlt}
             />
           );

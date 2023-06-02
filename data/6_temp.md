@@ -8,7 +8,6 @@ category: ["Conversation"]
 image: "/images/software-developer.jpg"
 imageAlt: ""
 author: "실용주의 잡학사전"
-krTags: ["과외", "상상코칭"]
 ---
 
 In a [previous post](./retro-games-with-pico-8) I talked about how making retro 8-bit games is a great way for fledgling developers to learn new things whilst expanding their portfolio.

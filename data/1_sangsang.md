@@ -8,7 +8,6 @@ category: ["Tutoring"]
 image: "/images/1_sangsang.jpg"
 imageAlt: "Pexels에서 Julia M Cameron님의 사진: https://www.pexels.com/ko-kr/photo/4144224/"
 author: "실용주의 잡학사전"
-krTags: ["과외", "상상코칭"]
 ---
 
 <p className="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">

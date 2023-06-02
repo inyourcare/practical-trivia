@@ -8,7 +8,6 @@ category: ["Conversation"]
 image: "/images/software-developer.jpg"
 imageAlt: ""
 author: "실용주의 잡학사전"
-krTags: ["과외", "상상코칭"]
 ---
 
 After watching [High Score](https://www.youtube.com/watch?v=B4jopG1wX88) on Netflix, I was suddenly inspired to develop a retro-style game. I think it was a combination of the aesthetics and nostalgia that motivated me.

@@ -5,7 +5,6 @@ export interface PostMetadata {
   // slug: string;
   id: string;
   tags: Array<string>;
-  krTags: Array<string>;
   category: Array<string>;
   date: string;
   title: string;

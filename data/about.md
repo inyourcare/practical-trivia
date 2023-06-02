@@ -8,7 +8,6 @@ category: ["About"]
 image: "/images/about3.jpg"
 imageAlt: "Tima Miroshnichenko님의 사진: https://www.pexels.com/ko-kr/photo/6550124/"
 author: "실용주의 잡학사전"
-krTags: ["About", "실용주의 잡학사전"]
 ---
 
 

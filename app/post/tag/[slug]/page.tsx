@@ -13,8 +13,8 @@ export default function PostTagHome({ params }: { params: { slug: string } }) {
   return (
 
     <>
-      {/* <Header title='hidden' tag={`${params.slug}`} /> */}
-      <Header />
+      <Header title='hidden' tag={`${params.slug}`} />
+      {/* <Header /> */}
 
       <main className='container mx-auto flex flex-col p-3'>
 
@@ -31,7 +31,7 @@ export default function PostTagHome({ params }: { params: { slug: string } }) {
                 category={item.category}
                 id={item.id}
                 slug={item.slug}
-                krTags={item.krTags}
+                imageAlt={item.imageAlt}
               />
             }
           )
