@@ -1,34 +1,32 @@
 "use client";
 
-export default function HowcodingHome() {
+export default function GoodoHome() {
   // const router = useRouter()
   // const { menu, submenu, detail } = router.query
   return (
     <div className="w-full flex flex-col justify-center items-center">
       {[
-        [1, 1540 / 1920],
-        [2, 1400 / 1920],
-        [3, 1260 / 1920],
-        [4, 740 / 1920],
-        [5, 1500 / 1920],
-        [6, 1750 / 1920],
-        [7, 1137 / 1920],
-        [8, 1550 / 1920],
-        [9, 1281 / 1920],
-        [10, 1772 / 1920],
-        [11, 1141 / 1920],
-        [12, 4917 / 1920],
+        [1, 720 / 1100],
+        [2, 1507 / 1100],
+        [3, 529 / 1100],
+        [4, 712 / 1079],
+        [5, 2022 / 1100],
+        [6, 1096 / 1100],
+        [7, 817 / 1100],
+        [8, 603 / 1048],
+        [9, 621 / 1100],
+        [10, 873 / 1100],
+        [11, 756 / 1100],
       ].map((order) => {
         return (
           <div
             key={order.at(0)}
             style={{
               backgroundImage:
-                `url('/images/intro/howcoding/` + order.at(0) + `.png')`,
+                `url('/images/intro/sangsang/` + order.at(0) + `.png')`,
               backgroundRepeat: `no-repeat`,
               backgroundPosition: `center`,
               backgroundSize: "100% 100%",
-              // maxWidth: "1920px",
               maxWidth: "1080px",
               width: "100%",
               height: "0px",

@@ -23,7 +23,7 @@ export default function GoodoHome() {
             key={order.at(0)}
             style={{
               backgroundImage:
-                `url('/images/business/goodo/` + order.at(0) + `.png')`,
+                `url('/images/intro/goodo/` + order.at(0) + `.png')`,
               backgroundRepeat: `no-repeat`,
               backgroundPosition: `center`,
               backgroundSize: "100% 100%",

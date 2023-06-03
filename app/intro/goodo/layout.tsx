@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "실용주의 잡학사전의 공부 컨설팅::공부구도",
+  title: "공부구도:: 공부법 과외",
   description:
     "공부구도를 통해 나에게 딱 맞는 공부 방법을 찾아보세요",
   keywords:

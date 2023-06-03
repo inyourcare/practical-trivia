@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "실용주의 잡학사전의 공부 컨설팅::하우코딩",
+  title: "하우코딩:: 코딩 과외",
   description:
     "하우코딩을 통해 코딩 실력 쑥쑥",
   keywords:
