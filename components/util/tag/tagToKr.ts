@@ -11,6 +11,7 @@ export const tagDict: TranslatedWords = {
   career: "진로",
   wawa: "와와학습센터",
   solute: "솔루트유학센터",
+  goodo: "공부구도",
 };
 
 export const translateTagsToKr = (tags: string[]) => {
