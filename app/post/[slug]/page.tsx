@@ -28,7 +28,7 @@ export default async function PostHome({
   const posts = getPostMetadata();
   const postsRelated = posts.filter(
     (item) =>
-      item.id !== post.data.id && item.category.includes(post.data.category[0])
+      item.id !== post.data.id && item.tags.includes(post.data.tags[0])
   );
   return (
     <>
@@ -54,7 +54,7 @@ export default async function PostHome({
         {/* <MarkdownTest2 /> */}
         <Markdown>{post.content}</Markdown>
       </div>
-      <div className="container my-20 flex flex-col justify-center mx-auto">
+      <div className="container my-40 p-20 flex flex-col justify-center mx-auto border-t-2">
         {postsRelated.length > 0 ? (
           <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
             다른 관련 포스팅
