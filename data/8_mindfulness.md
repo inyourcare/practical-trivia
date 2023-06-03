@@ -1,7 +1,7 @@
 ---
 id: "8"
 title: "마음코칭과 함께 정서적 능력을 향상"
-description: " 28년 동안 쌓은 교육 노하우와 청소년을 잘 이해하고 있는 숙련된 전문 코치들의 1:1 멘토링"
+description: "28년 동안 쌓은 교육 노하우와 청소년을 잘 이해하고 있는 숙련된 전문 코치들의 1:1 멘토링."
 date: "2023-06-03T08:18:10.494Z"
 tags: ["Tutoring","Mindfulness","Sangsang"]
 category: ["Mindfulness"]

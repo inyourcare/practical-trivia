@@ -13,6 +13,7 @@ export const tagDict: TranslatedWords = {
   solute: "솔루트유학센터",
   goodo: "공부구도",
   mindfulness: "마음키움",
+  ipsi: "입시컨설팅",
 };
 
 export const translateTagsToKr = (tags: string[]) => {
