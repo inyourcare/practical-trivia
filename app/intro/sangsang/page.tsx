@@ -4,12 +4,17 @@ export default function SangsangHome() {
     <>
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center w-full bg-gray-300">
-          <Image
-            width={1200}
-            height={700}
-            src={`/images/intro/sangsang/1.webp`}
-            alt=""
-          />
+          <a
+            href={`javascript:window.open('/popup/youtube?videoId=QykE0eswFH0', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
+          >
+            <Image
+              width={1200}
+              height={700}
+              src={`/images/intro/sangsang/1.webp`}
+              alt=""
+              // className="cursor-pointer"
+            />
+          </a>
         </div>
       </div>
 
@@ -92,12 +97,16 @@ export default function SangsangHome() {
             />
           </div>
           <div className="flex justify-center items-center flex-1 flex-col">
-            <Image
-              width={630}
-              height={501}
-              src={`/images/intro/sangsang/5-1.png`}
-              alt=""
-            />
+            <a
+              href={`javascript:window.open('/popup/youtube?videoId=HTI7UanlnYk', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
+            >
+              <Image
+                width={630}
+                height={501}
+                src={`/images/intro/sangsang/5-1.png`}
+                alt=""
+              />
+            </a>
             <Image
               width={630}
               height={43}
