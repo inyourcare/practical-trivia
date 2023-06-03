@@ -221,36 +221,52 @@ export default function SangsangHome() {
         </div>
         <div className="w-full flex justify-center items-center">
           <div className="flex justify-center items-center basis-1/4">
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-2.jpg`}
-              alt=""
-            />
+            <a
+              href={`javascript:window.open('/popup/youtube?videoId=3vzq2_NzF_s', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
+            >
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-2.jpg`}
+                alt=""
+              />
+            </a>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-3.jpg`}
-              alt=""
-            />
+            <a
+              href={`javascript:window.open('/popup/youtube?videoId=GCjN8Y62tls', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
+            >
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-3.jpg`}
+                alt=""
+              />
+            </a>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-4.jpg`}
-              alt=""
-            />
+            <a
+              href={`javascript:window.open('/popup/youtube?videoId=M-A5KDPFTr8', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
+            >
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-4.jpg`}
+                alt=""
+              />
+            </a>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            <Image
-              width={260}
-              height={300}
-              src={`/images/intro/sangsang/9-5.jpg`}
-              alt=""
-            />
+            <a
+              href={`javascript:window.open('/popup/youtube?videoId=fDQ6q2cv5b4', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
+            >
+              <Image
+                width={260}
+                height={300}
+                src={`/images/intro/sangsang/9-5.jpg`}
+                alt=""
+              />
+            </a>
           </div>
         </div>
         <div className="h-[200px] flex justify-center items-center">
