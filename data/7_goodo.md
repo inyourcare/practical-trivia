@@ -3,8 +3,8 @@ id: "7"
 title: "공부9도와 함께 완전히 변화된 A군 이야기"
 description: "공부구도를 통해서, 학생들은 다양한 방법으로 학습 코칭을 받을 수 있으며, 학습 플랜과 시간 관리법을 배울 수도 있습니다."
 date: "2023-06-03T08:18:10.494Z"
-tags: ["Tutoring","Goodo"]
-category: ["Goodo"]
+tags: ["Goodo","Tutoring"]
+category: ["Tutoring"]
 image: "/images/business/goodo/1.jpg"
 imageAlt: "Julia M Cameron님의 사진: https://www.pexels.com/ko-kr/photo/4143791/"
 author: "실용주의 잡학사전"

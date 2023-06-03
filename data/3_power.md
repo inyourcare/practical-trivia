@@ -3,7 +3,7 @@ id: "3"
 title: "원어민과 회화 수업 찾고계신가요? 전화,화상 영어 파워 잉글리쉬입니다."
 description: "해외기업 면접, 외국어 교육과정, 취업영어, 자격증회화시험 준비 함께해요"
 date: "2023-05-29T08:18:10.494Z"
-tags: ["Conversation"]
+tags: ["Conversation","Tutoring"]
 category: ["Conversation"]
 image: "/images/business/power/1.jpg"
 imageAlt: "SHVETS production님의 사진: https://www.pexels.com/ko-kr/photo/7516283/"

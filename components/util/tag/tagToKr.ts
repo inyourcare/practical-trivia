@@ -14,6 +14,7 @@ export const tagDict: TranslatedWords = {
   goodo: "공부구도",
   mindfulness: "마음키움",
   ipsi: "입시컨설팅",
+  howcoding: "하우코딩",
 };
 
 export const translateTagsToKr = (tags: string[]) => {

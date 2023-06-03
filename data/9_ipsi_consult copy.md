@@ -3,8 +3,8 @@ id: "9"
 title: "화상 입시 컨설팅 - 언제 어디서나 편하게, 정확한 입시 대비 솔루션!"
 description: "입시 대비를 위한 완벽한 솔루션을 찾고 계신가요? 지금부터 소개해드릴 화상 입시 컨설팅 서비스는 정확하고 신속한 입시 대비를 위한 최적의 선택입니다."
 date: "2023-06-04T08:18:10.494Z"
-tags: ["Tutoring","Ipsi","Sangsang","career"]
-category: ["Ipsi"]
+tags: ["Ipsi","Tutoring","Sangsang","career"]
+category: ["Tutoring"]
 image: "/images/business/ipsi/1.jpg"
 imageAlt: "Pexels에서 cottonbro studio님의 사진: https://www.pexels.com/ko-kr/photo/4101137/"
 author: "실용주의 잡학사전"

@@ -3,8 +3,8 @@ id: "6"
 title: "솔루트 유학 소개합니다."
 description: "미국, 캐나다, 호주 등 국가의 공신력 있는 기관, 교육청, 학교와 업무제휴로 진행하며 현지 교육전문가와 함께 학생들의 성공적인 유학을 위해 최선을 다 할 것입니다."
 date: "2023-06-03T08:18:10.494Z"
-tags: ["Study_abroad","Solute"]
-category: ["Solute"]
+tags: ["Solute","Study_abroad"]
+category: ["Study_abroad"]
 image: "/images/business/solute/solute_1.jpg"
 imageAlt: ""
 author: "실용주의 잡학사전"
