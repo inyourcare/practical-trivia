@@ -5,6 +5,7 @@ import getPostMetadata from "@/components/post/getPostMetadata";
 import Markdown from "markdown-to-jsx";
 import PostPreview from "@/components/post/PostPreview";
 import getPostContent from "@/components/post/getPostContent";
+import Pagination from "@/components/Pagination";
 
 // export const generateStaticParams = async () => {
 //   const posts = getPostMetadata();
@@ -27,8 +28,7 @@ export default async function PostHome({
   const post = getPostContent(slug);
   const posts = getPostMetadata();
   const postsRelated = posts.filter(
-    (item) =>
-      item.id !== post.data.id && item.tags.includes(post.data.tags[0])
+    (item) => item.id !== post.data.id && item.tags.includes(post.data.tags[0])
   );
   return (
     <>
@@ -63,25 +63,29 @@ export default async function PostHome({
           <></>
         )}
 
-        {postsRelated.slice(0, 5).map((item) => {
-          let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
+        {
+          <Pagination
+            postPreviews={postsRelated.slice(0, 5).map((item) => {
+              let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
 
-          return (
-            <PostPreview
-              key={item.id}
-              id={item.id}
-              tags={item.tags}
-              category={item.category}
-              // tag={item.tag}
-              date={GetDate.toString()}
-              title={item.title}
-              description={item.description}
-              image={item.image}
-              slug={item.slug}
-              imageAlt={item.imageAlt}
-            />
-          );
-        })}
+              return (
+                <PostPreview
+                  key={item.id}
+                  id={item.id}
+                  tags={item.tags}
+                  category={item.category}
+                  // tag={item.tag}
+                  date={GetDate.toString()}
+                  title={item.title}
+                  description={item.description}
+                  image={item.image}
+                  slug={item.slug}
+                  imageAlt={item.imageAlt}
+                />
+              );
+            })}
+          />
+        }
       </div>
     </>
   );
