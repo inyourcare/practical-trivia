@@ -36,7 +36,7 @@ export default function Drawer({}: // header,
     } else {
       setInvisible(false);
     }
-    setSelectedKind(pathname);
+    // setSelectedKind(pathname);
   }, [pathname]);
 
   const open = useDaumPostcodePopup(
@@ -217,13 +217,39 @@ export default function Drawer({}: // header,
                       required
                     >
                       <option value={""}>선택없음</option>
-                      <option value={"/sangsang"}>
-                        {kindDict["/sangsang"]}
-                      </option>
-                      <option value={"/goodo"}>{kindDict["/goodo"]}</option>
-                      <option value={"/howcoding"}>
-                        {kindDict["/howcoding"]}
-                      </option>
+                      <optgroup label="과외">
+                        <option value={"/sangsang"}>
+                          {kindDict["/sangsang"]}
+                        </option>
+                        <option value={"/goodo"}>{kindDict["/goodo"]}</option>
+                        <option value={"/howcoding"}>
+                          {kindDict["/howcoding"]}
+                        </option>
+                        <option value={"/mindfulness"}>
+                          {kindDict["/mindfulness"]}
+                        </option>
+                        <option value={"/ipsi"}>{kindDict["/ipsi"]}</option>
+                      </optgroup>
+
+                      <optgroup label="회화">
+                        <option value={"/conversation"}>
+                          {kindDict["/conversation"]}
+                        </option>
+                      </optgroup>
+
+                      <optgroup label="학원">
+                        <option value={"/wawa"}>{kindDict["/wawa"]}</option>
+                      </optgroup>
+
+                      <optgroup label="유학">
+                        <option value={"/solute"}>{kindDict["/solute"]}</option>
+                      </optgroup>
+                      <optgroup label="기타">
+                        <option value={"/developing"}>
+                          {kindDict["/developing"]}
+                        </option>
+                        <option value={"/about"}>{kindDict["/about"]}</option>
+                      </optgroup>
                     </select>
                   </span>
                 </div>
