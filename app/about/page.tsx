@@ -39,6 +39,7 @@ export default function SangSangHome() {
                 height={300}
                 src={"/images/camera.jpg"}
                 alt="Image Description"
+                style={{ width: 300, height: 300 }}
               />
             </div>
             <div className="flex-1 p-3">

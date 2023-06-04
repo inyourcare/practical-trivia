@@ -8,7 +8,7 @@ export default function SangsangHome() {
           <YoutubePopupImage>
             <Image
               width={1200}
-              height={700}
+              height={720}
               src={`/images/intro/sangsang/1.webp`}
               alt=""
               // className="cursor-pointer"
