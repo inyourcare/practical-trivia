@@ -89,13 +89,13 @@ export default function SangSangHome() {
             </ul>
 
             <h4>와와 소개 페이지</h4>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-4 gap-4">
               {files.map((file) => (
                 <div key={file}>
                   <Link
                     href={`${process.env.HOST_BASE_URL}/intro/wawa/${file}`}
                   >
-                    지점들
+                    {`${file} 지점`}
                   </Link>
                 </div>
               ))}
