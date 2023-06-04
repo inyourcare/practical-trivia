@@ -7,12 +7,11 @@ import PostHeader from "@/components/post/PostHeader";
 import Nav from "@/components/Nav";
 import styles from "./about.module.css";
 import Link from "next/link";
-import fs from "fs";
+import WawaLinkList from "@/components/util/wawa/WawaLinkList";
 
 export default function SangSangHome() {
   const post = getPostContent("about");
-  const wawafolder = "app/intro/wawa";
-  const files = fs.readdirSync(wawafolder);
+
   return (
     <>
       <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)]">
@@ -89,28 +88,7 @@ export default function SangSangHome() {
             </ul>
 
             <h4>와와 소개 페이지</h4>
-            <div className="grid grid-cols-4 gap-4">
-              {files.map((file) => (
-                <div key={file}>
-                  <Link
-                    href={`${process.env.HOST_BASE_URL}/intro/wawa/${file}`}
-                  >
-                    {`${file} 지점`}
-                  </Link>
-                </div>
-              ))}
-            </div>
-            {/* <ul>
-              {files.map((file) => (
-                <li key={file}>
-                  <Link
-                    href={`${process.env.HOST_BASE_URL}/intro/wawa/${file}`}
-                  >
-                    지점들
-                  </Link>
-                </li>
-              ))}
-            </ul> */}
+            <WawaLinkList />
           </div>
         </div>
       </div>
