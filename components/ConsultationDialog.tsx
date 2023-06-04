@@ -8,7 +8,7 @@ import emailjs from "@emailjs/browser";
 import { kindDict } from "./util/kind/kindToKr";
 import Link from "next/link";
 
-export default function Drawer({}: // header,
+export default function ConsultationDialog({}: // header,
 // children,
 // btnTitle,
 {

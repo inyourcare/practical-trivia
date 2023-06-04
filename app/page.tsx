@@ -1,6 +1,6 @@
 // import styles from "./page.module.css";
 import Header from "@/components/Header";
-import Card from "@/components/drawer/drawer-card";
+import Card from "@/components/drawer/DrawerCard";
 import dayjs from "dayjs";
 // import { posts as data } from "../data/post";
 import Pagination from "@/components/Pagination";

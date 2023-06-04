@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Inter,Roboto,Noto_Serif_KR } from "next/font/google";
-import Drawer from "@/components/drawer/drawer";
-import Dialog from "@/components/consultation-dialog";
+import ConsultationDialog from "@/components/ConsultationDialog";
 import Footer from "@/components/Footer";
  
 const roboto = Roboto({
@@ -47,7 +46,7 @@ export default function RootLayout({
       {/* <body className={inter.className}> */}
       <body className={notoSerifKr.className}>
         {/* <Drawer /> */}
-        <Dialog />
+        <ConsultationDialog />
         {children}
         <Footer/>
       </body>

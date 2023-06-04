@@ -8,8 +8,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import DrawerCard from "./drawer-card";
-import DrawerExpansion from "./drawer-expansion";
+import DrawerCard from "./DrawerCard";
+import DrawerExpansion from "./DrawerExpansion";
 
 export default function Drawer({
   header,
