@@ -1,12 +1,11 @@
+import YoutubePopupImage from "@/components/YoutubePopupImage";
 import Image from "next/image";
 export default function SangsangHome() {
   return (
     <>
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center w-full bg-gray-300">
-          <a
-            href={`javascript:window.open('/popup/youtube?videoId=QykE0eswFH0', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
-          >
+          <YoutubePopupImage>
             <Image
               width={1200}
               height={700}
@@ -14,7 +13,7 @@ export default function SangsangHome() {
               alt=""
               // className="cursor-pointer"
             />
-          </a>
+          </YoutubePopupImage>
         </div>
       </div>
 
@@ -97,16 +96,14 @@ export default function SangsangHome() {
             />
           </div>
           <div className="flex justify-center items-center flex-1 flex-col">
-            <a
-              href={`javascript:window.open('/popup/youtube?videoId=HTI7UanlnYk', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
-            >
+            <YoutubePopupImage>
               <Image
                 width={630}
                 height={501}
                 src={`/images/intro/sangsang/5-1.png`}
                 alt=""
               />
-            </a>
+            </YoutubePopupImage>
             <Image
               width={630}
               height={43}
@@ -221,52 +218,44 @@ export default function SangsangHome() {
         </div>
         <div className="w-full flex justify-center items-center">
           <div className="flex justify-center items-center basis-1/4">
-            <a
-              href={`javascript:window.open('/popup/youtube?videoId=3vzq2_NzF_s', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
-            >
+            <YoutubePopupImage>
               <Image
                 width={260}
                 height={300}
                 src={`/images/intro/sangsang/9-2.jpg`}
                 alt=""
               />
-            </a>
+            </YoutubePopupImage>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            <a
-              href={`javascript:window.open('/popup/youtube?videoId=GCjN8Y62tls', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
-            >
+            <YoutubePopupImage>
               <Image
                 width={260}
                 height={300}
                 src={`/images/intro/sangsang/9-3.jpg`}
                 alt=""
               />
-            </a>
+            </YoutubePopupImage>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            <a
-              href={`javascript:window.open('/popup/youtube?videoId=M-A5KDPFTr8', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
-            >
+            <YoutubePopupImage>
               <Image
                 width={260}
                 height={300}
                 src={`/images/intro/sangsang/9-4.jpg`}
                 alt=""
               />
-            </a>
+            </YoutubePopupImage>
           </div>
           <div className="flex justify-center items-center basis-1/4">
-            <a
-              href={`javascript:window.open('/popup/youtube?videoId=fDQ6q2cv5b4', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
-            >
+            <YoutubePopupImage>
               <Image
                 width={260}
                 height={300}
                 src={`/images/intro/sangsang/9-5.jpg`}
                 alt=""
               />
-            </a>
+            </YoutubePopupImage>
           </div>
         </div>
         <div className="h-[200px] flex justify-center items-center">

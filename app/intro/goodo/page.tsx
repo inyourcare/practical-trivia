@@ -1,3 +1,4 @@
+import YoutubePopupImage from "@/components/YoutubePopupImage";
 import Image from "next/image";
 export default function GoodoHome() {
   return (
@@ -32,16 +33,14 @@ export default function GoodoHome() {
       </div>
 
       <div className="flex justify-center items-center p-20">
-        <a
-          href={`javascript:window.open('/popup/youtube?videoId=dm9KnAuYdSA', 'popup', 'top=100, left=300, width=600, height=600, status=no, menubar=no, toolbar=no, resizable=no');`}
-        >
+        <YoutubePopupImage>
           <Image
             width={1100}
             height={619}
             src={`/images/intro/goodo/4.png`}
             alt=""
           />
-        </a>
+        </YoutubePopupImage>
       </div>
 
       <div className="flex justify-center items-center bg-[#f7941e] p-20">
