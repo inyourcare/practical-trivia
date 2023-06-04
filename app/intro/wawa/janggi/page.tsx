@@ -77,7 +77,7 @@ export default function WawaHome() {
       <br/>
       <br/>
       <div className="flex justify-center items-center">
-        <Navermap width={500} height={500} lat={37.309035} lon={126.8306231}/>
+        <Navermap width={500} height={500} lat={37.6469799} lon={126.6642245}/>
       </div>
     </>
   );

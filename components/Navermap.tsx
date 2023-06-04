@@ -2,10 +2,20 @@
 
 import { useEffect } from "react";
 
-function Navermap({ width, height }: { width: number; height: number }) {
+function Navermap({
+  width,
+  height,
+  lat,
+  lon,
+}: {
+  width: number;
+  height: number;
+  lat: number;
+  lon: number;
+}) {
   useEffect(() => {
     // const location = new window.naver.maps.LatLng(126.8306231,37.309035);
-    const location = new window.naver.maps.LatLng(37.309035, 126.8306231);
+    const location = new window.naver.maps.LatLng(lat, lon);
     //지도 그리기
     const map = new window.naver.maps.Map("map", {
       center: location,
@@ -24,7 +34,7 @@ function Navermap({ width, height }: { width: number; height: number }) {
   }, []);
   return (
     <div id="map" className={`w-[${width}px] h-[${height}px]`}>
-    {/* <div id="map" className={`w-[500px] h-[500px]`}> */}
+      {/* <div id="map" className={`w-[500px] h-[500px]`}> */}
       map
     </div>
   );
