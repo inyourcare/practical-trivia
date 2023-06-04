@@ -18,26 +18,32 @@ export default function Drawer({}: // header,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = useCurrentPath();
-  const [selectedKind, setSelectedKind] = useState(pathname);
+  const [selectedKind, setSelectedKind] = useState("");
   const [address, setAddress] = useState("");
   const [koreanKind, setKoreanKind] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [invisible, setInvisible] = useState(false);
 
   useEffect(() => {
-    // const kindDict: TranslatedWords = {
-    //   "/sangsang": "상상코칭",
-    //   "/goodo": "공부구도",
-    // };
     setKoreanKind(kindDict[selectedKind] || "");
   }, [selectedKind]);
   useEffect(() => {
     if (pathname === "/contactinfo") {
       setInvisible(true);
+    } else if (pathname.includes("/intro/wawa")) {
+      setSelectedKind("/wawa");
+    } else if (pathname.includes("/intro/howcoding")) {
+      setSelectedKind("/howcoding");
+    } else if (pathname.includes("/intro/sangsang")) {
+      setSelectedKind("/sangsang");
+    } else if (pathname.includes("/intro/goodo")) {
+      setSelectedKind("/goodo");
     } else {
       setInvisible(false);
     }
     // setSelectedKind(pathname);
+    // console.log(pathname);
+    setIsOpen(false)
   }, [pathname]);
 
   const open = useDaumPostcodePopup(
