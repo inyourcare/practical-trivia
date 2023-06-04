@@ -6,6 +6,7 @@ import DaumPostPopupOpenBtn from "./daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import emailjs from "@emailjs/browser";
 import { kindDict } from "./util/kind/kindToKr";
+import Link from "next/link";
 
 export default function Drawer({}: // header,
 // children,
@@ -180,7 +181,10 @@ export default function Drawer({}: // header,
                 className={`w-5 h-5 bg-[url('/images/icons/x.svg')] bg-no-repeat bg-center bg-cover cursor-pointer `}
                 onClick={() => setIsOpen(false)}
               ></button>
-              {/* {header} */}
+              <Link
+                href={`/`}
+                className={`w-5 h-5 bg-[url('/images/icons/house.svg')] bg-no-repeat bg-center bg-cover cursor-pointer`}
+              ></Link>
             </header>
             <div className="m-5">
               {/* {children} */}
