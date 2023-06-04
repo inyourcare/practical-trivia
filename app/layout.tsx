@@ -15,6 +15,7 @@ declare global {
   interface Window {
     Kakao: any;
     YT:any;
+    naver:any;
   }
 }
 
@@ -35,8 +36,9 @@ export default function RootLayout({
     <html lang="ko">
       {/* <Head> */}
       <head>
-        <script defer src="https://developers.kakao.com/sdk/js/kakao.min.js"
-        ></script>
+        <script defer src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+        {/* <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"/> */}
+        <script defer src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NAVER_CLIENT_ID}`}/>
         {/* <Script src="https://developers.kakao.com/sdk/js/kakao.min.js" />  */}
         {/* <script defer src="https://www.youtube.com/iframe_api"></script> */}
       </head>
