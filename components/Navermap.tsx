@@ -31,7 +31,7 @@ function Navermap({
       map,
       position: location, //마커 좌표
     });
-  }, []);
+  }, [lat,lon]);
   return (
     <div id="map" className={`w-[${width}px] h-[${height}px]`}>
       {/* <div id="map" className={`w-[500px] h-[500px]`}> */}

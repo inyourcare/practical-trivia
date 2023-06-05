@@ -24,6 +24,8 @@ yarn --version
 npm i -g pm2
 
 sudo yum install git -y
+sudo apt-get update
+sudo apt-get install git -y
 git version
 [ssh 키 등록 후 ssh 로 clone]
 ssh-keygen -t ed25519 -C "inyourcareallen@gmail.com"
@@ -38,6 +40,49 @@ echo $NODE_OPTIONS
 yarn build
 pm2 start yarn -w -i 0 --name "next" -- start
 [변화가 있으면 빌드하고 reload 하는 형식으로 보임]
+
+sudo yum install nginx -y
+sudo apt-get install nginx -y
+sudo nginx -t
+sudo systemctl start nginx
+sudo systemctl reload nginx
+아마존 리눅스 /etc/nginx/nginx.conf.default 에서 바로 수정 해주는게 맞는거같다.
+```
+  server_name domain.kr
+	location / {
+		proxy_pass http://127.0.0.1:3000;
+	}
+```
+우분투
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        server_name <도메인 주소>;
+
+        location / {
+                proxy_pass http://127.0.0.1:3000;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+}
+```
+
+sudo apt-get install python3-certbot-nginx
+sudo certbot --nginx
+sudo crontab -e
+0 18 1 * * certbot renew --renew-hook="sudo systemctl restart nginx"
+
+
+
+
+
+
+
+2023-06-05
 
 빌드에서 막혀서 이전 기록 가져옴 
 ```
@@ -55,4 +100,12 @@ docker buildx build --platform=linux/amd64 -t [image name]:[version] .
 docker save -o [save file name].tar [image name]
 ```
 ```
+
+
+
+# 레코드 등록
+https://ddochea.tistory.com/119
+고정IP생성
+Lightsail -> DNS 영역 생성 -> 레코드설정 [@,고정아이피] -> 
+Route53 -> 등록된 도메인 -> 레코드 추가 
 
