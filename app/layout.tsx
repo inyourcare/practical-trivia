@@ -46,7 +46,10 @@ export default function RootLayout({
         />
         {/* <Script src="https://developers.kakao.com/sdk/js/kakao.min.js" />  */}
         {/* <script defer src="https://www.youtube.com/iframe_api"></script> */}
-        <meta name="naver-site-verification" content="2bcce2baa1fc6bf384c15035f653a7c768d5e6bc" />
+        <meta
+          name="naver-site-verification"
+          content="2bcce2baa1fc6bf384c15035f653a7c768d5e6bc"
+        />
       </head>
       {/* </Head> */}
 
