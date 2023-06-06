@@ -109,3 +109,9 @@ https://ddochea.tistory.com/119
 Lightsail -> DNS 영역 생성 -> 레코드설정 [@,고정아이피] -> 
 Route53 -> 등록된 도메인 -> 레코드 추가 
 
+
+2023-06-06
+
+# 검색어 반영
+https://velog.io/@delay100/lightsailRoute53%EB%A1%9C-%EB%B0%B0%ED%8F%AC%ED%95%9C-%EC%82%AC%EC%9D%B4%ED%8A%B8-Google-Search-Console%EC%97%90-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0
+구글 서치콘솔의 TXT 값을 DNS 레코드 추가에서 [TXT 레코드, @, Value] 차례대로 기입하여 추가
