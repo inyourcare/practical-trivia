@@ -35,7 +35,7 @@ git clone git@github.com:inyourcare/practical-trivia.git
 cd practical-trivia
 yarn
 vi .env
-export NODE_OPTIONS="--max-old-space-size=8192"
+export NODE_OPTIONS="--max-old-space-size=1700" <2기가니까>
 echo $NODE_OPTIONS
 yarn build
 pm2 start yarn -w -i 0 --name "next" -- start
