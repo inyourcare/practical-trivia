@@ -54,7 +54,7 @@ sudo systemctl reload nginx
 		proxy_pass http://127.0.0.1:3000;
 	}
 ```
-우분투
+우분투 /etc/nginx/site-available
 ```
 server {
         listen 80 default_server;
