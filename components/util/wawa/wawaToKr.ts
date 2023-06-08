@@ -84,7 +84,7 @@ const wawaToKr: TranslatedWords = {
   jijok: '지족',
   jinjeop: '진접',
   jinwol: '진월',
-  jongam: '좋남',
+  jongam: '종남',
   jookjeon: '죽전',
   joongdong: '중동',
   joongdongw: '중동[W+]',
