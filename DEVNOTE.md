@@ -118,3 +118,7 @@ docker buildx build --platform=linux/amd64 -t [image name]:[version] .
 docker save -o [save file name].tar [image name]
 ```
 ```
+
+
+2023-06-08
+sitemap.xml 추가 host/sitemap.xml 에서 확인가능

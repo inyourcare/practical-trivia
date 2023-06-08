@@ -1,11 +1,13 @@
 import fs from "fs";
 import { PostMetadata } from "./PostMetadata";
 import matter from "gray-matter";
+import { GetFilesFileType, getFiles } from "../util/getFiles";
 
 const getPostMetadata = (): PostMetadata[] => {
-  const folder = "data/";
-  const files = fs.readdirSync(folder);
-  const markdownPosts = files.filter((file) => file !== 'about.md' && file.endsWith(".md"));
+  const files = getFiles(GetFilesFileType.post);
+  const markdownPosts = files.filter(
+    (file) => file !== "about.md" && file.endsWith(".md")
+  );
 
   // Get gray-matter data from each file.
   const posts = markdownPosts.map((fileName) => {
