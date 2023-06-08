@@ -9,6 +9,8 @@ function Header(props: PostHeaderComponent) {
   return (
 
     <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)]">
+      <title>{props.title}</title>
+      <desc>{props.description}</desc>
 
       <Nav />
 

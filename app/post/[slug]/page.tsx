@@ -37,6 +37,7 @@ export default async function PostHome({
         tag={post.data.tags[0]}
         date={dayjs(post.data.date).format("DD MMMM , YYYY")}
         authorName={post.data.author}
+        description={post.data.description}
       />
 
       <div className="my-10 mx-auto">
