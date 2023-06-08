@@ -56,36 +56,35 @@ export default async function PostHome({
       </div>
       <div className="container my-40 p-20 flex flex-col justify-center mx-auto border-t-2">
         {postsRelated.length > 0 ? (
-          <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
-            다른 관련 포스팅
-          </h2>
+          <>
+            <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
+              다른 관련 포스팅
+            </h2>
+            <Pagination
+              postPreviews={postsRelated.slice(0, 5).map((item) => {
+                let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
+
+                return (
+                  <PostPreview
+                    key={item.id}
+                    id={item.id}
+                    tags={item.tags}
+                    category={item.category}
+                    // tag={item.tag}
+                    date={GetDate.toString()}
+                    title={item.title}
+                    description={item.description}
+                    image={item.image}
+                    slug={item.slug}
+                    imageAlt={item.imageAlt}
+                  />
+                );
+              })}
+            />
+          </>
         ) : (
           <></>
         )}
-
-        {
-          <Pagination
-            postPreviews={postsRelated.slice(0, 5).map((item) => {
-              let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
-
-              return (
-                <PostPreview
-                  key={item.id}
-                  id={item.id}
-                  tags={item.tags}
-                  category={item.category}
-                  // tag={item.tag}
-                  date={GetDate.toString()}
-                  title={item.title}
-                  description={item.description}
-                  image={item.image}
-                  slug={item.slug}
-                  imageAlt={item.imageAlt}
-                />
-              );
-            })}
-          />
-        }
       </div>
     </>
   );

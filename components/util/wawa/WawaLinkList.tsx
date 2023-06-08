@@ -2,9 +2,13 @@ import fs from "fs";
 import Link from "next/link";
 import wawaToKr from "./wawaToKr";
 
-export default function WawaLinkList() {
+export function getWawaFiles() {
   const wawafolder = "app/intro/wawa";
   const files = fs.readdirSync(wawafolder);
+  return files;
+}
+export default function WawaLinkList() {
+  const files = getWawaFiles();
 
   return (
     <div className="grid grid-cols-4 gap-4">

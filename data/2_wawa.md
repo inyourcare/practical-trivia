@@ -2,11 +2,13 @@
 id: "2"
 title: "와와학습코칭센터를 소개합니다."
 description: "참여형 학습을 통한 차별화된 학습 플랜, 와와학습코칭센터입니다!"
-date: "2023-05-29T08:18:10.494Z"
+date: "2023-06-07T09:18:10.494Z"
 tags: ["Wawa","Academy"]
 category: ["Academy"]
-image: "/images/business/wawa/1.jpg"
-imageAlt: "Max Fischer님의 사진: https://www.pexels.com/ko-kr/photo/5212345/"
+# image: "/images/business/wawa/1.jpg"
+image: "/images/business/wawa/2.png"
+# imageAlt: "Max Fischer님의 사진: https://www.pexels.com/ko-kr/photo/5212345/"
+imageAlt: ""
 author: "실용주의 잡학사전"
 ---
 
