@@ -1,24 +1,25 @@
 import React from "react";
 import { FaAngleLeft } from "react-icons/fa";
 import Nav from "../Nav";
-import Link from 'next/link';
-import Image from "next/image"
+import Link from "next/link";
+import Image from "next/image";
 import { tagDict } from "../util/tag/tagToKr";
 function Header(props: PostHeaderComponent) {
-
   return (
-
     <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)]">
       <title>{props.title}</title>
       {/* <desc>{props.description}</desc> */}
+      {/* <meta name="description" content={props.description} /> */}
 
       <Nav />
 
       <div className="container flex flex-col  mx-auto my-32 p-10">
-
         <div className="flex items-center text-center">
-
-          <Link href="/" type="button" className=" text-black bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <Link
+            href="/"
+            type="button"
+            className=" text-black bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
             <FaAngleLeft />
           </Link>
 
@@ -35,28 +36,31 @@ function Header(props: PostHeaderComponent) {
           {props.title}
         </h1>
 
-
         <div className="mb-2 flex w-full sm:items-center gap-x-5 sm:gap-x-3">
-
-
           <div className="flex items-center flex-shrink-0">
-            <p className="font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">Publish By </p>
-            <Image width={32} height={32} className="h-4 w-4 mx-2 rounded-full" src={'/images/icons/balloon-heart.svg'} alt="Image Description" />
-            <p className="font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">{props.authorName}</p>
+            <p className="font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">
+              Publish By{" "}
+            </p>
+            <Image
+              width={32}
+              height={32}
+              className="h-4 w-4 mx-2 rounded-full"
+              src={"/images/icons/balloon-heart.svg"}
+              alt="Image Description"
+            />
+            <p className="font-bold text-left text-white inline text-[10px] sm:text-[10px] md:text-[14px] lg:text-[14px] xl:text-[14px] 2xl:text-[16px]">
+              {props.authorName}
+            </p>
           </div>
-
         </div>
-
-
       </div>
-
     </header>
   );
 }
 
 interface PostHeaderComponent {
   title?: string;
-  description?: string
+  description?: string;
   date?: string;
   tag?: string;
   authorName?: string;
