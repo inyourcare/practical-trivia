@@ -77,6 +77,26 @@ export default function WawaHome() {
       <br/>
       <br/>
       <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={1004}
+          src={`/images/intro/wawa/boksan/1.png`}
+          alt=""
+          // style={{width:500,height:500}}
+        />
+      </div>
+      <div className="flex justify-center items-center">
+        <Image
+          width={1080}
+          height={706}
+          src={`/images/intro/wawa/boksan/2.png`}
+          alt=""
+          // style={{width:500,height:350}}
+        />
+      </div>
+      <br/>
+      <div className="flex justify-center items-center flex-col">
+        {`<아래 지도를 확인하세요!>`}
         <Navermap width={500} height={500} lat={35.5635019} lon={129.3340958}/>
       </div>
     </>
