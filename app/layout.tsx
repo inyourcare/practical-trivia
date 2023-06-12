@@ -2,6 +2,7 @@ import "./globals.css";
 import { Noto_Serif_KR } from "next/font/google";
 import ConsultationDialog from "@/components/ConsultationDialog";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 // const roboto = Roboto({
 //   weight: '400',
@@ -15,6 +16,7 @@ declare global {
     Kakao: any;
     YT: any;
     naver: any;
+    dataLayer: any;
   }
 }
 
@@ -56,6 +58,17 @@ export default function RootLayout({
           // crossorigin="anonymous"
           crossOrigin="anonymous"
         ></script>
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-08E5CNK7PL"></Script>
+        <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'GA_MEASUREMENT_ID');
+        `}
+      </Script>
       </head>
       {/* </Head> */}
 
