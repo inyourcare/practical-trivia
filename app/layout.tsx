@@ -50,6 +50,12 @@ export default function RootLayout({
           name="naver-site-verification"
           content="2bcce2baa1fc6bf384c15035f653a7c768d5e6bc"
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8425397323378076"
+          // crossorigin="anonymous"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       {/* </Head> */}
 
