@@ -18,7 +18,7 @@ const wawaToKr: TranslatedWords = {
   byeongjeom: '병점',
   central: '센트럴',
   cheolsan: '철산',
-  cheomdan: '청담',
+  cheomdan: '첨단',
   cheoncheon: '천천',
   cheongra: '청라',
   chilgeum: '칠금',
