@@ -41,9 +41,11 @@ echo $NODE_OPTIONS
 yarn
 yarn build --inspect
 pm2 start yarn -w -i 0 --name "next" -- start
-yarn run deploy:prod -> next build && pm2 startOrRestart ecosystem.config.js --env production
 pm2 reload "next"
 [변화가 있으면 빌드하고 reload 하는 형식으로 보임]
+
+yarn
+이거만 하면 된다 -> yarn run deploy:prod -> next build && pm2 startOrRestart ecosystem.config.js --env production
 
 sudo yum install nginx -y
 sudo apt-get install nginx -y
