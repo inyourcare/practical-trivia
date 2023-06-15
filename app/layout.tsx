@@ -3,6 +3,7 @@ import { Noto_Serif_KR } from "next/font/google";
 import ConsultationDialog from "@/components/ConsultationDialog";
 import Footer from "@/components/Footer";
 import Script from "next/script";
+import generateRssFeed from "@/components/util/generateRssFeed";
 
 // const roboto = Roboto({
 //   weight: '400',
@@ -33,6 +34,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  generateRssFeed();
   return (
     <html lang="ko">
       {/* <Head> */}
