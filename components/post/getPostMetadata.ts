@@ -26,7 +26,9 @@ const getPostMetadata = (): PostMetadata[] => {
     };
   });
 
-  return posts;
+  return posts.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 };
 
 export default getPostMetadata;

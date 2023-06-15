@@ -8,9 +8,7 @@ import getPostMetadata from "@/components/post/getPostMetadata";
 import PostPreview from "@/components/post/PostPreview";
 
 export default function Home() {
-  const postMetadata = getPostMetadata().sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const postMetadata = getPostMetadata()
   const postPreviews = postMetadata.map((post) => (
     <PostPreview key={post.slug} {...post} />
   ));
