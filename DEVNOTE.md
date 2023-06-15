@@ -39,7 +39,7 @@ export NODE_OPTIONS="--max-old-space-size=8184"
 echo $NODE_OPTIONS
 yarn build --inspect
 pm2 start yarn -w -i 0 --name "next" -- start
-pm2 start ecosystem.config.js --env prod
+yarn run deploy:prod -> next build && pm2 startOrRestart ecosystem.config.js --env production
 pm2 reload "next"
 [변화가 있으면 빌드하고 reload 하는 형식으로 보임]
 
