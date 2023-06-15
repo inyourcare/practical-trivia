@@ -43,7 +43,7 @@ export default function ConsultationDialog({}: // header,
     }
     // setSelectedKind(pathname);
     // console.log(pathname);
-    setIsOpen(false)
+    setIsOpen(false);
   }, [pathname]);
 
   const open = useDaumPostcodePopup(
@@ -155,7 +155,11 @@ export default function ConsultationDialog({}: // header,
             );
         })
         .then(() => {
-          alert("예약이 완료 되었습니다! :D");
+          alert("정상적으로 문의되었습니다. 연락을 기다려 주세요! :D");
+          setIsOpen(false);
+        })
+        .catch(() => {
+          alert("문의하기 프로세스 중 문제가 발생했습니다. 잠시 후 다시 시도 해 주세요 :(");
           setIsOpen(false);
         })
         .finally(() => setIsProcessing(false));
@@ -280,7 +284,6 @@ export default function ConsultationDialog({}: // header,
                     className="shadow appearance-none border rounded w-4/12 py-2 px-1 text-black"
                     placeholder="상세주소입력"
                     name="address2"
-                    required
                   />
                   {/* <span className="shadow appearance-none border">
                   <DaumPostPopupOpenBtn setAddress={setAddress} />
@@ -318,7 +321,7 @@ export default function ConsultationDialog({}: // header,
                   value="submit"
                   disabled={isProcessing}
                 >
-                  예약하기
+                  문의하기
                 </button>
               </form>
             </div>
