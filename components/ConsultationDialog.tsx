@@ -7,6 +7,7 @@ import { useDaumPostcodePopup } from "react-daum-postcode";
 import emailjs from "@emailjs/browser";
 import { kindDict } from "./util/kind/kindToKr";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ConsultationDialog({}: // header,
 // children,
@@ -81,6 +82,7 @@ export default function ConsultationDialog({}: // header,
   const kakaoSendScrap = () => {
     const { Kakao, location } = window;
     Kakao.Link.sendScrap({
+      templateId: 94996,
       requestUrl: location.href,
     });
   };
@@ -159,7 +161,9 @@ export default function ConsultationDialog({}: // header,
           setIsOpen(false);
         })
         .catch(() => {
-          alert("문의하기 프로세스 중 문제가 발생했습니다. 잠시 후 다시 시도 해 주세요 :(");
+          alert(
+            "문의하기 프로세스 중 문제가 발생했습니다. 잠시 후 다시 시도 해 주세요 :("
+          );
           setIsOpen(false);
         })
         .finally(() => setIsProcessing(false));
@@ -337,6 +341,21 @@ export default function ConsultationDialog({}: // header,
           >
             {/* <span className={`text-white font-semibold`}>{btnTitle}</span> */}
             <span className={`text-white font-semibold`}>{"문의하기"}</span>
+          </button>
+          <button
+            className={
+              // `absolute top-[10px] right-[20px] bg-sul-btn rounded-full opacity-25 hover:opacity-100 min-h-[50px] min-w-[50px] my-10 overflow-hidden flex justify-center items-center`
+              `absolute top-[10px] right-[6%] rounded-full opacity-25 hover:opacity-100 min-h-[50px] min-w-[50px] my-10 overflow-hidden flex justify-center items-center`
+            }
+            onClick={()=>kakaoSendScrap()}
+          >
+            <Image
+              width={50}
+              height={50}
+              src={`/images/icons/kakaotalk_sharing_btn_medium_ov.png`}
+              style={{ width: 50, height: 50 }}
+              alt="kakao share icon"
+            />
           </button>
         </div>
       </main>
