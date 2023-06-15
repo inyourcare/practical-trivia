@@ -9,9 +9,9 @@
             <link>practicaltrivia.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 15 Jun 2023 09:09:01 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 15 Jun 2023 13:12:09 GMT</lastBuildDate>
         <atom:link href="practicaltrivia.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 15 Jun 2023 09:09:01 GMT</pubDate>
+        <pubDate>Thu, 15 Jun 2023 13:12:09 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, 실용주의 잡학사전]]></copyright>
         <item>
             <title><![CDATA[하우코딩으로 자기주도학습 습관을 만나다!]]></title>
@@ -26,6 +26,13 @@
             <link>practicaltrivia.com/post/[object Object]</link>
             <guid isPermaLink="true">practicaltrivia.com/post/[object Object]</guid>
             <pubDate>Fri, 02 Jun 2023 08:20:15 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[사이판에서 미국 학교 체험 캠프!]]></title>
+            <description><![CDATA[여름방학 때 사이판 캠프로 새로운 경험을 쌓아보고 싶으신가요? APC에서 진행하는 사이판 캠프는 이미 27회를 진행한 믿을 수 있는 프로그램입니다.]]></description>
+            <link>practicaltrivia.com/post/[object Object]</link>
+            <guid isPermaLink="true">practicaltrivia.com/post/[object Object]</guid>
+            <pubDate>Mon, 12 Jun 2023 09:20:15 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[상상코칭으로 자기 주도 학습 훈련하자]]></title>
