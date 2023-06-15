@@ -1,7 +1,7 @@
 import RSS from "rss";
 import { GetFilesFileType, getFiles } from "./getFiles";
 import getPostContent from "../post/getPostContent";
-import fs from "fs";
+// import fs from "fs";
 
 export default async function generateRssFeed() {
   //  const site_url = 'localhost:3000';
@@ -32,5 +32,6 @@ export default async function generateRssFeed() {
       });
     });
 
-  fs.writeFileSync("./public/rss.xml", feed.xml({ indent: true }));
+  return feed
+  // fs.writeFileSync("./public/rss.xml", feed.xml({ indent: true }));
 }

@@ -37,6 +37,8 @@ yarn
 vi .env
 export NODE_OPTIONS="--max-old-space-size=8184" 
 echo $NODE_OPTIONS
+
+yarn
 yarn build --inspect
 pm2 start yarn -w -i 0 --name "next" -- start
 yarn run deploy:prod -> next build && pm2 startOrRestart ecosystem.config.js --env production
