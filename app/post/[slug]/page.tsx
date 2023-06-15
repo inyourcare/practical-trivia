@@ -26,10 +26,16 @@ export default async function PostHome({
   // )[0];
   const slug = params.slug;
   const post = getPostContent(slug);
-  const posts = getPostMetadata();
-  const postsRelated = posts.filter(
+  // const posts = getPostMetadata();
+  // const postsRelated = posts.filter(
+  //   (item) => item.id !== post.data.id && item.tags.includes(post.data.tags[0])
+  // );
+  const postMetadata = getPostMetadata().filter(
     (item) => item.id !== post.data.id && item.tags.includes(post.data.tags[0])
   );
+  const postPreviews = postMetadata.map((post) => (
+    <PostPreview key={post.slug} {...post} />
+  ));
   return (
     <>
       <PostHeader
@@ -56,7 +62,7 @@ export default async function PostHome({
         <Markdown>{post.content}</Markdown>
       </div>
       <div className="container my-40 p-20 flex flex-col justify-center mx-auto border-t-2">
-        {postsRelated.length > 0 ? (
+        {/* {postsRelated.length > 0 ? (
           <>
             <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
               다른 관련 포스팅
@@ -85,6 +91,14 @@ export default async function PostHome({
           </>
         ) : (
           <></>
+        )} */}
+        {postPreviews.length > 0 && (
+          <>
+            <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
+              다른 관련 포스팅
+            </h2>
+            <Pagination postPreviews={postPreviews} />
+          </>
         )}
       </div>
     </>
