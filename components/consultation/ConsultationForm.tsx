@@ -12,14 +12,13 @@ import {
 } from "react";
 import { kindDict } from "../util/kind/kindToKr";
 import { useDaumPostcodePopup } from "react-daum-postcode";
-import { GrayMatterFile } from "gray-matter";
 
 export default function ConsultationForm({
   setIsOpen,
-  post,
+  tags,
 }: {
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
-  post?: GrayMatterFile<string>;
+  tags?: Array<string>;
 }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [koreanKind, setKoreanKind] = useState("");
@@ -33,7 +32,15 @@ export default function ConsultationForm({
     setKoreanKind(kindDict[selectedKind] || "");
   }, [selectedKind]);
   useEffect(() => {
-    if (post) {
+    if (tags && tags.length > 0) {
+      if (tags.includes("Wawa")) setSelectedKind("/wawa");
+      else if (tags.includes("Howcoding")) setSelectedKind("/howcoding")
+      else if (tags.includes("Goodo")) setSelectedKind("/goodo")
+      else if (tags.includes("Mindfulness")) setSelectedKind("/mindfulness")
+      else if (tags.includes("Ipsi")) setSelectedKind("/ipsi")
+      else if (tags.includes("Conversation")) setSelectedKind("/conversation")
+      else if (tags.includes("Solute")) setSelectedKind("/solute")
+      else if (tags.includes("Sangsang")) setSelectedKind("/sangsang") // 상상코칭이 좀더 큰 분류에 속하기 때문에 마지막에 넣음
     } else {
       if (pathname === "/contactinfo") {
         // setInvisible(true);
@@ -53,7 +60,7 @@ export default function ConsultationForm({
     // setSelectedKind(pathname);
     // console.log(pathname);
     if (setIsOpen) setIsOpen(false);
-  }, [pathname, setIsOpen, post]);
+  }, [pathname, setIsOpen, tags]);
 
   const handleComplete = (data: any) => {
     let fullAddress = data.address;

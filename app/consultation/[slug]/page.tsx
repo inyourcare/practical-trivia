@@ -25,7 +25,8 @@ export default function ConsultationHome({
       >
         <div className="w-full max-w-screen-lg">
           <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
-            <ConsultationForm post={post}/>
+            {/* {`${post.data.tags} ${(post.data.tags as Array<string>).includes("Sangsang")}`} */}
+            <ConsultationForm tags={post.data.tags}/>
           </div>
         </div>
       </div>
