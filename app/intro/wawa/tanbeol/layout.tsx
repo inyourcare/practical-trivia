@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "광주 탄벌동 학원::와와학습코칭센터 - 탄벌점",
+  title: "광주 탄벌동 학원 와와학습코칭센터 - 탄벌점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

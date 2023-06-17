@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "성남 위례동 창곡동 학원::와와학습코칭센터 - 위례창곡점",
+  title: "성남 위례동 창곡동 학원 와와학습코칭센터 - 위례창곡점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

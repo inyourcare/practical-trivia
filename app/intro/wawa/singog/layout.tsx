@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "의정부 신곡동 학원::와와학습코칭센터 - 신곡점",
+  title: "의정부 신곡동 학원 와와학습코칭센터 - 신곡점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

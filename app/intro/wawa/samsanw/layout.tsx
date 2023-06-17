@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "울산 삼산동 학원::와와학습코칭센터 - 삼산점(W+)",
+  title: "울산 삼산동 학원 와와학습코칭센터 - 삼산점(W+)",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

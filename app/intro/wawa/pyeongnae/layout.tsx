@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "남양주 평내동 학원::와와학습코칭센터 - 평내점",
+  title: "남양주 평내동 학원 와와학습코칭센터 - 평내점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

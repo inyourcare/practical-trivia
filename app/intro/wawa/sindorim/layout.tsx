@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "신도림 학원::와와학습코칭센터 - 신도림점",
+  title: "신도림 학원 와와학습코칭센터 - 신도림점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

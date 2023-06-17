@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "수성구 만촌동 학원::와와학습코칭센터 - 수성만촌점",
+  title: "수성구 만촌동 학원 와와학습코칭센터 - 수성만촌점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

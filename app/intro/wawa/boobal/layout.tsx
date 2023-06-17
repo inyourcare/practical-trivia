@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "이천 부발읍 학원::와와학습코칭센터 - 부발점",
+  title: "이천 부발읍 학원 와와학습코칭센터 - 부발점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

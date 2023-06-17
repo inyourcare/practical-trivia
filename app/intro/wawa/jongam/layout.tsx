@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "성북구 종암동 학원::와와학습코칭센터 - 종암점",
+  title: "성북구 종암동 학원 와와학습코칭센터 - 종암점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

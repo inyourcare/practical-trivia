@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "구리시 인창동 학원::와와학습코칭센터 - 인창점",
+  title: "구리시 인창동 학원 와와학습코칭센터 - 인창점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

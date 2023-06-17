@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "별내동 학원::와와학습코칭센터 - 별내점",
+  title: "별내동 학원 와와학습코칭센터 - 별내점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

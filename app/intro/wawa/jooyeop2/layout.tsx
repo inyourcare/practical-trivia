@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "일산 주엽동 학원::와와학습코칭센터 - 주엽2호점",
+  title: "일산 주엽동 학원 와와학습코칭센터 - 주엽2호점",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:

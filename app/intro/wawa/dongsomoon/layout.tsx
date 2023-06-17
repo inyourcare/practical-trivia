@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "동소문동 학원::와와학습코칭센터 - 동소문",
+  title: "동소문동 학원 와와학습코칭센터 - 동소문",
   description:
     "개인별 맞춤의 참여형 수업을 경험 해 보세요.",
   keywords:
