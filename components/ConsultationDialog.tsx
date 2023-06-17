@@ -73,7 +73,8 @@ export default function ConsultationDialog({}: // header,
     // window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
     if (window.Kakao) {
       console.log("kakao instance");
-      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
+      if (!window.Kakao.isInitialized())
+        window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_API_KEY);
     } else {
       console.log("no kakao instance", window.Kakao);
     }
