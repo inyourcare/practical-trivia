@@ -6,6 +6,7 @@ import Markdown from "markdown-to-jsx";
 import PostPreview from "@/components/post/PostPreview";
 import getPostContent from "@/components/post/getPostContent";
 import Pagination from "@/components/Pagination";
+import Link from "next/link";
 
 // export const generateStaticParams = async () => {
 //   const posts = getPostMetadata();
@@ -60,6 +61,7 @@ export default async function PostHome({
         {/* first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left"> */}
         {/* <MarkdownTest2 /> */}
         <Markdown>{post.content}</Markdown>
+        <Link href={'/consultation'}>문의하기</Link>
       </div>
       <div className="container my-40 p-20 flex flex-col justify-center mx-auto border-t-2">
         {/* {postsRelated.length > 0 ? (
