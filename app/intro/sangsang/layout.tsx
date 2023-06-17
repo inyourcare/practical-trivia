@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 
-export default function GoodoLayout({
+export default function SangSangLayout({
   children,
 }: {
   children: React.ReactNode;
