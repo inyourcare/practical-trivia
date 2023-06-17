@@ -1,13 +1,23 @@
-"use client"
+"use client";
 
 import { useCurrentPath } from "@/hooks/current-path";
 import emailjs from "@emailjs/browser";
-import { FormEvent, useRef, useState, useEffect, Dispatch, SetStateAction } from "react";
+import {
+  FormEvent,
+  useRef,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { kindDict } from "../util/kind/kindToKr";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 
-export default function ConsultationForm({setIsOpen}:{setIsOpen:Dispatch<SetStateAction<boolean>>}) {
-  
+export default function ConsultationForm({
+  setIsOpen,
+}: {
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
+}) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [koreanKind, setKoreanKind] = useState("");
   const pathname = useCurrentPath();
@@ -35,10 +45,9 @@ export default function ConsultationForm({setIsOpen}:{setIsOpen:Dispatch<SetStat
     }
     // setSelectedKind(pathname);
     // console.log(pathname);
-    setIsOpen(false);
-  }, [pathname,setIsOpen]);
+    if (setIsOpen) setIsOpen(false);
+  }, [pathname, setIsOpen]);
 
-  
   const handleComplete = (data: any) => {
     let fullAddress = data.address;
     let extraAddress = "";
@@ -58,7 +67,6 @@ export default function ConsultationForm({setIsOpen}:{setIsOpen:Dispatch<SetStat
     if (fullAddress) setAddress(fullAddress);
   };
 
-  
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsProcessing(true);
@@ -115,13 +123,13 @@ export default function ConsultationForm({setIsOpen}:{setIsOpen:Dispatch<SetStat
         })
         .then(() => {
           alert("정상적으로 문의되었습니다. 연락을 기다려 주세요! :D");
-          setIsOpen(false);
+          if (setIsOpen) setIsOpen(false);
         })
         .catch(() => {
           alert(
             "문의하기 프로세스 중 문제가 발생했습니다. 잠시 후 다시 시도 해 주세요 :("
           );
-          setIsOpen(false);
+          if (setIsOpen) setIsOpen(false);
         })
         .finally(() => setIsProcessing(false));
     } catch (error) {
@@ -238,18 +246,21 @@ export default function ConsultationForm({setIsOpen}:{setIsOpen:Dispatch<SetStat
           placeholder="전화 가능 시간, 수업이 필요한 이유, 약점과 강점, 공부 성향 등"
           name="description"
         />
-        <button
-          className={
-            "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
-            ""
-            // (isProcessing ? "disabled" : "")
-          }
-          type="submit"
-          value="submit"
-          disabled={isProcessing}
-        >
-          문의하기
-        </button>
+        <div className={"w-full h-24 flex flex-row-reverse items-end mt-5"}>
+          <button
+            className={
+              // "absolute bottom-2 right-10 rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+              " rounded-xl bg-gray-300 p-2 min-w-[90px] justify-center items-center border text-xs font-bold " +
+              "max-h-[80px] h-10"
+              // (isProcessing ? "disabled" : "")
+            }
+            type="submit"
+            value="submit"
+            disabled={isProcessing}
+          >
+            문의하기
+          </button>
+        </div>
       </form>
     </>
   );

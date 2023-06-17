@@ -1,4 +1,5 @@
 import Nav from "@/components/Nav";
+import ConsultationForm from "@/components/consultation/ConsultationForm";
 
 export default function ConsultationHome() {
   return (
@@ -22,7 +23,7 @@ export default function ConsultationHome() {
       >
         <div className="w-full max-w-screen-lg">
           <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
-            hello consultation test
+            <ConsultationForm />
           </div>
         </div>
       </div>
