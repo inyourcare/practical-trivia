@@ -12,11 +12,14 @@ import {
 } from "react";
 import { kindDict } from "../util/kind/kindToKr";
 import { useDaumPostcodePopup } from "react-daum-postcode";
+import { GrayMatterFile } from "gray-matter";
 
 export default function ConsultationForm({
   setIsOpen,
+  post,
 }: {
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  post?: GrayMatterFile<string>;
 }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [koreanKind, setKoreanKind] = useState("");
@@ -30,23 +33,27 @@ export default function ConsultationForm({
     setKoreanKind(kindDict[selectedKind] || "");
   }, [selectedKind]);
   useEffect(() => {
-    if (pathname === "/contactinfo") {
-      // setInvisible(true);
-    } else if (pathname.includes("/intro/wawa")) {
-      setSelectedKind("/wawa");
-    } else if (pathname.includes("/intro/howcoding")) {
-      setSelectedKind("/howcoding");
-    } else if (pathname.includes("/intro/sangsang")) {
-      setSelectedKind("/sangsang");
-    } else if (pathname.includes("/intro/goodo")) {
-      setSelectedKind("/goodo");
+    if (post) {
     } else {
-      // setInvisible(false);
+      if (pathname === "/contactinfo") {
+        // setInvisible(true);
+      } else if (pathname.includes("/intro/wawa")) {
+        setSelectedKind("/wawa");
+      } else if (pathname.includes("/intro/howcoding")) {
+        setSelectedKind("/howcoding");
+      } else if (pathname.includes("/intro/sangsang")) {
+        setSelectedKind("/sangsang");
+      } else if (pathname.includes("/intro/goodo")) {
+        setSelectedKind("/goodo");
+      } else {
+        // setInvisible(false);
+      }
     }
+
     // setSelectedKind(pathname);
     // console.log(pathname);
     if (setIsOpen) setIsOpen(false);
-  }, [pathname, setIsOpen]);
+  }, [pathname, setIsOpen, post]);
 
   const handleComplete = (data: any) => {
     let fullAddress = data.address;

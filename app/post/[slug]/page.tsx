@@ -58,42 +58,10 @@ export default async function PostHome({
       </div>
 
       <div className="my-12 prose prose-stone lg:prose-lg mx-auto">
-        {/* first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left"> */}
-        {/* <MarkdownTest2 /> */}
         <Markdown>{post.content}</Markdown>
-        <Link href={'/consultation'}>문의하기</Link>
+        <Link href={`/consultation/${slug}`}>문의하기</Link>
       </div>
       <div className="container my-40 p-20 flex flex-col justify-center mx-auto border-t-2">
-        {/* {postsRelated.length > 0 ? (
-          <>
-            <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
-              다른 관련 포스팅
-            </h2>
-            <Pagination
-              postPreviews={postsRelated.slice(0, 5).map((item) => {
-                let GetDate = dayjs(item.date).format("DD-MMM , YYYY");
-
-                return (
-                  <PostPreview
-                    key={item.id}
-                    id={item.id}
-                    tags={item.tags}
-                    category={item.category}
-                    // tag={item.tag}
-                    date={GetDate.toString()}
-                    title={item.title}
-                    description={item.description}
-                    image={item.image}
-                    slug={item.slug}
-                    imageAlt={item.imageAlt}
-                  />
-                );
-              })}
-            />
-          </>
-        ) : (
-          <></>
-        )} */}
         {postPreviews.length > 0 && (
           <>
             <h2 className="text-3xl font-light  text-gray-500 dark:text-gray-400">
