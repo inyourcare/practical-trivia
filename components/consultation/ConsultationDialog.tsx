@@ -2,10 +2,10 @@
 import { useCurrentPath } from "@/hooks/current-path";
 import { FormEvent, ReactNode, useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import DaumPostPopupOpenBtn from "./daum-post";
+import DaumPostPopupOpenBtn from "../daum-post";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import emailjs from "@emailjs/browser";
-import { kindDict } from "./util/kind/kindToKr";
+import { kindDict } from "../util/kind/kindToKr";
 import Link from "next/link";
 import Image from "next/image";
 

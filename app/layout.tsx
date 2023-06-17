@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Noto_Serif_KR } from "next/font/google";
-import ConsultationDialog from "@/components/ConsultationDialog";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
@@ -75,7 +74,6 @@ export default function RootLayout({
       {/* <body className={inter.className}> */}
       <body className={notoSerifKr.className}>
         {/* <Drawer /> */}
-        {/* <ConsultationDialog /> */}
         {children}
         <Footer />
       </body>

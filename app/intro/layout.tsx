@@ -1,4 +1,4 @@
-import ConsultationDialog from "@/components/ConsultationDialog";
+import ConsultationDialog from "@/components/consultation/ConsultationDialog";
 
 export default function IntroLayout({
   children,
