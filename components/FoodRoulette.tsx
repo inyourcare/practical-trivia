@@ -52,8 +52,9 @@ export default function FoodRoulette() {
 
   return (
     <div className="flex justify-center">
-      lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading} /
-      restaurants {restaurants}
+      lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading} 
+      {/* / restaurants {restaurants} */}
+      <div dangerouslySetInnerHTML={{ __html: restaurants }}></div>
     </div>
   );
 }

@@ -15,26 +15,28 @@ export async function GET() {
         headers: { "Content-Type": "application/json" },
       }
     )
-      .then(async (result) => {
+      .then(async (response) => {
         // const data = await result.json();
-        console.log("successfully get restaurants", result.body);
-        const reader = result.body?.getReader()
+        console.log("successfully get restaurants", response.body);
+        // const reader = response.body?.getReader()
         // reader?.read().then(({ done, value }) => {
         //   if (done) {
         //     // Do something with last chunk of data then exit reader
         //     return;
         //   }
         //   // Otherwise do something here to process current chunk
-    
+
         //   // Read some more, and call this function again
         //   return reader.read().then(pump);
         // });
+        const html = await response.text(); //jsdom 사용가능
+        console.log(html);
+        return { data: html };
       })
       .catch((e) => {
         console.log("error getting restaurants", e);
         return { error: "error getting restaurants" };
       });
   // return NextResponse.json({ data: await getRestaurants() });
-  await getRestaurants();
-  return NextResponse.json({ data:'hello world' });
+  return NextResponse.json(await getRestaurants());
 }
