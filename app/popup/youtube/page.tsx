@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-export default function YoutubeopupHome() {
+export default function YoutubePopupHome() {
   const searchParams = useSearchParams();
   const videoId = searchParams.get("videoId");
   return (
