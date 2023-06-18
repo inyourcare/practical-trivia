@@ -1,15 +1,12 @@
-import Header from "@/components/Header";
 import getPostContent from "@/components/post/getPostContent";
-import dayjs from "dayjs";
 import Markdown from "markdown-to-jsx";
 import Image from "next/image";
-import PostHeader from "@/components/post/PostHeader";
 import Nav from "@/components/Nav";
 import styles from "./about.module.css";
 import Link from "next/link";
 import WawaLinkList from "@/components/util/wawa/WawaLinkList";
 
-export default function SangSangHome() {
+export default function AboutHome() {
   const post = getPostContent("about");
 
   return (
