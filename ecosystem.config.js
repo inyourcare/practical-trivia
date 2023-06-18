@@ -4,7 +4,7 @@ module.exports = {
       name: 'next',
       exec_mode: 'cluster',
       // instances: 'max', // Or a number of instances
-      instances: '1', // Or a number of instances
+      instances: '2', // Or a number of instances
       script: 'node_modules/next/dist/bin/next',
       args: 'start',
       env_local: {
