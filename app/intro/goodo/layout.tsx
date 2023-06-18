@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "공부9도:: 공부법 과외",
+  title: "공부9도 공부법 과외",
   description:
     "공부9도를 통해 나에게 딱 맞는 공부 방법을 찾아보세요",
   keywords:

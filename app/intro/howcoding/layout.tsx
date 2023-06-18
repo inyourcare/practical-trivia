@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "하우코딩:: 코딩 과외",
+  title: "하우코딩 코딩 과외",
   description:
     "하우코딩을 통해 코딩 실력 쑥쑥",
   keywords:

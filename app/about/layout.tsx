@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "실용주의 잡학사전의 공부 컨설팅::상상코칭",
+  title: "실용주의 잡학사전의 공부 컨설팅 상상코칭",
   description:
     "상상코칭을 통해 나에게 딱 맞는 과외 선생님을 찾아보세요",
   keywords:
