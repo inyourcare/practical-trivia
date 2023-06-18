@@ -9,6 +9,7 @@ export default function FoodRoulette() {
     lsLoading: false,
   };
   const [state, setState] = useState(initialState);
+  const [restaurants, setRestaurants] = useState(null as any);
   useEffect(() => {
     const { geolocation } = navigator;
 
@@ -16,7 +17,12 @@ export default function FoodRoulette() {
       (position) => {
         // success.
         console.log("success", state, position.coords);
-        setState({ ...state, lat: position.coords.latitude, lng: position.coords.longitude, lsLoading: false });
+        setState({
+          ...state,
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          lsLoading: false,
+        });
         // setState({ ...state, lng: position.coords.longitude });
         // setState({ ...state, lsLoading: false });
       },
@@ -32,11 +38,22 @@ export default function FoodRoulette() {
         timeout: Infinity,
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    fetch(`/api/naver/restaurants`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }).then(async (restaurants) => {
+      // console.log((await restaurants.json()).data)
+      setRestaurants((await restaurants.json()).data);
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div className="flex justify-center">
-      lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
+      lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading} /
+      restaurants {restaurants}
     </div>
   );
 }
