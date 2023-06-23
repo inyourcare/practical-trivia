@@ -37,6 +37,7 @@ function ReactQuillWrapper() {
     content: "",
     desc: "",
   };
+  const [html, setHTML] = useState(true);
   const [state, setState] = useState(initialState);
   const handleChange = (value: string) => {
     setState({ ...state, content: value });
@@ -95,17 +96,29 @@ function ReactQuillWrapper() {
               onChange={(e) => handleDescChange(e)}
               required
             />
-            {/* <ReactQuill
-              value={state.content}
-              modules={state.modules}
-              formats={state.formats}
-              onChange={handleChange}
-            /> */}
-            <textarea
-              className="w-full border h-[600px]"
-              value={state.content}
-              onChange={(e) => handleChange(e.target.value)}
-            />
+
+            <nav className="gap-3 sm:gap-5 md:gap-10 lg:gap-10 xl:gap-10 2xl:gap-10 inline-flex justify-center sm:justify-center md:justify-right mt-5 sm:mt-5 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0  items-start text-black text-left font-medium">
+              <div className="cursor-pointer" onClick={() => setHTML(!html)}>html</div>
+            </nav>
+            {html === true ? (
+              <>
+                <textarea
+                  className="w-full border h-[600px]"
+                  value={state.content}
+                  onChange={(e) => handleChange(e.target.value)}
+                />
+              </>
+            ) : (
+              <>
+                <ReactQuill
+                  value={state.content}
+                  modules={state.modules}
+                  formats={state.formats}
+                  onChange={handleChange}
+                />
+              </>
+            )}
+
             <button>Save</button>
             {/* <p>{state.content}</p> */}
           </form>
