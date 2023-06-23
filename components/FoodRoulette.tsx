@@ -35,7 +35,7 @@ export default function FoodRoulette() {
     geolocation.getCurrentPosition(
       (position) => {
         // success.
-        console.log("success", state, position.coords);
+        // console.log("success", state, position.coords);
         setState({
           ...state,
           lat: position.coords.latitude,
@@ -77,7 +77,7 @@ export default function FoodRoulette() {
       .then(async (response) => {
         // console.log((await restaurants.json()).data)
         const restaurants = (await response.json()).data;
-        console.log(restaurants);
+        // console.log(restaurants);
         setRestaurants(restaurants.documents);
       })
       .catch((e) => {
