@@ -41,7 +41,8 @@ function ReactQuillWrapper() {
     // tagDict: tagDict,
   };
   const [html, setHTML] = useState(true);
-  const [tagSelected] = useState<Set<string>>(new Set([]));
+  const [tagSelected,setTagSelected] = useState<Set<string>>(new Set([]));
+  const [category,setCategory] = useState('');
   const [state, setState] = useState(initialState);
   const handleChange = (value: string) => {
     setState({ ...state, content: value });
@@ -62,24 +63,27 @@ function ReactQuillWrapper() {
     event.preventDefault();
 
     const requestObj = {
-      id: new Date().toISOString(),
+      id: state.id,
       title: state.title,
       content: state.content,
+      tags: Array.from(tagSelected.values()),
+      category: category,
       // isDraft: false,
       // isPublished: false
+      //id title desc tagSelected category
     };
-
-    fetch("/api/posts", {
-      method: "POST",
-      body: JSON.stringify(requestObj),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    console.log(requestObj)
+    // fetch("/api/posts", {
+    //   method: "POST",
+    //   body: JSON.stringify(requestObj),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   });
   }
 
   const tagItemsRef = useRef<HTMLSpanElement[]>([]);
@@ -102,7 +106,7 @@ function ReactQuillWrapper() {
     <>
       <div className="flex flex-row">
         <div className="w-1/2">
-          <form onSubmit={(e) => submitHandler}>
+          <form onSubmit={(e) => submitHandler(e)}>
             <label htmlFor="id">Id</label>
             <input
               className="border ml-1"
@@ -155,6 +159,19 @@ function ReactQuillWrapper() {
                 ))}
               </div>
             </div>
+            category: 
+            <select
+              className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              name="kindKey"
+              required
+            >
+              <option value={""}>선택없음</option>
+              {/* {Array.from(tagSelected.values()).map((tag,i)=>{return (<option key={i} value={tag}>{tag}</option>)})} */}
+              {Object.entries(tagDict).map((tag,i)=>{return (<option key={i} value={tag[0]}>{tag[0]}</option>)})}
+            </select>
+            <br/>
             <nav className="gap-3 sm:gap-5 md:gap-10 lg:gap-10 xl:gap-10 2xl:gap-10 inline-flex justify-center sm:justify-center md:justify-right mt-5 sm:mt-5 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0  items-start text-black text-left font-medium">
               <div className="cursor-pointer" onClick={() => setHTML(!html)}>
                 html
