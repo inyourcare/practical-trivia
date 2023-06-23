@@ -1,8 +1,9 @@
-import { NextResponse } from "next/server";
-import puppeteer from 'puppeteer';
+// import { NextResponse } from "next/server";
+// import puppeteer from 'puppeteer';
 
+// ##### puppeteer 이용한 scraping 필요한 시점이 온다면 여길 봐라
 // export async function POST(request: Request) {
-export async function GET() {
+// export async function GET() {
 
   // (async function scrape() {
   //   const browser = await puppeteer.launch({ headless: false });
@@ -26,7 +27,7 @@ export async function GET() {
   // });
   //   await browser.close();
   // })();
-  return NextResponse.json({data:'hello'});
+  // return NextResponse.json({data:'hello'});
 
   // const getRestaurants = async () =>
   //   await fetch(
@@ -47,4 +48,4 @@ export async function GET() {
   //     });
   // // return NextResponse.json({ data: await getRestaurants() });
   // return NextResponse.json(await getRestaurants());
-}
+// }

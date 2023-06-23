@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function FoodRoulette() {
   const initialState = {
     lat: 0.0,
     lng: 0.0,
+    radius: 2000,
     lsLoading: false,
   };
   const [state, setState] = useState(initialState);
@@ -40,21 +41,37 @@ export default function FoodRoulette() {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    fetch(`/api/naver/restaurants`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    }).then(async (restaurants) => {
-      // console.log((await restaurants.json()).data)
-      setRestaurants((await restaurants.json()).data);
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const fetchingRestaurants = useCallback(() => {
+    fetch(`/api/kakao/map`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        lat: state.lat,
+        lng: state.lng,
+        radius: state.radius,
+      }),
+    }).then(async (response) => {
+      // console.log((await restaurants.json()).data)
+      const restaurants = (await response.json()).data;
+      console.log(restaurants)
+      setRestaurants(restaurants);
+    });
+  }, [state.lat, state.lng, state.radius]);
+
   return (
-    <div className="flex justify-center">
-      lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading} 
+    <div className="w-full flex justify-center flex-col">
+      <div className="w-full flex justify-center">
+        lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
+      </div>
       {/* / restaurants {restaurants} */}
-      <div dangerouslySetInnerHTML={{ __html: restaurants }}></div>
+      {/* <div
+        className="w-full flex justify-center"
+        dangerouslySetInnerHTML={{ __html: restaurants }}
+      ></div> */}
+      <button onClick={() => fetchingRestaurants()}>fetch</button>
     </div>
   );
 }
