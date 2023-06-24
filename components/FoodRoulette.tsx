@@ -114,40 +114,43 @@ export default function FoodRoulette() {
         )}
       </div>
 
-      {restaurants.map((restaurant, i) => (
-        <Draggable key={i}>
-          <div className="border border-gray-300 p-4 w-full mx-auto hover:bg-gray-100 hover:cursor-pointer">
-            {/* <div className="animate-pulse flex space-x-4"> */}
-            <div className="w-full flex space-x-4">
-              <div className="rounded-full bg-gray-400 h-12 w-12 overflow-auto">
-                {/* {icon} */}
-              </div>
-              <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
-                {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
-                <div className="h-4 w-3/4">
-                  {restaurant.place_name}({restaurant.category_name})
+      <div className="border">
+        {restaurants.map((restaurant, i) => (
+          <Draggable key={i} cancel=".no-cursor">
+            <div className="border border-gray-300 p-4 w-full mx-auto hover:bg-gray-100 hover:cursor-move">
+              {/* <div className="animate-pulse flex space-x-4"> */}
+              <div className="w-full flex space-x-4">
+                <div className="rounded-full bg-gray-400 h-12 w-12 overflow-auto">
+                  {/* {icon} */}
                 </div>
-                <div className="space-y-2">
-                  {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
-                  <div className="h-4 rounded">
-                    {restaurant.road_address_name}
+                <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                  {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
+                  {/* <div className="h-4 w-3/4 cursor-auto hover:pointer-events-none"> */}
+                  <div className="no-cursor cursor-auto h-4 w-3/4 ">
+                    <strong>{restaurant.place_name}({restaurant.category_name})</strong>
                   </div>
-                  {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
-                  <div className="h-4 rounded w-5/6">
-                    거리: {restaurant.distance}m / 번호: {restaurant.phone} /
-                    url: {restaurant.place_url}
+                  <div className="space-y-2">
+                    {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
+                    <div className="no-cursor cursor-auto h-4 rounded">
+                      {restaurant.road_address_name}
+                    </div>
+                    {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
+                    <div className="no-cursor cursor-auto h-4 rounded w-5/6">
+                      거리: {restaurant.distance}m / 번호: {restaurant.phone} /
+                      url: {restaurant.place_url}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* <li>{restaurant.category_group_code}</li> */}
-          {/* <li>{restaurant.x}</li> */}
-          {/* <li>{restaurant.y}</li> */}
-          {/* <li>{restaurant.id}</li> */}
-        </Draggable>
-      ))}
+            {/* <li>{restaurant.category_group_code}</li> */}
+            {/* <li>{restaurant.x}</li> */}
+            {/* <li>{restaurant.y}</li> */}
+            {/* <li>{restaurant.id}</li> */}
+          </Draggable>
+        ))}
+      </div>
       {/* / restaurants {restaurants} */}
       {/* <div
         className="w-full flex justify-center"
