@@ -116,7 +116,13 @@ export default function FoodRoulette() {
 
       <div className="relative border">
         {restaurants.map((restaurant, i) => (
-          <Draggable key={i} cancel=".no-cursor" bounds={'parent'}>
+          <Draggable
+            key={i}
+            cancel=".no-cursor"
+            bounds={"parent"}
+            defaultPosition={{ x: 0, y: 0 }}
+            position={{ x: 0, y: 0 }}
+          >
             <div className="border border-gray-300 p-4 w-full mx-auto hover:bg-gray-100 hover:cursor-move">
               {/* <div className="animate-pulse flex space-x-4"> */}
               <div className="w-full flex space-x-4">
