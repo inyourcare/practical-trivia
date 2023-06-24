@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Draggable from "react-draggable";
 
 type RestaurantInterface = {
   address_name: string;
@@ -94,32 +95,64 @@ export default function FoodRoulette() {
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
       </div>
 
+      <div className="flex flex-row justify-center items-center">
+        <button
+          disabled={restaurantsLoading}
+          onClick={() => fetchingRestaurants()}
+          className="border"
+        >
+          fetch
+        </button>
+        {restaurants.length > 0 && (
+          <button
+            disabled={restaurantsLoading}
+            // onClick={() => fetchingRestaurants()}
+            className="border ml-1"
+          >
+            select one
+          </button>
+        )}
+      </div>
+
       {restaurants.map((restaurant, i) => (
-        <ul key={i}>
-          <li>{restaurant.address_name}</li>
-          <li>{restaurant.category_group_code}</li>
-          <li>{restaurant.category_name}</li>
-          <li>{restaurant.distance}</li>
-          <li>{restaurant.id}</li>
-          <li>{restaurant.phone}</li>
-          <li>{restaurant.place_name}</li>
-          <li>{restaurant.place_url}</li>
-          <li>{restaurant.road_address_name}</li>
-          <li>{restaurant.x}</li>
-          <li>{restaurant.y}</li>
-        </ul>
+        <Draggable key={i}>
+          <div className="border border-gray-300 p-4 w-full mx-auto hover:bg-gray-100 hover:cursor-pointer">
+            {/* <div className="animate-pulse flex space-x-4"> */}
+            <div className="w-full flex space-x-4">
+              <div className="rounded-full bg-gray-400 h-12 w-12 overflow-auto">
+                {/* {icon} */}
+              </div>
+              <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
+                <div className="h-4 w-3/4">
+                  {restaurant.place_name}({restaurant.category_name})
+                </div>
+                <div className="space-y-2">
+                  {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
+                  <div className="h-4 rounded">
+                    {restaurant.road_address_name}
+                  </div>
+                  {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
+                  <div className="h-4 rounded w-5/6">
+                    거리: {restaurant.distance}m / 번호: {restaurant.phone} /
+                    url: {restaurant.place_url}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* <li>{restaurant.category_group_code}</li> */}
+          {/* <li>{restaurant.x}</li> */}
+          {/* <li>{restaurant.y}</li> */}
+          {/* <li>{restaurant.id}</li> */}
+        </Draggable>
       ))}
       {/* / restaurants {restaurants} */}
       {/* <div
         className="w-full flex justify-center"
         dangerouslySetInnerHTML={{ __html: restaurants }}
       ></div> */}
-      <button
-        disabled={restaurantsLoading}
-        onClick={() => fetchingRestaurants()}
-      >
-        fetch
-      </button>
     </div>
   );
 }
