@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Draggable from "react-draggable";
+import { BiTrash } from "react-icons/bi";
 
 type RestaurantInterface = {
   address_name: string;
@@ -148,6 +149,16 @@ export default function FoodRoulette() {
                       url: {restaurant.place_url}
                     </div>
                   </div>
+                </div>
+                <div
+                  className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center"
+                  onClick={() =>
+                    setRestaurants(
+                      restaurants.filter((r) => r.id != restaurant.id)
+                    )
+                  }
+                >
+                  <BiTrash />
                 </div>
               </div>
             </div>
