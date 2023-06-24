@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
-import { BiTrash } from "react-icons/bi";
+import { BiTrash, BiMove } from "react-icons/bi";
 
 type RestaurantInterface = {
   address_name: string;
@@ -98,8 +98,10 @@ export default function FoodRoulette() {
     const listItem = document.getElementById("list_item");
     new window.Sortable(listItem, {
       animation: 350,
-      chosenClass: "sortable-chosen",
-      dragClass: "sortable-drag",
+      // chosenClass: "sortable-chosen",
+      // dragClass: "sortable-drag",
+      handle: '.handle', // handle's class
+      ghostClass: 'bg-gray-100' // 배경 색
     });
   }, [restaurants.length]);
   return (
@@ -146,12 +148,12 @@ export default function FoodRoulette() {
           <div
             // draggable
             key={i}
-            className="border border-gray-300 p-4 w-full mx-auto hover:bg-gray-100 hover:cursor-move"
+            className="border border-gray-300 p-4 w-full mx-auto"
           >
             {/* <div className="animate-pulse flex space-x-4"> */}
             <div className="w-full flex space-x-4">
-              <div className="rounded-full bg-gray-400 h-12 w-12 overflow-auto">
-                {/* {icon} */}
+              <div className="handle hover:cursor-move hover:bg-gray-100 rounded-full h-12 w-12 flex justify-center items-center">
+                <BiMove />
               </div>
               <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
                 {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
@@ -174,7 +176,7 @@ export default function FoodRoulette() {
                 </div>
               </div>
               <div
-                className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center"
+                className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
                 onClick={() =>
                   setRestaurants(
                     restaurants.filter((r) => r.id != restaurant.id)
