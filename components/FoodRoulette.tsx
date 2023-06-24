@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { BiTrash } from "react-icons/bi";
 
@@ -18,6 +18,10 @@ type RestaurantInterface = {
   x: string;
   y: string;
 };
+
+// class MyDraggable extends Draggable {
+//   onDragEnter:DraggableEventHandler
+// }
 export default function FoodRoulette() {
   const query = "음식점";
   const initialState = {
@@ -90,6 +94,23 @@ export default function FoodRoulette() {
       });
   }, [state.lat, state.lng, state.radius]);
 
+  const draggableItemsRef = useRef<Draggable[]>([]);
+  useEffect(() => {
+    draggableItemsRef.current.map((ref) => {
+      ref
+      // .addEventListener("click", (e) => {
+      //   const val = ref.innerText;
+      //   if (tagSelected?.has(val)) {
+      //     ref.style.color = "black";
+      //     tagSelected.delete(val);
+      //   } else {
+      //     ref.style.color = "red";
+      //     tagSelected?.add(val);
+      //   }
+      // });
+    });
+  }, []);
+
   return (
     <div className="w-full flex justify-center flex-col">
       <div className="w-full flex justify-center">
@@ -105,13 +126,27 @@ export default function FoodRoulette() {
           fetch
         </button>
         {restaurants.length > 0 && (
-          <button
-            disabled={restaurantsLoading}
-            // onClick={() => fetchingRestaurants()}
-            className="border ml-1"
-          >
-            select one
-          </button>
+          <>
+            <button
+              disabled={restaurantsLoading}
+              // onClick={() => fetchingRestaurants()}
+              className="border ml-1"
+            >
+              select one
+            </button>
+            <button
+              disabled={restaurantsLoading}
+              // onClick={() => {
+              //   setRestaurants(restaurants.sort((a, b) => {
+              //     return a.address_name.length - b.address_name.length;
+              //   }));
+
+              // }}
+              className="border ml-1"
+            >
+              exchange test
+            </button>
+          </>
         )}
       </div>
 
@@ -123,6 +158,14 @@ export default function FoodRoulette() {
             bounds={"parent"}
             defaultPosition={{ x: 0, y: 0 }}
             position={{ x: 0, y: 0 }}
+            onDrag={() => console.log(`onDrag from ${i}`)}
+            onMouseDown={() => console.log(`onMouseDown from ${i}`)}
+            onStart={() => console.log(`onStart from ${i}`)}
+            onStop={() => console.log(`onStop from ${i}`)}
+            // nodeRef={}
+            ref={(elem) => {
+              draggableItemsRef.current[i] = elem as Draggable;
+            }}
           >
             <div className="border border-gray-300 p-4 w-full mx-auto hover:bg-gray-100 hover:cursor-move">
               {/* <div className="animate-pulse flex space-x-4"> */}
