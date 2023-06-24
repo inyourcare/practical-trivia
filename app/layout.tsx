@@ -58,16 +58,22 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></script>
         {/* <!-- Google tag (gtag.js) --> */}
-        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-08E5CNK7PL"></Script>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-08E5CNK7PL"
+        ></Script>
         <Script id="google-analytics" strategy="afterInteractive">
-        {`
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
-      </Script>
+        </Script>
+
+        {/* <script defer src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script> */}
+        <script defer src="/js/sortable/Sortable.min.js"></script>
       </head>
       {/* </Head> */}
 

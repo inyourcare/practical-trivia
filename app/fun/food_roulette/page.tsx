@@ -1,7 +1,14 @@
 import getPostContent from "@/components/post/getPostContent";
 import Nav from "@/components/Nav";
 import FoodRoulette from "@/components/FoodRoulette";
-
+import DraggableTest from "@/components/test/draggable";
+import DraggableTest2 from "@/components/test/draggable2";
+import Script from "next/script";
+declare global {
+  interface Window {
+    Sortable: any
+  }
+}
 export default function FoodRouletteHome() {
   const post = getPostContent("about");
 
@@ -14,6 +21,8 @@ export default function FoodRouletteHome() {
         <div className="w-full max-w-screen-lg">
           <div className="w-full flex p-3 flex-col md:flex-row">
             <FoodRoulette />
+            {/* <DraggableTest /> */}
+            {/* <DraggableTest2 /> */}
           </div>
         </div>
       </div>

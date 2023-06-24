@@ -1,7 +1,5 @@
 "use client";
-
-import { useCallback, useEffect, useState, useRef } from "react";
-import Draggable from "react-draggable";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 
 type RestaurantInterface = {
@@ -19,10 +17,7 @@ type RestaurantInterface = {
   y: string;
 };
 
-// class MyDraggable extends Draggable {
-//   onDragEnter:DraggableEventHandler
-// }
-export default function FoodRoulette() {
+export default function DraggableTest() {
   const query = "음식점";
   const initialState = {
     lat: 0.0,
@@ -35,27 +30,22 @@ export default function FoodRoulette() {
     [] as Array<RestaurantInterface>
   );
   const [restaurantsLoading, setRestaurantsLoading] = useState(false);
+
   useEffect(() => {
     const { geolocation } = navigator;
 
     geolocation.getCurrentPosition(
       (position) => {
-        // success.
-        // console.log("success", state, position.coords);
         setState({
           ...state,
           lat: position.coords.latitude,
           lng: position.coords.longitude,
           lsLoading: false,
         });
-        // setState({ ...state, lng: position.coords.longitude });
-        // setState({ ...state, lsLoading: false });
       },
       (error) => {
         console.warn("Fail to fetch current location", error);
         setState({ ...state, lat: 37, lng: 127, lsLoading: false });
-        // setState({ ...state, lng: 127 });
-        // setState({ ...state, lsLoading: false });
       },
       {
         enableHighAccuracy: false,
@@ -63,8 +53,6 @@ export default function FoodRoulette() {
         timeout: Infinity,
       }
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -94,6 +82,61 @@ export default function FoodRoulette() {
       });
   }, [state.lat, state.lng, state.radius]);
 
+  // function slist (target:HTMLDivElement) {
+  //   // (A) SET CSS + GET ALL LIST ITEMS
+  //   target.classList.add("slist");
+  //   let items = target.getElementsByTagName("li"), current = null;
+
+  //   // (B) MAKE ITEMS DRAGGABLE + SORTABLE
+  //   for (let i of items) {
+  //     // (B1) ATTACH DRAGGABLE
+  //     i.draggable = true;
+
+  //     // (B2) DRAG START - YELLOW HIGHLIGHT DROPZONES
+  //     i.ondragstart = e => {
+  //       current = i;
+  //       for (let it of items) {
+  //         if (it != current) { it.classList.add("hint"); }
+  //       }
+  //     };
+
+  //     // (B3) DRAG ENTER - RED HIGHLIGHT DROPZONE
+  //     i.ondragenter = e => {
+  //       if (i != current) { i.classList.add("active"); }
+  //     };
+
+  //     // (B4) DRAG LEAVE - REMOVE RED HIGHLIGHT
+  //     i.ondragleave = () => i.classList.remove("active");
+
+  //     // (B5) DRAG END - REMOVE ALL HIGHLIGHTS
+  //     i.ondragend = () => { for (let it of items) {
+  //         it.classList.remove("hint");
+  //         it.classList.remove("active");
+  //     }};
+
+  //     // (B6) DRAG OVER - PREVENT THE DEFAULT "DROP", SO WE CAN DO OUR OWN
+  //     i.ondragover = e => e.preventDefault();
+
+  //     // (B7) ON DROP - DO SOMETHING
+  //     i.ondrop = e => {
+  //       e.preventDefault();
+  //       if (i != current) {
+  //         let currentpos = 0, droppedpos = 0;
+  //         for (let it=0; it<items.length; it++) {
+  //           if (current == items[it]) { currentpos = it; }
+  //           if (i == items[it]) { droppedpos = it; }
+  //         }
+  //         if (currentpos < droppedpos) {
+  //           i.parentNode.insertBefore(current, i.nextSibling);
+  //         } else {
+  //           i.parentNode.insertBefore(current, i);
+  //         }
+  //       }
+  //     };
+  //   }
+  // }
+
+  const ulRef = useRef<HTMLUListElement>(null);
   useEffect(() => {
     const listItem = document.getElementById("list_item");
     new window.Sortable(listItem, {
@@ -102,12 +145,12 @@ export default function FoodRoulette() {
       dragClass: "sortable-drag",
     });
   }, [restaurants.length]);
+
   return (
     <div className="w-full flex justify-center flex-col">
       <div className="w-full flex justify-center">
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
       </div>
-
       <div className="flex flex-row justify-center items-center">
         <button
           disabled={restaurantsLoading}
@@ -116,37 +159,25 @@ export default function FoodRoulette() {
         >
           fetch
         </button>
-        {restaurants.length > 0 && (
-          <>
-            <button
-              disabled={restaurantsLoading}
-              // onClick={() => fetchingRestaurants()}
-              className="border ml-1"
-            >
-              select one
-            </button>
-            <button
-              disabled={restaurantsLoading}
-              // onClick={() => {
-              //   setRestaurants(restaurants.sort((a, b) => {
-              //     return a.address_name.length - b.address_name.length;
-              //   }));
-
-              // }}
-              className="border ml-1"
-            >
-              exchange test
-            </button>
-          </>
-        )}
       </div>
-
-      <div id={"list_item"} className="relative border">
+      <ul id={'list_item'} ref={ulRef}>
         {restaurants.map((restaurant, i) => (
-          <div
+          <li
             // draggable
-            key={i}
             className="border border-gray-300 p-4 w-full mx-auto hover:bg-gray-100 hover:cursor-move"
+            // onDrag={() => {
+            //   // console.log(`ondrag from ${i}`);
+            // }}
+            // onDragStart={() => {
+            //   // console.log(`onDragStart from ${i}`);
+            // }}
+            // onDragEnd={() => {
+            //   // console.log(`onDragEnd from ${i}`);
+            // }}
+            // onDragEnter={() => {
+            //   console.log(`onDragEnter from ${i}`);
+            // }}
+            key={i}
           >
             {/* <div className="animate-pulse flex space-x-4"> */}
             <div className="w-full flex space-x-4">
@@ -174,7 +205,7 @@ export default function FoodRoulette() {
                 </div>
               </div>
               <div
-                className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center"
+                className="cursor-pointer rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center"
                 onClick={() =>
                   setRestaurants(
                     restaurants.filter((r) => r.id != restaurant.id)
@@ -184,19 +215,9 @@ export default function FoodRoulette() {
                 <BiTrash />
               </div>
             </div>
-
-            {/* <li>{restaurant.category_group_code}</li> */}
-            {/* <li>{restaurant.x}</li> */}
-            {/* <li>{restaurant.y}</li> */}
-            {/* <li>{restaurant.id}</li> */}
-          </div>
+          </li>
         ))}
-      </div>
-      {/* / restaurants {restaurants} */}
-      {/* <div
-        className="w-full flex justify-center"
-        dangerouslySetInnerHTML={{ __html: restaurants }}
-      ></div> */}
+      </ul>
     </div>
   );
 }
