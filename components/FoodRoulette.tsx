@@ -96,14 +96,16 @@ export default function FoodRoulette() {
 
   useEffect(() => {
     const listItem = document.getElementById("list_item");
+    console.log("rendering list item sorted");
     new window.Sortable(listItem, {
       animation: 350,
       // chosenClass: "sortable-chosen",
       // dragClass: "sortable-drag",
-      handle: '.handle', // handle's class
-      ghostClass: 'bg-gray-100' // 배경 색
+      handle: ".handle", // handle's class
+      ghostClass: "bg-gray-100", // 배경 색
+      filter: ".filtered",
     });
-  }, [restaurants.length]);
+  }, []);
   return (
     <div className="w-full flex justify-center flex-col">
       <div className="w-full flex justify-center">
@@ -126,18 +128,6 @@ export default function FoodRoulette() {
               className="border ml-1"
             >
               select one
-            </button>
-            <button
-              disabled={restaurantsLoading}
-              // onClick={() => {
-              //   setRestaurants(restaurants.sort((a, b) => {
-              //     return a.address_name.length - b.address_name.length;
-              //   }));
-
-              // }}
-              className="border ml-1"
-            >
-              exchange test
             </button>
           </>
         )}
@@ -177,11 +167,20 @@ export default function FoodRoulette() {
               </div>
               <div
                 className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
-                onClick={() =>
-                  setRestaurants(
-                    restaurants.filter((r) => r.id != restaurant.id)
-                  )
-                }
+                onClick={(e) => {
+                  // setRestaurants(
+                  //   restaurants.filter((r) => r.id != restaurant.id)
+                  // )
+                  // e.currentTarget.classList.add('filtered')
+                  // e.currentTarget.parentElement?.parentElement?.classList.add('filtered')
+                  e.currentTarget.parentElement?.parentElement?.classList.add(
+                    "filtered"
+                  );
+                  e.currentTarget.parentElement?.parentElement?.classList.add(
+                    "bg-gray-400"
+                  );
+                  // e.currentTarget.parentElement?.parentElement?.classList.add('grayscale')
+                }}
               >
                 <BiTrash />
               </div>
