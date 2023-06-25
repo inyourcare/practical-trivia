@@ -27,7 +27,7 @@ export default function FoodRoulette() {
   const initialState = {
     lat: 0.0,
     lng: 0.0,
-    radius: 2000,
+    radius: 100,
     lsLoading: false,
   };
   const [state, setState] = useState(initialState);
@@ -152,6 +152,19 @@ export default function FoodRoulette() {
       </div>
 
       <div className="flex flex-row justify-center items-center">
+        <select
+          onChange={(e) =>
+            setState({ ...state, radius: Number(e.target.value) })
+          }
+          value={state.radius}
+          className="border"
+        >
+          <option value={100}>100m</option>
+          <option value={200}>200m</option>
+          <option value={500}>500m</option>
+          <option value={1000}>1km</option>
+          <option value={2000}>2km</option>
+        </select>
         <button
           disabled={restaurantsLoading}
           onClick={() => fetchingRestaurants()}
