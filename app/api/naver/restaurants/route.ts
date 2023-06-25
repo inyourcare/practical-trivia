@@ -1,6 +1,11 @@
 // import { NextResponse } from "next/server";
-// import puppeteer from 'puppeteer';
 
+import { NextResponse } from "next/server";
+
+// import puppeteer from 'puppeteer';
+export async function GET() {
+  return NextResponse.json({data:'temporary api'});
+}
 // ##### puppeteer 이용한 scraping 필요한 시점이 온다면 여길 봐라
 // export async function POST(request: Request) {
 // export async function GET() {
