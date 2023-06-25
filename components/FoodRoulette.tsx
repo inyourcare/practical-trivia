@@ -165,18 +165,17 @@ export default function FoodRoulette() {
       select(arr, selectingClass, () => {
         setState({ ...state, lsLoading: false });
         // arr.filter((item) => item.classList.contains(selectingClass)).pop()?.scrollIntoView()
-        const top = arr
-          .filter((item) => item.classList.contains(selectingClass))
-          .pop()
-          ?.getBoundingClientRect().top;
-        if (top) {
-          const y = top + window.scrollY;
-          window.scroll({
-            top: y - 200,
-            behavior: "smooth",
-          });
-        }
-        // ( as HTMLElement).scrollIntoView();
+        // const top = arr
+        //   .filter((item) => item.classList.contains(selectingClass))
+        //   .pop()
+        //   ?.getBoundingClientRect().top;
+        // if (top) {
+        //   const y = top + window.scrollY;
+        //   window.scroll({
+        //     top: y - 200,
+        //     behavior: "smooth",
+        //   });
+        // }
       });
     }
   }
