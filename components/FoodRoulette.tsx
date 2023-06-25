@@ -157,7 +157,23 @@ export default function FoodRoulette() {
         const item = listItem?.children[i];
         if (!item.classList.contains("filtered")) arr.push(item);
       }
-      select(arr, () => setState({ ...state, lsLoading: false }));
+      const selectingClass = "bg-gray-300";
+      select(arr, selectingClass, () => {
+        setState({ ...state, lsLoading: false });
+        // arr.filter((item) => item.classList.contains(selectingClass)).pop()?.scrollIntoView()
+        const top = arr
+          .filter((item) => item.classList.contains(selectingClass))
+          .pop()
+          ?.getBoundingClientRect().top;
+        if (top) {
+          const y = top + window.scrollY;
+          window.scroll({
+            top: y,
+            behavior: "smooth",
+          });
+        }
+        // ( as HTMLElement).scrollIntoView();
+      });
     }
   }
   return (

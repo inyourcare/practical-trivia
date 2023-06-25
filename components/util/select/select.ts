@@ -1,6 +1,5 @@
-const select = (arr: Element[],finalCallback: any) => {
+const select = (arr: Element[], selectingClass: string, finalCallback: any) => {
   let idx = Math.floor(Math.random() * (arr.length - 0 + 1) + 0);
-  const selectingClass = "bg-gray-300";
   const intervalId = setInterval(() => {
     const realIdx = idx % arr.length;
     const prevIdx = (arr.length + idx - 1) % arr.length;
@@ -38,10 +37,10 @@ const select = (arr: Element[],finalCallback: any) => {
         clearTimeout(timeoutId3);
         clearInterval(intervalId3);
         // setState({ ...state, lsLoading: false });
-        finalCallback()
+        finalCallback();
       }, 1000);
     }, 2000);
   }, 3000);
 };
 
-export default select
+export default select;
