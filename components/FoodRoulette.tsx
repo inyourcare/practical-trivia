@@ -4,21 +4,7 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { BiTrash, BiMove } from "react-icons/bi";
 import select from "./util/select/select";
-
-type RestaurantInterface = {
-  address_name: string;
-  category_group_code: string;
-  category_group_name: string;
-  category_name: string;
-  distance: string;
-  id: string;
-  phone: string;
-  place_name: string;
-  place_url: string;
-  road_address_name: string;
-  x: string;
-  y: string;
-};
+import { RestaurantInterface } from "./util/type";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -36,6 +22,8 @@ export default function FoodRoulette() {
     [] as Array<RestaurantInterface>
   );
   const [restaurantsLoading, setRestaurantsLoading] = useState(false);
+  const [kinds] = useState(new Set<string>());
+  const [kindMap] = useState(new Map<string, Array<RestaurantInterface>>());
   useEffect(() => {
     const { geolocation } = navigator;
 
@@ -87,6 +75,22 @@ export default function FoodRoulette() {
         // console.log(restaurants);
         // setRestaurants(restaurants.documents);
         setRestaurants(restaurants);
+        (restaurants as Array<RestaurantInterface>).map((restaurant) => {
+          const splitStrings = restaurant.category_name.split(">");
+
+          if (splitStrings.length > 1 && splitStrings[1]) {
+            const kind = splitStrings[1].trim();
+            kinds.add(kind);
+            const resArr = kindMap.get(kind);
+            if (!resArr) {
+              const newArr = new Array<RestaurantInterface>();
+              newArr.push(restaurant);
+              kindMap.set(kind, newArr);
+            } else {
+              resArr.push(restaurant);
+            }
+          }
+        });
       })
       .catch((e) => {
         alert(`${query} 데이터를 가져오는 중에 문제가 발생했습다.`);
@@ -94,7 +98,7 @@ export default function FoodRoulette() {
       .finally(() => {
         setRestaurantsLoading(false);
       });
-  }, [state.lat, state.lng, state.radius]);
+  }, [state.lat, state.lng, state.radius, kinds, kindMap]);
 
   useEffect(() => {
     const listItem = document.getElementById("list_item");
@@ -168,7 +172,7 @@ export default function FoodRoulette() {
         if (top) {
           const y = top + window.scrollY;
           window.scroll({
-            top: y,
+            top: y - 200,
             behavior: "smooth",
           });
         }
@@ -176,12 +180,24 @@ export default function FoodRoulette() {
       });
     }
   }
+
+  function filteringElem(elem: HTMLElement) {
+    elem.classList.add("filtered");
+    elem.classList.add("bg-gray-400");
+  }
   return (
     <div className="w-full flex justify-center flex-col">
       {/* <div className="w-full flex justify-center">
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
       </div> */}
-
+      <div className="w-full flex justify-center items-center flex-col">
+        <h1>오늘 뭐먹지?</h1>
+        <p>
+          고민하고 결정하기도 아까운 시간. 오늘 뭐먹을지 대신 선택 해 드립니다.
+        </p>
+      </div>
+      <br />
+      <br />
       <div className="flex flex-row justify-center items-center">
         {`지금 위치로 부터 반경 `}
         <select
@@ -232,6 +248,34 @@ export default function FoodRoulette() {
           </>
         )}
       </div>
+      <div>
+        {restaurantsLoading === false && kinds.size > 0 && (
+          <div className="flex justify-center items-center">
+            filter: 
+            {Array.from(kinds).map((k) => (
+              <button
+                key={k}
+                onClick={(e) => {
+                  // console.log(kindMap.get(k));
+                  const arr = kindMap.get(k);
+                  if (arr && arr.length > 0) {
+                    arr.map((item) => {
+                      const card = document.getElementById(item.id);
+                      card && filteringElem(card);
+                    });
+                  }
+                  e.currentTarget.classList.add('bg-blue-500')
+                  e.currentTarget.classList.remove('bg-blue-200')
+                  e.currentTarget.disabled = true
+                }}
+                className="border ml-1 bg-blue-200 hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
+              >
+                {k}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
       <div id={"list_item"} className="relative border">
         {restaurantsLoading ? (
@@ -242,6 +286,7 @@ export default function FoodRoulette() {
               // draggable
               key={i}
               className="border border-gray-300 p-4 w-full mx-auto"
+              id={restaurant.id}
             >
               {/* <div className="animate-pulse flex space-x-4"> */}
               <div className="w-full flex space-x-4">
@@ -277,12 +322,15 @@ export default function FoodRoulette() {
                   className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
                   onClick={(e) => {
                     if (state.lsLoading === false) {
-                      e.currentTarget.parentElement?.parentElement?.classList.add(
-                        "filtered"
-                      );
-                      e.currentTarget.parentElement?.parentElement?.classList.add(
-                        "bg-gray-400"
-                      );
+                      // e.currentTarget.parentElement?.parentElement?.classList.add(
+                      //   "filtered"
+                      // );
+                      // e.currentTarget.parentElement?.parentElement?.classList.add(
+                      //   "bg-gray-400"
+                      // );
+                      const elem =
+                        e.currentTarget?.parentElement?.parentElement;
+                      elem && filteringElem(elem);
                     }
                   }}
                 >

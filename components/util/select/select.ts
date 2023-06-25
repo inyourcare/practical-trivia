@@ -1,5 +1,9 @@
 const select = (arr: Element[], selectingClass: string, finalCallback: any) => {
   let idx = Math.floor(Math.random() * (arr.length - 0 + 1) + 0);
+  if (arr.length < 1) {
+    finalCallback();
+    return;
+  }
   const intervalId = setInterval(() => {
     const realIdx = idx % arr.length;
     const prevIdx = (arr.length + idx - 1) % arr.length;
