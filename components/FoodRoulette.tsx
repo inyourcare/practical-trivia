@@ -84,7 +84,8 @@ export default function FoodRoulette() {
         // console.log((await restaurants.json()).data)
         const restaurants = (await response.json()).data;
         // console.log(restaurants);
-        setRestaurants(restaurants.documents);
+        // setRestaurants(restaurants.documents);
+        setRestaurants(restaurants);
       })
       .catch((e) => {
         alert(`${query} 데이터를 가져오는 중에 문제가 발생했습다.`);
