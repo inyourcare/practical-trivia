@@ -175,6 +175,7 @@ export default function FoodRoulette() {
         </button>
         {restaurants.length > 0 && (
           <>
+            {`음식점 total: ${restaurants.length}`}
             <button
               disabled={restaurantsLoading}
               // onClick={() => fetchingRestaurants()}
