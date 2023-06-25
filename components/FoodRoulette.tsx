@@ -153,6 +153,7 @@ export default function FoodRoulette() {
       </div>
 
       <div className="flex flex-row justify-center items-center">
+        {`지금 위치로 부터 반경 `}
         <select
           onChange={(e) =>
             setState({ ...state, radius: Number(e.target.value) })
@@ -166,37 +167,38 @@ export default function FoodRoulette() {
           <option value={1000}>1km</option>
           <option value={2000}>2km</option>
         </select>
+        {'에서 '}
         <button
           disabled={restaurantsLoading}
           onClick={() => fetchingRestaurants()}
-          className="border"
+          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow"
         >
-          fetch
+          찾기
         </button>
         {restaurants.length > 0 && (
           <>
-            {`음식점 total: ${restaurants.length}`}
+            {`total: ${restaurants.length}`}
             <button
               disabled={restaurantsLoading}
               // onClick={() => fetchingRestaurants()}
-              className="border ml-1"
+              className="border ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded"
             >
-              select one
+              골라줘
             </button>
             <button
               disabled={restaurantsLoading}
               onClick={() => mingle()}
-              className="border ml-1"
+              className="border ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded"
             >
               섞기
             </button>
-            <button
+            {/* <button
               disabled={restaurantsLoading}
               onClick={() => reduce()}
               className="border ml-1"
             >
               줄이기
-            </button>
+            </button> */}
           </>
         )}
       </div>
@@ -227,7 +229,8 @@ export default function FoodRoulette() {
                   <div className="space-y-2">
                     {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
                     <div className="no-cursor cursor-auto h-4 rounded">
-                      {restaurant.road_address_name}
+                      {restaurant.road_address_name} 
+                      {/* / ( {restaurant.x} , {restaurant.y} ) */}
                     </div>
                     {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
                     <div className="no-cursor cursor-auto h-4 rounded w-5/6">
