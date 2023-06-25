@@ -133,6 +133,18 @@ export default function FoodRoulette() {
       }
     }
   }
+  function reduce() {
+    const listItem = document.getElementById("list_item");
+    console.log("mingling");
+    if (listItem && listItem?.children.length > 0) {
+      const arr = new Array<Element>();
+      for (var i = 0; i < listItem?.children.length; i++) {
+        const item = listItem?.children[i];
+        arr.push(item);
+      }
+      arr.forEach((elem, i) => i > 1 && elem.remove());
+    }
+  }
   return (
     <div className="w-full flex justify-center flex-col">
       <div className="w-full flex justify-center">
@@ -163,69 +175,80 @@ export default function FoodRoulette() {
             >
               섞기
             </button>
+            <button
+              disabled={restaurantsLoading}
+              onClick={() => reduce()}
+              className="border ml-1"
+            >
+              줄이기
+            </button>
           </>
         )}
       </div>
 
       <div id={"list_item"} className="relative border">
-        {restaurants.map((restaurant, i) => (
-          <div
-            // draggable
-            key={i}
-            className="border border-gray-300 p-4 w-full mx-auto"
-          >
-            {/* <div className="animate-pulse flex space-x-4"> */}
-            <div className="w-full flex space-x-4">
-              <div className="handle hover:cursor-move hover:bg-gray-100 rounded-full h-12 w-12 flex justify-center items-center">
-                <BiMove />
-              </div>
-              <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
-                {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
-                {/* <div className="h-4 w-3/4 cursor-auto hover:pointer-events-none"> */}
-                <div className="no-cursor cursor-auto h-4 w-3/4 ">
-                  <strong>
-                    {restaurant.place_name}({restaurant.category_name})
-                  </strong>
+        {restaurantsLoading ? (
+          <>Now loading</>
+        ) : (
+          restaurants.map((restaurant, i) => (
+            <div
+              // draggable
+              key={i}
+              className="border border-gray-300 p-4 w-full mx-auto"
+            >
+              {/* <div className="animate-pulse flex space-x-4"> */}
+              <div className="w-full flex space-x-4">
+                <div className="handle hover:cursor-move hover:bg-gray-100 rounded-full h-12 w-12 flex justify-center items-center">
+                  <BiMove />
                 </div>
-                <div className="space-y-2">
-                  {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
-                  <div className="no-cursor cursor-auto h-4 rounded">
-                    {restaurant.road_address_name}
+                <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                  {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
+                  {/* <div className="h-4 w-3/4 cursor-auto hover:pointer-events-none"> */}
+                  <div className="no-cursor cursor-auto h-4 w-3/4 ">
+                    <strong>
+                      {restaurant.place_name}({restaurant.category_name})
+                    </strong>
                   </div>
-                  {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
-                  <div className="no-cursor cursor-auto h-4 rounded w-5/6">
-                    거리: {restaurant.distance}m / 번호: {restaurant.phone} /
-                    url: {restaurant.place_url}
+                  <div className="space-y-2">
+                    {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
+                    <div className="no-cursor cursor-auto h-4 rounded">
+                      {restaurant.road_address_name}
+                    </div>
+                    {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
+                    <div className="no-cursor cursor-auto h-4 rounded w-5/6">
+                      거리: {restaurant.distance}m / 번호: {restaurant.phone} /
+                      url: {restaurant.place_url}
+                    </div>
                   </div>
                 </div>
+                <div
+                  className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
+                  onClick={(e) => {
+                    // setRestaurants(
+                    //   restaurants.filter((r) => r.id != restaurant.id)
+                    // )
+                    // e.currentTarget.classList.add('filtered')
+                    // e.currentTarget.parentElement?.parentElement?.classList.add('filtered')
+                    e.currentTarget.parentElement?.parentElement?.classList.add(
+                      "filtered"
+                    );
+                    e.currentTarget.parentElement?.parentElement?.classList.add(
+                      "bg-gray-400"
+                    );
+                    // e.currentTarget.parentElement?.parentElement?.classList.add('grayscale')
+                  }}
+                >
+                  <BiTrash />
+                </div>
               </div>
-              <div
-                className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
-                onClick={(e) => {
-                  // setRestaurants(
-                  //   restaurants.filter((r) => r.id != restaurant.id)
-                  // )
-                  // e.currentTarget.classList.add('filtered')
-                  // e.currentTarget.parentElement?.parentElement?.classList.add('filtered')
-                  e.currentTarget.parentElement?.parentElement?.classList.add(
-                    "filtered"
-                  );
-                  e.currentTarget.parentElement?.parentElement?.classList.add(
-                    "bg-gray-400"
-                  );
-                  // e.currentTarget.parentElement?.parentElement?.classList.add('grayscale')
-                }}
-              >
-                <BiTrash />
-              </div>
-            </div>
 
-            {/* <li>{restaurant.category_group_code}</li> */}
-            {/* <li>{restaurant.x}</li> */}
-            {/* <li>{restaurant.y}</li> */}
-            {/* <li>{restaurant.id}</li> */}
-          </div>
-        ))}
+              {/* <li>{restaurant.category_group_code}</li> */}
+              {/* <li>{restaurant.x}</li> */}
+              {/* <li>{restaurant.y}</li> */}
+              {/* <li>{restaurant.id}</li> */}
+            </div>
+          ))
+        )}
       </div>
       {/* / restaurants {restaurants} */}
       {/* <div
