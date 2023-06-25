@@ -155,17 +155,16 @@ export default function FoodRoulette() {
       const arr = new Array<Element>();
       for (var i = 0; i < listItem?.children.length; i++) {
         const item = listItem?.children[i];
-        if (!item.classList.contains('filtered'))
-          arr.push(item);
+        if (!item.classList.contains("filtered")) arr.push(item);
       }
-      select(arr,()=>setState({ ...state, lsLoading: false }))
+      select(arr, () => setState({ ...state, lsLoading: false }));
     }
   }
   return (
     <div className="w-full flex justify-center flex-col">
-      <div className="w-full flex justify-center">
+      {/* <div className="w-full flex justify-center">
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
-      </div>
+      </div> */}
 
       <div className="flex flex-row justify-center items-center">
         {`지금 위치로 부터 반경 `}
@@ -230,7 +229,11 @@ export default function FoodRoulette() {
             >
               {/* <div className="animate-pulse flex space-x-4"> */}
               <div className="w-full flex space-x-4">
-                <div className="handle hover:cursor-move hover:bg-gray-100 rounded-full h-12 w-12 flex justify-center items-center">
+                <div
+                  className={`${
+                    state.lsLoading === false ? "handle" : ""
+                  } hover:cursor-move hover:bg-gray-100 rounded-full h-12 w-12 flex justify-center items-center`}
+                >
                   <BiMove />
                 </div>
                 <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -257,18 +260,14 @@ export default function FoodRoulette() {
                 <div
                   className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
                   onClick={(e) => {
-                    // setRestaurants(
-                    //   restaurants.filter((r) => r.id != restaurant.id)
-                    // )
-                    // e.currentTarget.classList.add('filtered')
-                    // e.currentTarget.parentElement?.parentElement?.classList.add('filtered')
-                    e.currentTarget.parentElement?.parentElement?.classList.add(
-                      "filtered"
-                    );
-                    e.currentTarget.parentElement?.parentElement?.classList.add(
-                      "bg-gray-400"
-                    );
-                    // e.currentTarget.parentElement?.parentElement?.classList.add('grayscale')
+                    if (state.lsLoading === false) {
+                      e.currentTarget.parentElement?.parentElement?.classList.add(
+                        "filtered"
+                      );
+                      e.currentTarget.parentElement?.parentElement?.classList.add(
+                        "bg-gray-400"
+                      );
+                    }
                   }}
                 >
                   <BiTrash />
