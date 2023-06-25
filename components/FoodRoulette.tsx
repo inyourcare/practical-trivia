@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { BiTrash, BiMove } from "react-icons/bi";
+import select from "./util/select/select";
 
 type RestaurantInterface = {
   address_name: string;
@@ -146,6 +147,20 @@ export default function FoodRoulette() {
       arr.forEach((elem, i) => i > 1 && elem.remove());
     }
   }
+  function selectOne() {
+    setState({ ...state, lsLoading: true });
+    const listItem = document.getElementById("list_item");
+    console.log("selectOne");
+    if (listItem && listItem?.children.length > 0) {
+      const arr = new Array<Element>();
+      for (var i = 0; i < listItem?.children.length; i++) {
+        const item = listItem?.children[i];
+        if (!item.classList.contains('filtered'))
+          arr.push(item);
+      }
+      select(arr,()=>setState({ ...state, lsLoading: false }))
+    }
+  }
   return (
     <div className="w-full flex justify-center flex-col">
       <div className="w-full flex justify-center">
@@ -167,11 +182,11 @@ export default function FoodRoulette() {
           <option value={1000}>1km</option>
           <option value={2000}>2km</option>
         </select>
-        {'에서 '}
+        {"에서 "}
         <button
-          disabled={restaurantsLoading}
+          disabled={restaurantsLoading || state.lsLoading}
           onClick={() => fetchingRestaurants()}
-          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow"
+          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed"
         >
           찾기
         </button>
@@ -179,16 +194,16 @@ export default function FoodRoulette() {
           <>
             {`total: ${restaurants.length}`}
             <button
-              disabled={restaurantsLoading}
-              // onClick={() => fetchingRestaurants()}
-              className="border ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded"
+              disabled={restaurantsLoading || state.lsLoading}
+              onClick={() => selectOne()}
+              className="border ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
             >
               골라줘
             </button>
             <button
-              disabled={restaurantsLoading}
+              disabled={restaurantsLoading || state.lsLoading}
               onClick={() => mingle()}
-              className="border ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded"
+              className="border ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
             >
               섞기
             </button>
@@ -229,7 +244,7 @@ export default function FoodRoulette() {
                   <div className="space-y-2">
                     {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
                     <div className="no-cursor cursor-auto h-4 rounded">
-                      {restaurant.road_address_name} 
+                      {restaurant.road_address_name}
                       {/* / ( {restaurant.x} , {restaurant.y} ) */}
                     </div>
                     {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
