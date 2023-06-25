@@ -13,6 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
     .concat(
       { url: `${process.env.HOST_BASE_URL}/about` }, //about
+      { url: `${process.env.HOST_BASE_URL}/fun/food_roulette` }, //fun
+      { url: `${process.env.HOST_BASE_URL}/intro/goodo` }, //goodo
+      { url: `${process.env.HOST_BASE_URL}/intro/howcoding` }, //howcoding
+      { url: `${process.env.HOST_BASE_URL}/intro/sangsang` }, //sangsang
       posts.map((post) => {
         return { url: `${process.env.HOST_BASE_URL}/post/${post}` }; //post
       })
