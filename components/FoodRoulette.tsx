@@ -106,6 +106,33 @@ export default function FoodRoulette() {
       filter: ".filtered",
     });
   }, []);
+
+  function mingle() {
+    const listItem = document.getElementById("list_item");
+    console.log("mingling");
+    if (listItem && listItem?.children.length > 0) {
+      const itemLen = listItem.children.length;
+      for (let i = 0; i < 100; i++) {
+        const min = 0;
+        const max = itemLen - 1;
+        const ranSeed = Math.random();
+        const randomIndex = Math.floor(ranSeed * (max - min + 1) + min);
+        const backward = ranSeed > 0.5;
+
+        if (backward)
+          listItem.insertBefore(
+            listItem.children[randomIndex],
+            listItem.children[randomIndex].previousElementSibling
+          );
+        else
+          listItem.insertBefore(
+            listItem.children[randomIndex],
+            listItem.children[randomIndex].nextElementSibling
+              ?.nextElementSibling as Element
+          );
+      }
+    }
+  }
   return (
     <div className="w-full flex justify-center flex-col">
       <div className="w-full flex justify-center">
@@ -128,6 +155,13 @@ export default function FoodRoulette() {
               className="border ml-1"
             >
               select one
+            </button>
+            <button
+              disabled={restaurantsLoading}
+              onClick={() => mingle()}
+              className="border ml-1"
+            >
+              섞기
             </button>
           </>
         )}
