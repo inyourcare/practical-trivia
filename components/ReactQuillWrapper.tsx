@@ -5,6 +5,8 @@ import ReactQuill from "react-quill";
 import Markdown from "markdown-to-jsx";
 import { tagDict } from "./util/tag/tagToKr";
 
+// 이미지 태그 <img src='/api/aws/s3/get?key=test/3.png' width={500} height={500} alt={""} />
+
 function ReactQuillWrapper() {
   const initialState = {
     modules: {

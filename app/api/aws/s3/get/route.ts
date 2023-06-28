@@ -18,45 +18,36 @@ function encode(data: Uint8Array) {
   return btoa(str).replace(/.{76}(?=.)/g, "$&\n");
 }
 
-export async function POST(request: Request) {
-// export async function GET() {
-  const body = await request.json();
-  console.log(body);
-
-  // s3Client.getObject(
-  //   {
-  //     Bucket: process.env.S3_BUCKET_NAME as string,
-  //     Key: "1.png",
-  //   },
-  //   function (errtxt, file) {
-  //     if (errtxt) {
-  //       console.log("lireFic", "ERR " + errtxt);
-  //     } else {
-  //       console.log("lecture OK");
-  //       if (file)
-  //         console.log("body", file.Body);
-  //       // imageTest.src = "data:image/png;base64," + encode(file.Body);
-  //     }
-  //   }
-  // );
+export async function GET(request: Request) {
+  // return NextResponse.json({ test:'test' });
+  const key = request.url.split('?')[1]?.split('key=')[1]
+  console.log("key ::", key);
   const input = {
     // GetObjectRequest
     Bucket: process.env.S3_BUCKET_NAME as string, // required
-    Key: "1.png",
+    // Key: "test/3.png",
+    Key: key,
   };
   const command = new GetObjectCommand(input);
-  const response = await s3Client.send(command);
-
-  // console.log(await response.Body?.transformToString())
-  // if (response.Body)
-  //   console.log(
-  //     "data:image/jpeg;base64," +
-  //       encode(await response.Body.transformToByteArray())
-  //   );
-
-  const url = await getSignedUrl(s3Client, command, { expiresIn: 300 })
-  // .then(data => {console.log(data)})
-
-  return NextResponse.json({ url });
-  // return url;
+  const obj = await s3Client.send(command);
+  // const response = new Response('https://photo.newsen.com/news_photo/2023/01/25/202301250913091510_1.jpg');
+  const response = new Response(await obj.Body?.transformToByteArray());
+  return response;
 }
+// export async function POST(request: Request) {
+// // export async function GET() {
+//   const body = await request.json();
+//   console.log(body);
+//   const input = {
+//     // GetObjectRequest
+//     Bucket: process.env.S3_BUCKET_NAME as string, // required
+//     Key: "1.png",
+//   };
+//   const command = new GetObjectCommand(input);
+
+//   const url = await getSignedUrl(s3Client, command, { expiresIn: 300 })
+//   // .then(data => {console.log(data)})
+
+//   return NextResponse.json({ url });
+//   // return url;
+// }
