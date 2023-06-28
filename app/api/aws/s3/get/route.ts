@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { GetObjectCommand, S3 } from "@aws-sdk/client-s3";
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const s3Client = new S3({
   region: process.env.AWS_REGION as string,
@@ -20,7 +20,7 @@ function encode(data: Uint8Array) {
 
 export async function GET(request: Request) {
   // return NextResponse.json({ test:'test' });
-  const key = request.url.split('?')[1]?.split('key=')[1]
+  const key = request.url.split("?")[1]?.split("key=")[1];
   console.log("key ::", key);
   const input = {
     // GetObjectRequest
@@ -31,8 +31,10 @@ export async function GET(request: Request) {
   const command = new GetObjectCommand(input);
   const obj = await s3Client.send(command);
   // const response = new Response('https://photo.newsen.com/news_photo/2023/01/25/202301250913091510_1.jpg');
-  const response = new Response(await obj.Body?.transformToByteArray());
-  return response;
+  if (obj.Body) {
+    const response = new Response(await obj.Body?.transformToByteArray());
+    return response;
+  } 
 }
 // export async function POST(request: Request) {
 // // export async function GET() {
