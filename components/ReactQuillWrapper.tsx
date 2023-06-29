@@ -43,8 +43,9 @@ function ReactQuillWrapper() {
     // tagDict: tagDict,
   };
   const [html, setHTML] = useState(true);
-  const [tagSelected,setTagSelected] = useState<Set<string>>(new Set([]));
-  const [category,setCategory] = useState('');
+  const [wide, setWide] = useState(true);
+  const [tagSelected, setTagSelected] = useState<Set<string>>(new Set([]));
+  const [category, setCategory] = useState("");
   const [state, setState] = useState(initialState);
   const handleChange = (value: string) => {
     setState({ ...state, content: value });
@@ -74,7 +75,7 @@ function ReactQuillWrapper() {
       // isPublished: false
       //id title desc tagSelected category
     };
-    console.log(requestObj)
+    console.log(requestObj);
     // fetch("/api/posts", {
     //   method: "POST",
     //   body: JSON.stringify(requestObj),
@@ -106,8 +107,8 @@ function ReactQuillWrapper() {
 
   return (
     <>
-      <div className="flex flex-row">
-        <div className="w-1/2">
+      <div className={`flex ${wide === true ? `flex-col` : `flex-row`}`}>
+        <div className={`${wide === true ? `w-full` : `w-1/2`} flex justify-center`}>
           <form onSubmit={(e) => submitHandler(e)}>
             <label htmlFor="id">Id</label>
             <input
@@ -161,7 +162,7 @@ function ReactQuillWrapper() {
                 ))}
               </div>
             </div>
-            category: 
+            category:
             <select
               className="shadow appearance-none border rounded w-11/12 py-2 px-1 text-black"
               value={category}
@@ -171,12 +172,21 @@ function ReactQuillWrapper() {
             >
               <option value={""}>선택없음</option>
               {/* {Array.from(tagSelected.values()).map((tag,i)=>{return (<option key={i} value={tag}>{tag}</option>)})} */}
-              {Object.entries(tagDict).map((tag,i)=>{return (<option key={i} value={tag[0]}>{tag[0]}</option>)})}
+              {Object.entries(tagDict).map((tag, i) => {
+                return (
+                  <option key={i} value={tag[0]}>
+                    {tag[0]}
+                  </option>
+                );
+              })}
             </select>
-            <br/>
+            <br />
             <nav className="gap-3 sm:gap-5 md:gap-10 lg:gap-10 xl:gap-10 2xl:gap-10 inline-flex justify-center sm:justify-center md:justify-right mt-5 sm:mt-5 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0  items-start text-black text-left font-medium">
               <div className="cursor-pointer" onClick={() => setHTML(!html)}>
                 html
+              </div>
+              <div className="cursor-pointer" onClick={() => setWide(!wide)}>
+                wide
               </div>
             </nav>
             {html === true ? (
@@ -197,14 +207,13 @@ function ReactQuillWrapper() {
                 />
               </>
             )}
-
             <button>Save</button>
             {/* <p>{state.content}</p> */}
           </form>
         </div>
         {/* <div className="w-1/2">{state.content}</div> */}
-        <div className="w-1/2 flex justify-center">
-          <div className=" prose prose-stone">
+        <div className={`${wide === true ? `w-full` : `w-1/2`} flex justify-center`}>
+          <div className="prose prose-stone lg:prose-lg mx-auto">
             <Markdown>{state.content}</Markdown>
           </div>
         </div>
