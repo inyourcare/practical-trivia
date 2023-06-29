@@ -189,7 +189,7 @@ export default function FoodRoulette() {
       {/* <div className="w-full flex justify-center">
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
       </div> */}
-      <div className="w-full flex justify-center items-center flex-col">
+      <div className="w-full flex justify-center items-center flex-col ">
         <h1>오늘 뭐먹지?</h1>
         <p>
           고민하고 결정하기도 아까운 시간. 오늘 뭐먹을지 대신 선택 해 드립니다.
@@ -197,7 +197,7 @@ export default function FoodRoulette() {
       </div>
       <br />
       <br />
-      <div className="flex flex-row justify-center items-center">
+      <div className="flex flex-row justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
         {`지금 위치로 부터 반경 `}
         <select
           onChange={(e) =>
@@ -247,9 +247,10 @@ export default function FoodRoulette() {
           </>
         )}
       </div>
+      <br/>
       <div>
         {restaurantsLoading === false && kinds.size > 0 && (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
             filter: 
             {Array.from(kinds).map((k) => (
               <button
@@ -275,6 +276,7 @@ export default function FoodRoulette() {
           </div>
         )}
       </div>
+      <br/>
 
       <div id={"list_item"} className="relative border">
         {restaurantsLoading ? (
@@ -284,7 +286,7 @@ export default function FoodRoulette() {
             <div
               // draggable
               key={i}
-              className="border border-gray-300 p-4 w-full mx-auto"
+              className="border border-gray-300 p-4 w-full mx-auto "
               id={restaurant.id}
             >
               {/* <div className="animate-pulse flex space-x-4"> */}
@@ -296,7 +298,7 @@ export default function FoodRoulette() {
                 >
                   <BiMove />
                 </div>
-                <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap ">
                   {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
                   {/* <div className="h-4 w-3/4 cursor-auto hover:pointer-events-none"> */}
                   <div className="no-cursor cursor-auto h-4 w-3/4 ">
