@@ -41,6 +41,7 @@ function ReactQuillWrapper() {
     desc: "",
     id: "",
     filename: "",
+    titleImage: "",
     // tagDict: tagDict,
   };
   const [html, setHTML] = useState(true);
@@ -66,6 +67,10 @@ function ReactQuillWrapper() {
   function handleDescChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
     setState({ ...state, desc: event.target.value });
+  }
+  function handleTitleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
+    setState({ ...state, titleImage: event.target.value });
   }
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -99,7 +104,18 @@ function ReactQuillWrapper() {
   function download() {
     var element = document.createElement('a');
     // element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(state.content));
+    const meta = `---
+id: "${state.id}"
+title: "${state.title}"
+description: "${state.desc}"
+date: "${new Date().toISOString()}"
+tags: [${Array.from(tagSelected).map(tag=>`"${tag}"`).join(',')}]
+category: ["${category}"]
+image: "${state.titleImage}"
+imageAlt: ""
+author: "실용주의 잡학사전"
+---\n\n`
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(meta + state.content));
     element.setAttribute('download', `${state.filename}.md`);
   
     element.style.display = 'none';
@@ -172,6 +188,17 @@ function ReactQuillWrapper() {
               name="desc"
               placeholder="Enter a desc"
               onChange={(e) => handleDescChange(e)}
+              required
+            />
+            <br />
+            <label htmlFor="titleImage">TitleImage</label>
+            <input
+              className="border ml-1"
+              type="text"
+              value={state.titleImage}
+              name="titleImage"
+              placeholder="/api/aws/s3/get?key=test/3.png"
+              onChange={(e) => handleTitleImageChange(e)}
               required
             />
             <br />
