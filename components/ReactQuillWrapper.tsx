@@ -40,6 +40,7 @@ function ReactQuillWrapper() {
     content: "",
     desc: "",
     id: "",
+    filename: "",
     // tagDict: tagDict,
   };
   const [html, setHTML] = useState(true);
@@ -58,25 +59,31 @@ function ReactQuillWrapper() {
     event.preventDefault();
     setState({ ...state, title: event.target.value });
   }
+  function handleFilenameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
+    setState({ ...state, filename: event.target.value });
+  }
   function handleDescChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
     setState({ ...state, desc: event.target.value });
   }
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    download()
 
-    const requestObj = {
-      id: state.id,
-      title: state.title,
-      content: state.content,
-      tags: Array.from(tagSelected.values()),
-      category: category,
-      // isDraft: false,
-      // isPublished: false
-      //id title desc tagSelected category
-    };
-    console.log(requestObj);
-    // fetch("/api/posts", {
+    // const requestObj = {
+    //   id: state.id,
+    //   title: state.title,
+    //   filename: state.filename,
+    //   content: state.content,
+    //   tags: Array.from(tagSelected.values()),
+    //   category: category,
+    //   // isDraft: false,
+    //   // isPublished: false
+    //   //id title desc tagSelected category
+    // };
+    // console.log(requestObj);
+    // fetch("/api/file/md", {
     //   method: "POST",
     //   body: JSON.stringify(requestObj),
     //   headers: {
@@ -87,6 +94,20 @@ function ReactQuillWrapper() {
     //   .then((data) => {
     //     console.log(data);
     //   });
+  }
+
+  function download() {
+    var element = document.createElement('a');
+    // element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(state.content));
+    element.setAttribute('download', `${state.filename}.md`);
+  
+    element.style.display = 'none';
+    document.body.appendChild(element);
+  
+    element.click();
+  
+    document.body.removeChild(element);
   }
 
   const tagItemsRef = useRef<HTMLSpanElement[]>([]);
@@ -129,6 +150,17 @@ function ReactQuillWrapper() {
               name="title"
               placeholder="Enter a title"
               onChange={(e) => handleTitleChange(e)}
+              required
+            />
+            <br />
+            <label htmlFor="filename">Filename</label>
+            <input
+              className="border ml-1"
+              type="text"
+              value={state.filename}
+              name="filename"
+              placeholder="Enter a filename"
+              onChange={(e) => handleFilenameChange(e)}
               required
             />
             <br />
