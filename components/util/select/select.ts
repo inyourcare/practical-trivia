@@ -1,6 +1,4 @@
-export function drawKong() {
-  console.log("kong");
-
+function floatingImage(imageUrl: string) {
   const container = document.getElementById("food-roulette-container");
   if (container) {
     console.log(
@@ -18,7 +16,7 @@ export function drawKong() {
     div.classList.add("flex");
     div.classList.add("justify-center");
     let img = document.createElement("img");
-    img.src = "/images/roulette/kong-transparent.png";
+    img.src = imageUrl;
     // element.style.position = 'absolute'
     // img.style.position = "sticky";
     img.style.position = "fixed";
@@ -35,6 +33,14 @@ export function drawKong() {
       container.removeChild(div);
     }, 1000);
   }
+}
+function drawKong() {
+  console.log("kong");
+  floatingImage("/images/roulette/kong-transparent.png");
+}
+function drawTurky() {
+  console.log("kong");
+  floatingImage("/images/roulette/turky-transparent.png");
 }
 
 function scrollFollowing(item: Element, selectingClass: string) {
@@ -71,17 +77,30 @@ function selecting() {
     idx = idx + direction * gap;
 
     scrollFollowing(arr[realIdx], selectingClass);
+
+    // console.log(idx,realIdx)
   }, intervalSeconds);
   const timeoutId = setTimeout(() => {
     clearTimeout(intervalId);
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      // if (Math.random() > 0.5 && oneMoreCnt < 1) {
-      if (1 > 0.5 && oneMoreCnt < 1) {
+      // const ran = Math.random();
+      const ran = 0.5;
+      if (ran < 0.33 && oneMoreCnt < 1) {
+        // if (1 > 0.5 && oneMoreCnt < 1) {
         // one more kong time
         drawKong();
         console.log("baby one more time");
+        curRecursion = 0;
+        intervalSeconds = initialIntervalSeconds;
+        timeoutSeconds = initialTimeoutSeconds;
+        oneMoreCnt += 1;
+        selecting();
+      } else if (ran > 0.33 && ran < 0.66 && oneMoreCnt < 1) {
+        drawTurky();
+        console.log("baby one more turn over time");
+        direction = -1 * direction;
         curRecursion = 0;
         intervalSeconds = initialIntervalSeconds;
         timeoutSeconds = initialTimeoutSeconds;
@@ -128,6 +147,8 @@ const select = (
   arr = elems;
   selectingClass = selectingClassString;
   selectedClass = selectedClassString;
+  direction = 1;
+  gap = 1;
   curRecursion = 0;
   lastCallback = finalCallback;
   intervalSeconds = initialIntervalSeconds;

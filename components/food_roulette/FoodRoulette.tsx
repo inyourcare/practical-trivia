@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { BiTrash, BiMove } from "react-icons/bi";
-import select, { drawKong } from "../util/select/select";
+import select from "../util/select/select";
 import { RestaurantInterface } from "../util/type";
 // import styles from "./FoodRoulette.module.css";
 import "./foodroulette.css";
