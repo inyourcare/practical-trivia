@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { BiTrash, BiMove } from "react-icons/bi";
-import select from "../util/select/select";
+import select, { drawKong } from "../util/select/select";
 import { RestaurantInterface } from "../util/type";
 // import styles from "./FoodRoulette.module.css";
 import "./foodroulette.css";
@@ -154,6 +154,7 @@ export default function FoodRoulette() {
     }
   }
   function selectOne() {
+    // drawKong()
     setState({ ...state, lsLoading: true });
     const listItem = document.getElementById("list_item");
     console.log("selectOne");
@@ -167,7 +168,7 @@ export default function FoodRoulette() {
       const selectingClass = `roulette-selecting`;
       const selectedClass = `roulette-selected`;
       // className={`${styles.subText} mb-2`}
-      select(arr, selectingClass,selectedClass, () => {
+      select(arr, selectingClass, selectedClass, () => {
         setState({ ...state, lsLoading: false });
       });
     }
@@ -177,8 +178,12 @@ export default function FoodRoulette() {
     elem.classList.add("filtered");
     elem.classList.add("bg-gray-400");
   }
+
   return (
-    <div className="w-full flex justify-center flex-col">
+    <div
+      id="food-roulette-container"
+      className="w-full flex justify-center flex-col"
+    >
       {/* <div className="w-full flex justify-center">
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
       </div> */}
@@ -213,6 +218,7 @@ export default function FoodRoulette() {
         >
           찾기
         </button>
+        {/* <button onClick={() => drawKong()}>kong test</button> */}
         {restaurants.length > 0 && (
           <>
             {`total: ${restaurants.length}`}
@@ -240,11 +246,11 @@ export default function FoodRoulette() {
           </>
         )}
       </div>
-      <br/>
+      <br />
       <div>
         {restaurantsLoading === false && kinds.size > 0 && (
           <div className="flex justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
-            filter: 
+            filter:
             {Array.from(kinds).map((k) => (
               <button
                 key={k}
@@ -257,9 +263,9 @@ export default function FoodRoulette() {
                       card && filteringElem(card);
                     });
                   }
-                  e.currentTarget.classList.add('bg-blue-500')
-                  e.currentTarget.classList.remove('bg-blue-200')
-                  e.currentTarget.disabled = true
+                  e.currentTarget.classList.add("bg-blue-500");
+                  e.currentTarget.classList.remove("bg-blue-200");
+                  e.currentTarget.disabled = true;
                 }}
                 className="border ml-1 bg-blue-200 hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
               >
@@ -269,7 +275,7 @@ export default function FoodRoulette() {
           </div>
         )}
       </div>
-      <br/>
+      <br />
 
       <div id={"list_item"} className="relative border">
         {restaurantsLoading ? (

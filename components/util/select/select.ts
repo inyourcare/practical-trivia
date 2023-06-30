@@ -1,3 +1,41 @@
+export function drawKong() {
+  console.log("kong");
+
+  const container = document.getElementById("food-roulette-container");
+  if (container) {
+    console.log(
+      container.clientTop,
+      container.clientLeft,
+      container.clientHeight
+    );
+    let div = document.createElement("div");
+    div.style.position = "absolute";
+    div.style.top = `${container.getBoundingClientRect().top}px`;
+    div.style.left = `${container.getBoundingClientRect().left}px`;
+    div.style.width = `${container.clientWidth}px`;
+    div.style.height = `${container.clientHeight}px`;
+    // div.style.backgroundColor = "red";
+    div.classList.add("flex");
+    div.classList.add("justify-center");
+    let img = document.createElement("img");
+    img.src = "/images/roulette/kong-transparent.png";
+    // element.style.position = 'absolute'
+    img.style.position = "sticky";
+    // element.style.top = '0px'
+    // element.style.left = '0px'
+    img.style.top = "200px";
+    img.style.width = "500px";
+    img.style.height = "500px";
+    div.append(img);
+    container.appendChild(div);
+    // document.body.appendChild(div);
+    const timeout = setTimeout(() => {
+      // document.body.removeChild(div);
+      container.removeChild(div);
+    }, 1000);
+  }
+}
+
 function scrollFollowing(item: Element, selectingClass: string) {
   const top = item.getBoundingClientRect().top;
   if (top) {
@@ -16,6 +54,7 @@ function afterSelected(finalCallback: any) {
   selected?.classList.add(selectedClass);
   finalCallback();
 }
+
 function selecting() {
   const intervalId = setInterval(() => {
     if (idx === 0) idx = arr.length;
@@ -37,7 +76,10 @@ function selecting() {
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      if (Math.random() > 0.5 && oneMoreCnt < 1) {
+      // if (Math.random() > 0.5 && oneMoreCnt < 1) {
+      if (1 > 0.5 && oneMoreCnt < 1) {
+        // one more kong time
+        drawKong();
         console.log("baby one more time");
         curRecursion = 0;
         intervalSeconds = initialIntervalSeconds;
