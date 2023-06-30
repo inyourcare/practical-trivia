@@ -22,13 +22,19 @@ function selecting(
   timeoutSeconds: number
 ) {
   const intervalId = setInterval(() => {
+    
+    if (idx === 0) idx = arr.length;
+
     const realIdx = Math.abs(idx) % arr.length;
     const prevIdx = (arr.length + idx - 1) % arr.length;
     const afterIdx = (arr.length + idx + 1) % arr.length;
     arr[prevIdx].classList.remove(selectingClass);
     arr[afterIdx].classList.remove(selectingClass);
     arr[realIdx].classList.add(selectingClass);
-    idx += 1;
+    
+    console.log(idx,realIdx)
+    idx = idx + (direction * gap);
+
     scrollFollowing(arr[realIdx], selectingClass);
   }, intervalSeconds);
   const timeoutId = setTimeout(() => {
@@ -43,6 +49,8 @@ let idx: number = 0;
 let arr: Element[] = [];
 let selectingClass: string;
 let selectedClass: string;
+let direction = -1;
+let gap = 1;
 
 const select = (
   elems: Element[],
