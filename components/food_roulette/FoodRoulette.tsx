@@ -164,9 +164,10 @@ export default function FoodRoulette() {
         if (!item.classList.contains("filtered")) arr.push(item);
       }
       // const selectingClass = `${styles.selecting}`;
-      const selectingClass = `selecting`;
+      const selectingClass = `roulette-selecting`;
+      const selectedClass = `roulette-selected`;
       // className={`${styles.subText} mb-2`}
-      select(arr, selectingClass, () => {
+      select(arr, selectingClass,selectedClass, () => {
         setState({ ...state, lsLoading: false });
       });
     }

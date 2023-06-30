@@ -1,3 +1,6 @@
-.selecting {
+.roulette-selecting {
   background-color: #febf70
+}
+.roulette-selected {
+  background-color: #fffddd
 }
