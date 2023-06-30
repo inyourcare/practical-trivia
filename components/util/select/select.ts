@@ -17,9 +17,9 @@ function selecting(
   selectingClass: string,
   finalCallback: any,
   intervalSeconds: number,
-  timeoutSeconds: number
+  timeoutSeconds: number,
+  idx:number
 ) {
-  let idx = Math.floor(Math.random() * (arr.length - 0 + 1) + 0);
   const intervalId = setInterval(() => {
     const realIdx = idx % arr.length;
     const prevIdx = (arr.length + idx - 1) % arr.length;
@@ -42,7 +42,10 @@ const select = (arr: Element[], selectingClass: string, finalCallback: any) => {
     finalCallback();
     return;
   }
+  
+  let idx = Math.floor(Math.random() * (arr.length - 0 + 1) + 0);
   arr.forEach(elem=>elem.classList.remove(selectingClass))
+
   selecting(
     arr,
     selectingClass,
@@ -53,11 +56,13 @@ const select = (arr: Element[], selectingClass: string, finalCallback: any) => {
         // () => selecting(arr, selectingClass, finalCallback, 200, 1000),
         finalCallback,
         100,
-        2000
+        2000,
+        idx
       ),
     // finalCallback,
     50,
-    3000
+    3000,
+    idx
   );
 };
 
