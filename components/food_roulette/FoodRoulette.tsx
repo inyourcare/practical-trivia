@@ -179,6 +179,17 @@ export default function FoodRoulette() {
     elem.classList.add("bg-gray-400");
   }
 
+  function onTitleClick(url:string) {
+    // const openPopup = () =>
+    console.log('onTitleClick')
+    window.open(
+      // "/popup/youtube?videoId=QykE0eswFH0",
+      // "http://place.map.kakao.com/736810177",
+      url,
+      "popup",
+      "top=100, left=300, width=1200, height=600, status=no, menubar=no, toolbar=no, resizable=no"
+    );
+  }
   return (
     <div
       id="food-roulette-container"
@@ -300,7 +311,7 @@ export default function FoodRoulette() {
                 <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap ">
                   {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
                   {/* <div className="h-4 w-3/4 cursor-auto hover:pointer-events-none"> */}
-                  <div className="no-cursor cursor-auto h-4 w-3/4 ">
+                  <div className="no-cursor cursor-pointer h-4 w-3/4 " onClick={()=>onTitleClick(restaurant.place_url)}>
                     <strong>
                       {restaurant.place_name}({restaurant.category_name})
                     </strong>
@@ -314,7 +325,7 @@ export default function FoodRoulette() {
                     {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
                     <div className="no-cursor cursor-auto h-4 rounded w-5/6">
                       거리: {restaurant.distance}m / 번호: {restaurant.phone} /
-                      url: {restaurant.place_url}
+                      {/* url: {restaurant.place_url} */}
                     </div>
                   </div>
                 </div>
