@@ -1,4 +1,4 @@
-function floatingImage(imageUrl: string) {
+function floatingImage(imageUrl: string, text: string) {
   const container = document.getElementById("food-roulette-container");
   if (container) {
     console.log(
@@ -12,20 +12,29 @@ function floatingImage(imageUrl: string) {
     div.style.left = `${container.getBoundingClientRect().left}px`;
     div.style.width = `${container.clientWidth}px`;
     div.style.height = `${container.clientHeight}px`;
-    // div.style.backgroundColor = "red";
     div.classList.add("flex");
     div.classList.add("justify-center");
+    let box = document.createElement("div");
+    // box.classList.add("w-full");
+    box.classList.add("flex");
+    box.classList.add("justify-center");
+    box.classList.add("flex-col");
+    box.style.position = "fixed";
+    box.style.top = "10%";
     let img = document.createElement("img");
     img.src = imageUrl;
-    // element.style.position = 'absolute'
-    // img.style.position = "sticky";
-    img.style.position = "fixed";
-    // element.style.top = '0px'
-    // element.style.left = '0px'
-    img.style.top = "200px";
     img.style.width = "500px";
     img.style.height = "500px";
-    div.append(img);
+    let p = document.createElement("p");
+    p.textContent = text;
+    p.classList.add("text-center");
+    p.classList.add("font-black");
+    p.classList.add("text-2xl");
+    box.append(img);
+    box.append(p);
+    // div.append(img);
+    // div.append(p);
+    div.append(box);
     container.appendChild(div);
     // document.body.appendChild(div);
     const timeout = setTimeout(() => {
@@ -34,13 +43,13 @@ function floatingImage(imageUrl: string) {
     }, 1000);
   }
 }
-function drawKong() {
+export function drawKong() {
   console.log("kong");
-  floatingImage("/images/roulette/kong-transparent.png");
+  floatingImage("/images/roulette/kong-transparent.png", "222222222222");
 }
 function drawTurky() {
   console.log("kong");
-  floatingImage("/images/roulette/turky-transparent.png");
+  floatingImage("/images/roulette/turky-transparent.png", "힝 속았지");
 }
 
 function scrollFollowing(item: Element, selectingClass: string) {
@@ -85,8 +94,9 @@ function selecting() {
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      // const ran = Math.random();
-      const ran = 0.5;
+      const ran = Math.random();
+      // const ran = 0.2;
+      // const ran = 0.5;
       if (ran < 0.33 && oneMoreCnt < 1) {
         // if (1 > 0.5 && oneMoreCnt < 1) {
         // one more kong time

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { BiTrash, BiMove } from "react-icons/bi";
-import select from "../util/select/select";
+import select, { drawKong } from "../util/select/select";
 import { RestaurantInterface } from "../util/type";
 // import styles from "./FoodRoulette.module.css";
 import "./foodroulette.css";
@@ -218,7 +218,7 @@ export default function FoodRoulette() {
         >
           찾기
         </button>
-        {/* <button onClick={() => drawKong()}>kong test</button> */}
+        <button onClick={() => drawKong()}>kong test</button>
         {restaurants.length > 0 && (
           <>
             {`total: ${restaurants.length}`}
