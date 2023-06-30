@@ -49,7 +49,10 @@ export function drawKong() {
 }
 function drawTurky() {
   console.log("kong");
-  floatingImage("/images/roulette/turky-transparent.png", "힝 속았지");
+  floatingImage(
+    "/images/roulette/turky-transparent.png",
+    `힝 ${oneMoreCnt > 0 ? "또 " : ""}속았지`
+  );
 }
 
 function scrollFollowing(item: Element, selectingClass: string) {
@@ -95,9 +98,9 @@ function selecting() {
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
       const ran = Math.random();
-      // const ran = 0.2;
-      // const ran = 0.5;
-      if (ran < 0.33 && oneMoreCnt < 1) {
+      // const ran = 0.1;
+      // const ran = 0.3;
+      if (ran < 0.2 && oneMoreCnt < maxMorCount) {
         // if (1 > 0.5 && oneMoreCnt < 1) {
         // one more kong time
         drawKong();
@@ -107,7 +110,7 @@ function selecting() {
         timeoutSeconds = initialTimeoutSeconds;
         oneMoreCnt += 1;
         selecting();
-      } else if (ran > 0.33 && ran < 0.66 && oneMoreCnt < 1) {
+      } else if (ran > 0.2 && ran < 0.4 && oneMoreCnt < maxMorCount) {
         drawTurky();
         console.log("baby one more turn over time");
         direction = -1 * direction;
@@ -118,8 +121,8 @@ function selecting() {
         selecting();
       } else afterSelected(lastCallback);
     } else {
-      intervalSeconds = 2 * intervalSeconds;
-      timeoutSeconds = timeoutSeconds / 2;
+      intervalSeconds = 3 * intervalSeconds;
+      timeoutSeconds = timeoutSeconds / 3;
       selecting();
     }
   }, timeoutSeconds);
@@ -127,6 +130,7 @@ function selecting() {
 
 // global variables
 // nee to initialize variables in select function scope
+const maxMorCount = 3;
 let idx: number = 0;
 let arr: Element[] = [];
 let selectingClass: string;
