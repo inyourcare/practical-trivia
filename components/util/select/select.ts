@@ -20,7 +20,8 @@ export function drawKong() {
     let img = document.createElement("img");
     img.src = "/images/roulette/kong-transparent.png";
     // element.style.position = 'absolute'
-    img.style.position = "sticky";
+    // img.style.position = "sticky";
+    img.style.position = "fixed";
     // element.style.top = '0px'
     // element.style.left = '0px'
     img.style.top = "200px";
