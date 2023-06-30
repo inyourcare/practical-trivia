@@ -1,8 +1,4 @@
 function scrollFollowing(item: Element, selectingClass: string) {
-  // const top = arr
-  //   .filter((item) => item.classList.contains(selectingClass))
-  //   .pop()
-  //   ?.getBoundingClientRect().top;
   const top = item.getBoundingClientRect().top;
   if (top) {
     const y = top + window.scrollY;
@@ -12,12 +8,7 @@ function scrollFollowing(item: Element, selectingClass: string) {
     });
   }
 }
-function afterSelected(
-  arr: Element[],
-  selectingClass: string,
-  selectedClass: string,
-  finalCallback: any
-) {
+function afterSelected(finalCallback: any) {
   const selected = arr
     .filter((item) => item.classList.contains(selectingClass))
     .pop();
@@ -26,16 +17,12 @@ function afterSelected(
   finalCallback();
 }
 function selecting(
-  arr: Element[],
-  selectingClass: string,
   callback: any,
   intervalSeconds: number,
   timeoutSeconds: number
-  // idx: number
 ) {
   const intervalId = setInterval(() => {
     const realIdx = Math.abs(idx) % arr.length;
-    // console.log('interval realidx', realIdx , intervalSeconds, timeoutSeconds)
     const prevIdx = (arr.length + idx - 1) % arr.length;
     const afterIdx = (arr.length + idx + 1) % arr.length;
     arr[prevIdx].classList.remove(selectingClass);
@@ -45,29 +32,33 @@ function selecting(
     scrollFollowing(arr[realIdx], selectingClass);
   }, intervalSeconds);
   const timeoutId = setTimeout(() => {
-    // console.log("clear timeout3");
     clearTimeout(intervalId);
     clearInterval(timeoutId);
-    // setState({ ...state, lsLoading: false });
     callback();
   }, timeoutSeconds);
 }
 
+// global variables
 let idx: number = 0;
+let arr: Element[] = [];
+let selectingClass: string;
+let selectedClass: string;
+
 const select = (
-  arr: Element[],
-  selectingClass: string,
-  selectedClass: string,
+  elems: Element[],
+  selectingClassString: string,
+  selectedClassString: string,
   finalCallback: any
 ) => {
-  // let idx = Math.floor(Math.random() * (arr.length - 0 + 1) + 0);
-  if (arr.length < 1) {
+  if (elems.length < 1) {
     finalCallback();
     return;
   }
 
-  // let idx = Math.floor(Math.random() * (arr.length - 0 + 1) + 0);
   idx = Math.floor(Math.random() * (arr.length - 0 + 1) + 0);
+  arr = elems;
+  selectingClass = selectingClassString;
+  selectedClass = selectedClassString;
 
   arr.forEach((elem) => {
     elem.classList.remove(selectingClass);
@@ -75,32 +66,14 @@ const select = (
   });
 
   selecting(
-    arr,
-    selectingClass,
     () =>
       selecting(
-        arr,
-        selectingClass,
-        () =>
-          selecting(
-            arr,
-            selectingClass,
-            () =>
-              afterSelected(arr, selectingClass, selectedClass, finalCallback),
-            200,
-            1000
-          ),
-        // () => {
-        //   afterSelected(arr, selectingClass, selectedClass, finalCallback);
-        // },
+        () => selecting(() => afterSelected(finalCallback), 200, 1000),
         100,
         2000
-        // idx
       ),
-    // finalCallback,
     50,
     3000
-    // idx
   );
 };
 
