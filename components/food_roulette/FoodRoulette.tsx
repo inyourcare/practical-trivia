@@ -190,6 +190,9 @@ export default function FoodRoulette() {
       "top=100, left=300, width=1200, height=600, status=no, menubar=no, toolbar=no, resizable=no"
     );
   }
+  function onAddressClick(x:string,y:string) {
+    console.log('onAddressClick')
+  }
   return (
     <div
       id="food-roulette-container"
@@ -229,7 +232,7 @@ export default function FoodRoulette() {
         >
           찾기
         </button>
-        <button onClick={() => drawKong()}>kong test</button>
+        {/* <button onClick={() => drawKong()}>kong test</button> */}
         {restaurants.length > 0 && (
           <>
             {`total: ${restaurants.length}`}
@@ -287,6 +290,9 @@ export default function FoodRoulette() {
         )}
       </div>
       <br />
+      <p className="text-sm ">※제목을 클릭하면 상세페이지 팝업을 엽니다.</p>
+      {/* <p className="text-sm ">※주소를 클릭하면 지도를 보여줍니다.</p> */}
+      {/* <br /> */}
 
       <div id={"list_item"} className="relative border">
         {restaurantsLoading ? (
@@ -304,10 +310,11 @@ export default function FoodRoulette() {
                 <div
                   className={`${
                     state.lsLoading === false ? "handle" : ""
-                  } hover:cursor-move hover:bg-gray-100 rounded-full h-12 w-12 flex justify-center items-center`}
+                  } hidden lg:block hover:cursor-move hover:bg-gray-100 lg:rounded-full lg:h-12 lg:w-12 lg:flex lg:justify-center lg:items-center`}
                 >
                   <BiMove />
                 </div>
+                {/* <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap "> */}
                 <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap ">
                   {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
                   {/* <div className="h-4 w-3/4 cursor-auto hover:pointer-events-none"> */}
@@ -318,7 +325,7 @@ export default function FoodRoulette() {
                   </div>
                   <div className="space-y-2">
                     {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
-                    <div className="no-cursor cursor-auto h-4 rounded">
+                    <div className="no-cursor cursor-pointer h-4 rounded" onClick={()=>onAddressClick(restaurant.x,restaurant.y)}>
                       {restaurant.road_address_name}
                       {/* / ( {restaurant.x} , {restaurant.y} ) */}
                     </div>
@@ -330,7 +337,7 @@ export default function FoodRoulette() {
                   </div>
                 </div>
                 <div
-                  className="rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
+                  className="hidden lg:block rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
                   onClick={(e) => {
                     if (state.lsLoading === false) {
                       // e.currentTarget.parentElement?.parentElement?.classList.add(
