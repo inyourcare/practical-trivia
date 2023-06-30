@@ -3,8 +3,10 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { BiTrash, BiMove } from "react-icons/bi";
-import select from "./util/select/select";
-import { RestaurantInterface } from "./util/type";
+import select from "../util/select/select";
+import { RestaurantInterface } from "../util/type";
+// import styles from "./FoodRoulette.module.css";
+import "./foodroulette.css";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -161,21 +163,11 @@ export default function FoodRoulette() {
         const item = listItem?.children[i];
         if (!item.classList.contains("filtered")) arr.push(item);
       }
-      const selectingClass = "bg-gray-300";
+      // const selectingClass = `${styles.selecting}`;
+      const selectingClass = `selecting`;
+      // className={`${styles.subText} mb-2`}
       select(arr, selectingClass, () => {
         setState({ ...state, lsLoading: false });
-        // arr.filter((item) => item.classList.contains(selectingClass)).pop()?.scrollIntoView()
-        // const top = arr
-        //   .filter((item) => item.classList.contains(selectingClass))
-        //   .pop()
-        //   ?.getBoundingClientRect().top;
-        // if (top) {
-        //   const y = top + window.scrollY;
-        //   window.scroll({
-        //     top: y - 200,
-        //     behavior: "smooth",
-        //   });
-        // }
       });
     }
   }

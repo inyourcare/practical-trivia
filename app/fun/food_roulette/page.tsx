@@ -1,6 +1,6 @@
 import getPostContent from "@/components/post/getPostContent";
 import Nav from "@/components/Nav";
-import FoodRoulette from "@/components/FoodRoulette";
+import FoodRoulette from "@/components/food_roulette/FoodRoulette";
 import DraggableTest from "@/components/test/draggable";
 import DraggableTest2 from "@/components/test/draggable2";
 import Script from "next/script";

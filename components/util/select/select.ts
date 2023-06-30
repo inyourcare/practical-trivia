@@ -42,6 +42,7 @@ const select = (arr: Element[], selectingClass: string, finalCallback: any) => {
     finalCallback();
     return;
   }
+  arr.forEach(elem=>elem.classList.remove(selectingClass))
   selecting(
     arr,
     selectingClass,
@@ -49,8 +50,8 @@ const select = (arr: Element[], selectingClass: string, finalCallback: any) => {
       selecting(
         arr,
         selectingClass,
-        () => selecting(arr, selectingClass, finalCallback, 200, 1000),
-        // finalCallback,
+        // () => selecting(arr, selectingClass, finalCallback, 200, 1000),
+        finalCallback,
         100,
         2000
       ),
