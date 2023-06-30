@@ -16,23 +16,19 @@ function afterSelected(finalCallback: any) {
   selected?.classList.add(selectedClass);
   finalCallback();
 }
-function selecting(
-  intervalSeconds: number,
-  timeoutSeconds: number
-) {
+function selecting() {
   const intervalId = setInterval(() => {
-    
     if (idx === 0) idx = arr.length;
 
     const realIdx = Math.abs(idx) % arr.length;
-    const prevIdx = (arr.length + idx - (direction * gap)) % arr.length;
-    const afterIdx = (arr.length + idx + (direction * gap)) % arr.length;
+    const prevIdx = (arr.length + idx - direction * gap) % arr.length;
+    const afterIdx = (arr.length + idx + direction * gap) % arr.length;
     arr[prevIdx].classList.remove(selectingClass);
     arr[afterIdx].classList.remove(selectingClass);
     arr[realIdx].classList.add(selectingClass);
-    
-    console.log(idx,realIdx)
-    idx = idx + (direction * gap);
+
+    // console.log(idx, realIdx);
+    idx = idx + direction * gap;
 
     scrollFollowing(arr[realIdx], selectingClass);
   }, intervalSeconds);
@@ -40,10 +36,12 @@ function selecting(
     clearTimeout(intervalId);
     clearInterval(timeoutId);
     curRecursion += 1;
-    if (maxRecursion <= curRecursion){
-      afterSelected(lastCallback)
+    if (maxRecursion <= curRecursion) {
+      afterSelected(lastCallback);
     } else {
-      selecting(intervalSeconds*2,timeoutSeconds/2)
+      intervalSeconds = 2 * intervalSeconds;
+      timeoutSeconds = timeoutSeconds / 2;
+      selecting();
     }
   }, timeoutSeconds);
 }
@@ -57,7 +55,9 @@ let direction = 1;
 let gap = 1;
 let maxRecursion = 2;
 let curRecursion = 0;
-let lastCallback:any;
+let lastCallback: any;
+let intervalSeconds = 50;
+let timeoutSeconds = 3000;
 
 const select = (
   elems: Element[],
@@ -76,13 +76,15 @@ const select = (
   selectedClass = selectedClassString;
   curRecursion = 0;
   lastCallback = finalCallback;
+  intervalSeconds = 50;
+  timeoutSeconds = 3000;
 
   arr.forEach((elem) => {
     elem.classList.remove(selectingClass);
     elem.classList.remove(selectedClass);
   });
 
-  selecting(50,3000)
+  selecting();
 };
 
 export default select;
