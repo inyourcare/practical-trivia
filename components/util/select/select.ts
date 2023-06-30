@@ -17,7 +17,6 @@ function afterSelected(finalCallback: any) {
   finalCallback();
 }
 function selecting(
-  callback: any,
   intervalSeconds: number,
   timeoutSeconds: number
 ) {
@@ -26,8 +25,8 @@ function selecting(
     if (idx === 0) idx = arr.length;
 
     const realIdx = Math.abs(idx) % arr.length;
-    const prevIdx = (arr.length + idx - 1) % arr.length;
-    const afterIdx = (arr.length + idx + 1) % arr.length;
+    const prevIdx = (arr.length + idx - (direction * gap)) % arr.length;
+    const afterIdx = (arr.length + idx + (direction * gap)) % arr.length;
     arr[prevIdx].classList.remove(selectingClass);
     arr[afterIdx].classList.remove(selectingClass);
     arr[realIdx].classList.add(selectingClass);
@@ -40,7 +39,12 @@ function selecting(
   const timeoutId = setTimeout(() => {
     clearTimeout(intervalId);
     clearInterval(timeoutId);
-    callback();
+    curRecursion += 1;
+    if (maxRecursion <= curRecursion){
+      afterSelected(lastCallback)
+    } else {
+      selecting(intervalSeconds*2,timeoutSeconds/2)
+    }
   }, timeoutSeconds);
 }
 
@@ -49,8 +53,11 @@ let idx: number = 0;
 let arr: Element[] = [];
 let selectingClass: string;
 let selectedClass: string;
-let direction = -1;
+let direction = 1;
 let gap = 1;
+let maxRecursion = 2;
+let curRecursion = 0;
+let lastCallback:any;
 
 const select = (
   elems: Element[],
@@ -67,22 +74,15 @@ const select = (
   arr = elems;
   selectingClass = selectingClassString;
   selectedClass = selectedClassString;
+  curRecursion = 0;
+  lastCallback = finalCallback;
 
   arr.forEach((elem) => {
     elem.classList.remove(selectingClass);
     elem.classList.remove(selectedClass);
   });
 
-  selecting(
-    () =>
-      selecting(
-        () => selecting(() => afterSelected(finalCallback), 200, 1000),
-        100,
-        2000
-      ),
-    50,
-    3000
-  );
+  selecting(50,3000)
 };
 
 export default select;
