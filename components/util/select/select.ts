@@ -37,7 +37,14 @@ function selecting() {
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      afterSelected(lastCallback);
+      if (Math.random() > 0.5 && oneMoreCnt < 1) {
+        console.log("baby one more time");
+        curRecursion = 0;
+        intervalSeconds = initialIntervalSeconds;
+        timeoutSeconds = initialTimeoutSeconds;
+        oneMoreCnt += 1;
+        selecting();
+      } else afterSelected(lastCallback);
     } else {
       intervalSeconds = 2 * intervalSeconds;
       timeoutSeconds = timeoutSeconds / 2;
@@ -47,6 +54,7 @@ function selecting() {
 }
 
 // global variables
+// nee to initialize variables in select function scope
 let idx: number = 0;
 let arr: Element[] = [];
 let selectingClass: string;
@@ -56,8 +64,11 @@ let gap = 1;
 let maxRecursion = 2;
 let curRecursion = 0;
 let lastCallback: any;
-let intervalSeconds = 50;
-let timeoutSeconds = 3000;
+const initialIntervalSeconds = 50;
+const initialTimeoutSeconds = 3000;
+let intervalSeconds = initialIntervalSeconds;
+let timeoutSeconds = initialTimeoutSeconds;
+let oneMoreCnt = 0;
 
 const select = (
   elems: Element[],
@@ -76,8 +87,9 @@ const select = (
   selectedClass = selectedClassString;
   curRecursion = 0;
   lastCallback = finalCallback;
-  intervalSeconds = 50;
-  timeoutSeconds = 3000;
+  intervalSeconds = initialIntervalSeconds;
+  timeoutSeconds = initialTimeoutSeconds;
+  oneMoreCnt = 0;
 
   arr.forEach((elem) => {
     elem.classList.remove(selectingClass);
