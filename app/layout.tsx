@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import "./globals.css";
 import { Noto_Serif_KR } from "next/font/google";
 import Footer from "@/components/Footer";
@@ -13,6 +14,7 @@ const notoSerifKr = Noto_Serif_KR({ weight: "400", subsets: ["latin"] });
 declare global {
   interface Window {
     Kakao: any;
+    kakao: any;
     YT: any;
     naver: any;
     dataLayer: any;
@@ -36,21 +38,30 @@ export default function RootLayout({
     <html lang="ko">
       {/* <Head> */}
       <head>
+        {/* 카카오 */}
         <script
           defer
           src="https://developers.kakao.com/sdk/js/kakao.min.js"
         ></script>
-        {/* <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"/> */}
+        {/* <script
+          defer
+          type="text/javascript"
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_JAVASCRIPT_KEY}`}
+        ></script> */}
+        <Script
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_JAVASCRIPT_KEY}&libraries=services,clusterer&autoload=false`}
+          strategy="beforeInteractive"
+        />
+        {/* 네이버 */}
         <script
           defer
           src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NAVER_CLIENT_ID}`}
         />
-        {/* <Script src="https://developers.kakao.com/sdk/js/kakao.min.js" />  */}
-        {/* <script defer src="https://www.youtube.com/iframe_api"></script> */}
         <meta
           name="naver-site-verification"
           content="2bcce2baa1fc6bf384c15035f653a7c768d5e6bc"
         />
+        {/* 구글 */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8425397323378076"
@@ -72,7 +83,7 @@ export default function RootLayout({
         `}
         </Script>
 
-        {/* <script defer src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script> */}
+        {/* 드래그위한 Sortable */}
         <script defer src="/js/sortable/Sortable.min.js"></script>
       </head>
       {/* </Head> */}

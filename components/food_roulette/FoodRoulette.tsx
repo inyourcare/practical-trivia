@@ -7,6 +7,7 @@ import select, { drawKong } from "../util/select/select";
 import { RestaurantInterface } from "../util/type";
 // import styles from "./FoodRoulette.module.css";
 import "./foodroulette.css";
+import Kakaomap from "../map/Kakaomap";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -367,11 +368,8 @@ export default function FoodRoulette() {
           ))
         )}
       </div>
-      {/* / restaurants {restaurants} */}
-      {/* <div
-        className="w-full flex justify-center"
-        dangerouslySetInnerHTML={{ __html: restaurants }}
-      ></div> */}
+      
+      {/* <Kakaomap width={500} height={500} lat={35.8992601} lon={128.6215081}/> */}
     </div>
   );
 }
