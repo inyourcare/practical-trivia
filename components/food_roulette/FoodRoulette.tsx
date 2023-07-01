@@ -49,9 +49,12 @@ export default function FoodRoulette() {
         // setState({ ...state, lsLoading: false });
       },
       {
-        enableHighAccuracy: false,
-        maximumAge: 0,
-        timeout: Infinity,
+        // enableHighAccuracy: false,
+        enableHighAccuracy: true,
+        // maximumAge: 0,
+        maximumAge: 10000,
+        // timeout: Infinity,
+        timeout: 5000,
       }
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
