@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import "./globals.css";
 import { Noto_Serif_KR } from "next/font/google";
 import Footer from "@/components/Footer";
@@ -51,7 +50,8 @@ export default function RootLayout({
         <Script
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_JAVASCRIPT_KEY}&libraries=services,clusterer&autoload=false`}
           // src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_JAVASCRIPT_KEY}`}
-          strategy="beforeInteractive"
+          // strategy="beforeInteractive"
+          strategy="lazyOnload"
         />
         {/* 네이버 */}
         <script
