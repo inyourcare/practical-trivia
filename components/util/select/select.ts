@@ -1,11 +1,11 @@
 function floatingImage(imageUrl: string, text: string) {
   const container = document.getElementById("food-roulette-container");
   if (container) {
-    console.log(
-      container.clientTop,
-      container.clientLeft,
-      container.clientHeight
-    );
+    // console.log(
+    //   container.clientTop,
+    //   container.clientLeft,
+    //   container.clientHeight
+    // );
     let div = document.createElement("div");
     div.style.position = "absolute";
     div.style.top = `${container.getBoundingClientRect().top}px`;
@@ -55,11 +55,11 @@ function floatingImage(imageUrl: string, text: string) {
   }
 }
 export function drawKong() {
-  console.log("kong");
+  // console.log("drawKong");
   floatingImage("/images/roulette/kong-transparent.png", "22 22");
 }
 function drawTurky() {
-  console.log("kong");
+  // console.log("drawTurky");
   floatingImage(
     "/images/roulette/turky-transparent.png",
     `힝 ${oneMoreCnt > 0 ? "또 " : ""}속았지`
@@ -108,9 +108,9 @@ function selecting() {
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      // const ran = Math.random();
+      const ran = Math.random();
       // const ran = 0.1;
-      const ran = 0.3;
+      // const ran = 0.3;
       if (ran < 0.2 && oneMoreCnt < maxMorCount) {
         // if (1 > 0.5 && oneMoreCnt < 1) {
         // one more kong time

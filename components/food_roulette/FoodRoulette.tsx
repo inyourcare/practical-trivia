@@ -29,9 +29,11 @@ export default function FoodRoulette() {
   const [kindMap] = useState(new Map<string, Array<RestaurantInterface>>());
   useEffect(() => {
     const { geolocation } = navigator;
+    // alert('getCurrentPosition use effect')
 
     geolocation.getCurrentPosition(
       (position) => {
+        // alert('getCurrentPosition' + position.coords.latitude + ',' + position.coords.latitude)
         // success.
         // console.log("success", state, position.coords);
         setState({
@@ -45,6 +47,7 @@ export default function FoodRoulette() {
       },
       (error) => {
         console.warn("Fail to fetch current location", error);
+        // alert(error.PERMISSION_DENIED + ',' + error.POSITION_UNAVAILABLE + ',' + error.TIMEOUT + ',' + error.code + ',' + error.message)
         setState({ ...state, lat: 37, lng: 127, lsLoading: false });
         // setState({ ...state, lng: 127 });
         // setState({ ...state, lsLoading: false });
