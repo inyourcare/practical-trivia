@@ -136,8 +136,8 @@ function selecting() {
         },imageWaitingSeconds)
       } else afterSelected(lastCallback);
     } else {
-      intervalSeconds = 3 * intervalSeconds;
-      timeoutSeconds = timeoutSeconds / 3;
+      intervalSeconds = 4 * intervalSeconds;
+      timeoutSeconds = timeoutSeconds / 4;
       selecting();
     }
   }, timeoutSeconds);
@@ -156,7 +156,7 @@ let maxRecursion = 2;
 let curRecursion = 0;
 let lastCallback: any;
 const initialIntervalSeconds = 50;
-const initialTimeoutSeconds = 3000;
+const initialTimeoutSeconds = 4000;
 let intervalSeconds = initialIntervalSeconds;
 let timeoutSeconds = initialTimeoutSeconds;
 let oneMoreCnt = 0;
