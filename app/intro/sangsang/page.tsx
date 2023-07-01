@@ -35,7 +35,7 @@ export default function SangsangHome() {
             alt=""
           />
         </div>
-        <div className="flex flex-nowrap">
+        <div className="flex flex-wrap md:flex-nowrap">
           <Image
             width={450 / 2}
             height={490 / 2}
@@ -55,7 +55,7 @@ export default function SangsangHome() {
             alt=""
           />
         </div>
-        <div className="flex flex-nowrap">
+        <div className="hidden md:block md:flex md:flex-nowrap">
           <Image
             width={450 / 2}
             height={490 / 2}
@@ -285,7 +285,7 @@ export default function SangsangHome() {
             alt=""
           />
         </div>
-        <div className="flex flex-nowrap">
+        <div className="flex flex-wrap md:flex-nowrap">
           <Image
             width={261}
             height={415}
@@ -308,7 +308,7 @@ export default function SangsangHome() {
             className="p-1"
           />
         </div>
-        <div className="flex flex-nowrap">
+        <div className="hidden md:block md:flex md:flex-nowrap">
           <Image
             width={261}
             height={415}

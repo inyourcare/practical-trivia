@@ -56,7 +56,7 @@ export default function HowcodingHome() {
             alt=""
           />
         </div>
-        <div className="flex flex-nowrap">
+        <div className="flex flex-wrap md:flex-nowrap">
           <Image
             width={450 / 2}
             height={521 / 2}
@@ -76,7 +76,7 @@ export default function HowcodingHome() {
             alt=""
           />
         </div>
-        <div className="flex flex-nowrap">
+        <div className="hidden md:block md:flex md:flex-nowrap">
           <Image
             width={450 / 2}
             height={521 / 2}
