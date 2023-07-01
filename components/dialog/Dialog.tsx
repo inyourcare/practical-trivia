@@ -10,5 +10,20 @@ export default function Dialog({
   children: React.ReactNode;
 }) {
   if (open === false) return <></>;
-  else return <>{children}</>;
+  else
+    return (
+      <div
+        className="w-full h-screen fixed top-0 left-0 right-0 flex justify-center items-center bg-slate-900/50 cursor-pointer"
+        onClick={() => setOpen(!open)}
+      >
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          // className="opacity-100"
+        >
+          {children}
+        </div>
+      </div>
+    );
 }

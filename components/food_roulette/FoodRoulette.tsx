@@ -7,7 +7,8 @@ import select, { drawKong } from "../util/select/select";
 import { RestaurantInterface } from "../util/type";
 // import styles from "./FoodRoulette.module.css";
 import "./foodroulette.css";
-import Kakaomap from "../map/Kakaomap";
+import KakaoRestaurant from "../map/KakaoRestaurant";
+import Dialog from "../dialog/Dialog";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -27,6 +28,10 @@ export default function FoodRoulette() {
   const [restaurantsLoading, setRestaurantsLoading] = useState(false);
   const [kinds] = useState(new Set<string>());
   const [kindMap] = useState(new Map<string, Array<RestaurantInterface>>());
+  const [mapOpen, setMapOpen] = useState(false);
+  const [mapRestaurant, setMapRestaurant] = useState(
+    undefined as unknown as RestaurantInterface
+  );
   useEffect(() => {
     const { geolocation } = navigator;
     // alert('getCurrentPosition use effect')
@@ -186,9 +191,9 @@ export default function FoodRoulette() {
     elem.classList.add("bg-gray-400");
   }
 
-  function onTitleClick(url:string) {
+  function onTitleClick(url: string) {
     // const openPopup = () =>
-    console.log('onTitleClick')
+    console.log("onTitleClick");
     window.open(
       // "/popup/youtube?videoId=QykE0eswFH0",
       // "http://place.map.kakao.com/736810177",
@@ -197,8 +202,11 @@ export default function FoodRoulette() {
       "top=100, left=300, width=1200, height=600, status=no, menubar=no, toolbar=no, resizable=no"
     );
   }
-  function onAddressClick(x:string,y:string) {
-    console.log('onAddressClick')
+  function onAddressClick(restaurant: RestaurantInterface) {
+    // console.log("onAddressClick");
+    // setMapCenter({ lat: Number(y), lng: Number(x) });
+    setMapRestaurant(restaurant);
+    setMapOpen(!mapOpen);
   }
   return (
     <div
@@ -298,7 +306,7 @@ export default function FoodRoulette() {
       </div>
       <br />
       <p className="text-sm ">※제목을 클릭하면 상세페이지 팝업을 엽니다.</p>
-      {/* <p className="text-sm ">※주소를 클릭하면 지도를 보여줍니다.</p> */}
+      <p className="text-sm ">※주소를 클릭하면 지도를 보여줍니다.</p>
       {/* <br /> */}
 
       <div id={"list_item"} className="relative border">
@@ -325,14 +333,20 @@ export default function FoodRoulette() {
                 <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap ">
                   {/* <div className="h-4 bg-gray-400 rounded w-3/4">{title}</div> */}
                   {/* <div className="h-4 w-3/4 cursor-auto hover:pointer-events-none"> */}
-                  <div className="no-cursor cursor-pointer h-4 w-3/4 " onClick={()=>onTitleClick(restaurant.place_url)}>
+                  <div
+                    className="no-cursor cursor-pointer h-4 w-3/4 "
+                    onClick={() => onTitleClick(restaurant.place_url)}
+                  >
                     <strong>
                       {restaurant.place_name}({restaurant.category_name})
                     </strong>
                   </div>
                   <div className="space-y-2">
                     {/* <div className="h-4 bg-gray-400 rounded">{script1}</div> */}
-                    <div className="no-cursor cursor-pointer h-4 rounded" onClick={()=>onAddressClick(restaurant.x,restaurant.y)}>
+                    <div
+                      className="no-cursor cursor-pointer h-4 rounded"
+                      onClick={() => onAddressClick(restaurant)}
+                    >
                       {restaurant.road_address_name}
                       {/* / ( {restaurant.x} , {restaurant.y} ) */}
                     </div>
@@ -371,8 +385,16 @@ export default function FoodRoulette() {
           ))
         )}
       </div>
-      
-      {/* <Kakaomap width={500} height={500} lat={35.8992601} lon={128.6215081}/> */}
+
+      {restaurants.length > 0 && (
+        <Dialog open={mapOpen} setOpen={setMapOpen}>
+          <KakaoRestaurant
+            width={500}
+            height={500}
+            restaurant={mapRestaurant}
+          />
+        </Dialog>
+      )}
     </div>
   );
 }
