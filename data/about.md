@@ -15,7 +15,7 @@ author: "실용주의 잡학사전"
 </p>
 <!-- <div className="py-3.5 text-left font-normal rounded-bl-[10px] rounded-br-[10px] bg-[rgba(235,242,254,1)] text-[rgba(35,46,82,1)]"> -->
 <div className="py-3.5 text-left font-normal rounded-bl-[10px] rounded-br-[10px] bg-transparent text-[rgba(35,46,82,1)] flex justify-center">
-  <img height="300px" width="300px" className="cover" alt="" src="/images/avatar.png"/>
+  <img height="500px" width="500px" className="cover" alt="" src="/images/about-mine.jpg"/>
   <p className="text-xs leading-normal text-center uppercase">
   </p>
 </div>
