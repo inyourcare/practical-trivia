@@ -307,6 +307,7 @@ export default function FoodRoulette() {
       <br />
       <p className="text-sm ">※제목을 클릭하면 상세페이지 팝업을 엽니다.</p>
       <p className="text-sm ">※주소를 클릭하면 지도를 보여줍니다.</p>
+      <p className="text-sm ">※콩신(한번 더)과 터키 아이스크림(반대로) 아저씨 이벤트를 추가했습니다.</p>
       {/* <br /> */}
 
       <div id={"list_item"} className="relative border">
