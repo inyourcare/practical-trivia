@@ -50,6 +50,7 @@ export default function RootLayout({
         ></script> */}
         <Script
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_JAVASCRIPT_KEY}&libraries=services,clusterer&autoload=false`}
+          // src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_JAVASCRIPT_KEY}`}
           strategy="beforeInteractive"
         />
         {/* 네이버 */}
