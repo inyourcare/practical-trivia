@@ -25,13 +25,24 @@ function floatingImage(imageUrl: string, text: string) {
     img.src = imageUrl;
     img.style.width = "500px";
     img.style.height = "500px";
+    
+    let divPwrap = document.createElement("div");
+    divPwrap.classList.add("absolute");
+    divPwrap.classList.add("w-full");
+    divPwrap.classList.add("flex");
+    divPwrap.classList.add("justify-center");
     let p = document.createElement("p");
     p.textContent = text;
+    // p.classList.add("absolute");
+    // p.classList.add("w-full");
     p.classList.add("text-center");
     p.classList.add("font-black");
-    p.classList.add("text-2xl");
+    p.classList.add("text-6xl");
+    p.classList.add("text-blue-800");
+    p.classList.add("bg-white");
+    divPwrap.append(p)
     box.append(img);
-    box.append(p);
+    box.append(divPwrap);
     // div.append(img);
     // div.append(p);
     div.append(box);
@@ -40,12 +51,12 @@ function floatingImage(imageUrl: string, text: string) {
     const timeout = setTimeout(() => {
       // document.body.removeChild(div);
       container.removeChild(div);
-    }, 1000);
+    }, imageWaitingSeconds);
   }
 }
 export function drawKong() {
   console.log("kong");
-  floatingImage("/images/roulette/kong-transparent.png", "222222222222");
+  floatingImage("/images/roulette/kong-transparent.png", "22 22");
 }
 function drawTurky() {
   console.log("kong");
@@ -97,9 +108,9 @@ function selecting() {
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      const ran = Math.random();
+      // const ran = Math.random();
       // const ran = 0.1;
-      // const ran = 0.3;
+      const ran = 0.3;
       if (ran < 0.2 && oneMoreCnt < maxMorCount) {
         // if (1 > 0.5 && oneMoreCnt < 1) {
         // one more kong time
@@ -109,7 +120,9 @@ function selecting() {
         intervalSeconds = initialIntervalSeconds;
         timeoutSeconds = initialTimeoutSeconds;
         oneMoreCnt += 1;
-        selecting();
+        const waiting = setTimeout(()=>{
+          selecting();
+        },imageWaitingSeconds)
       } else if (ran > 0.2 && ran < 0.4 && oneMoreCnt < maxMorCount) {
         drawTurky();
         console.log("baby one more turn over time");
@@ -118,7 +131,9 @@ function selecting() {
         intervalSeconds = initialIntervalSeconds;
         timeoutSeconds = initialTimeoutSeconds;
         oneMoreCnt += 1;
-        selecting();
+        const waiting = setTimeout(()=>{
+          selecting();
+        },imageWaitingSeconds)
       } else afterSelected(lastCallback);
     } else {
       intervalSeconds = 3 * intervalSeconds;
@@ -145,6 +160,7 @@ const initialTimeoutSeconds = 3000;
 let intervalSeconds = initialIntervalSeconds;
 let timeoutSeconds = initialTimeoutSeconds;
 let oneMoreCnt = 0;
+const imageWaitingSeconds = 1000;
 
 const select = (
   elems: Element[],
