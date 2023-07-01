@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Navermap from "@/components/Navermap";
+import Navermap from "@/components/map/Navermap";
 export default function WawaHome() {
   return (
     <>
