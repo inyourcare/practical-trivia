@@ -33,8 +33,7 @@ function Navermap({
     });
   }, [lat,lon]);
   return (
-    <div id="map" className={`w-[${width}px] h-[${height}px]`}>
-      {/* <div id="map" className={`w-[500px] h-[500px]`}> */}
+    <div id="map" className={`w-[300px] h-[300px] md:w-[${width}px] md:h-[${height}px]`}>
       map
     </div>
   );
