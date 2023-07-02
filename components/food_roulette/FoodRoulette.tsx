@@ -219,8 +219,8 @@ export default function FoodRoulette() {
       </div> */}
       {/* <div className="w-full flex justify-center items-center flex-col "> */}
       <Carousel>
-        <h1 className="text-5xl drop-shadow-2xl">오늘 뭐먹지?</h1>
-        <p className="drop-shadow-2xl">
+        <h1 className="text-5xl drop-shadow-2xl [text-shadow:_5px_5px_5px_rgb(0_0_0_/_100%)]">오늘 뭐먹지?</h1>
+        <p className="drop-shadow-2xl [text-shadow:_1px_1px_1px_rgb(0_0_0_/_100%)]">
           고민하고 결정하기도 아까운 시간. 오늘 뭐먹을지 대신 선택 해 드립니다.
         </p>
       </Carousel>

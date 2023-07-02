@@ -38,8 +38,9 @@ function floatingImage(imageUrl: string, text: string) {
     p.classList.add("text-center");
     p.classList.add("font-black");
     p.classList.add("text-6xl");
-    p.classList.add("text-blue-800");
-    p.classList.add("bg-white");
+    p.classList.add("text-white");
+    p.classList.add("[text-shadow:_1px_1px_1px_rgb(0_0_0_/_100%)]");
+    // p.classList.add("bg-white");
     divPwrap.append(p)
     box.append(img);
     box.append(divPwrap);
@@ -108,8 +109,8 @@ function selecting() {
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      const ran = Math.random();
-      // const ran = 0.1;
+      // const ran = Math.random();
+      const ran = 0.1;
       // const ran = 0.3;
       if (ran < 0.2 && oneMoreCnt < maxMorCount) {
         // if (1 > 0.5 && oneMoreCnt < 1) {
