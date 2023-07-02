@@ -9,6 +9,7 @@ import { RestaurantInterface } from "../util/type";
 import "./foodroulette.css";
 import KakaoRestaurant from "../map/KakaoRestaurant";
 import Dialog from "../dialog/Dialog";
+import Carousel from "../carousel/Carousel";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -216,12 +217,14 @@ export default function FoodRoulette() {
       {/* <div className="w-full flex justify-center">
         lat {state.lat} / lng {state.lng} / lsLoading {state.lsLoading}
       </div> */}
-      <div className="w-full flex justify-center items-center flex-col ">
-        <h1>오늘 뭐먹지?</h1>
-        <p>
+      {/* <div className="w-full flex justify-center items-center flex-col "> */}
+      <Carousel>
+        <h1 className="text-5xl drop-shadow-2xl">오늘 뭐먹지?</h1>
+        <p className="drop-shadow-2xl">
           고민하고 결정하기도 아까운 시간. 오늘 뭐먹을지 대신 선택 해 드립니다.
         </p>
-      </div>
+      </Carousel>
+      {/* </div> */}
       <br />
       <br />
       <div className="flex flex-row justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
@@ -307,7 +310,9 @@ export default function FoodRoulette() {
       <br />
       <p className="text-sm ">※제목을 클릭하면 상세페이지 팝업을 엽니다.</p>
       <p className="text-sm ">※주소를 클릭하면 지도를 보여줍니다.</p>
-      <p className="text-sm ">※콩신(한번 더)과 터키 아이스크림(반대로) 아저씨 이벤트를 추가했습니다.</p>
+      <p className="text-sm ">
+        ※콩신(한번 더)과 터키 아이스크림(반대로) 아저씨 이벤트를 추가했습니다.
+      </p>
       {/* <br /> */}
 
       <div id={"list_item"} className="relative border">
