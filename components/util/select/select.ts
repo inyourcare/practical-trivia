@@ -105,8 +105,8 @@ function selecting() {
     // console.log(idx,realIdx)
   }, intervalSeconds);
   const timeoutId = setTimeout(() => {
-    clearTimeout(intervalId);
-    clearInterval(timeoutId);
+    clearTimeout(timeoutId);
+    clearInterval(intervalId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
       // const ran = Math.random();
