@@ -1,3 +1,18 @@
+function addEffect() {
+  let img = document.createElement("img");
+  // img.src = "/images/roulette/013_fullscreen_confettie.webp";
+  img.classList.add('fixed')
+  img.classList.add('top-0')
+  img.classList.add('w-full')
+  img.src = "/images/roulette/013_fullscreen_confettie.webp";
+  document.body.append(img);
+  const timeout = setTimeout(() => {
+    document.body.removeChild(img)
+    // img.remove();
+    clearTimeout(timeout);
+  }, 3000);
+}
+
 function floatingImage(imageUrl: string, text: string) {
   const container = document.getElementById("food-roulette-container");
   if (container) {
@@ -83,6 +98,7 @@ function afterSelected(finalCallback: any) {
     .pop();
   selected?.classList.remove(selectingClass);
   selected?.classList.add(selectedClass);
+  addEffect();
   finalCallback();
 }
 
@@ -109,8 +125,8 @@ function selecting() {
     clearInterval(intervalId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      // const ran = Math.random();
-      const ran = 0.1;
+      const ran = Math.random();
+      // const ran = 0.1;
       // const ran = 0.3;
       if (ran < 0.2 && oneMoreCnt < maxMorCount) {
         // if (1 > 0.5 && oneMoreCnt < 1) {
