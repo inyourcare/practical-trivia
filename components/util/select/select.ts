@@ -108,9 +108,9 @@ function selecting() {
     clearInterval(timeoutId);
     curRecursion += 1;
     if (maxRecursion <= curRecursion) {
-      // const ran = Math.random();
+      const ran = Math.random();
       // const ran = 0.1;
-      const ran = 0.3;
+      // const ran = 0.3;
       if (ran < 0.2 && oneMoreCnt < maxMorCount) {
         // if (1 > 0.5 && oneMoreCnt < 1) {
         // one more kong time
