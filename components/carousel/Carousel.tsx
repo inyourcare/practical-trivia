@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { Dispatch, SetStateAction } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Carousel({ children }: { children: React.ReactNode }) {
   const imageSrcs = [
@@ -18,12 +20,29 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
     "meat-g15ca3b422_1280.jpg",
     "tteokbokki-g0c7fc890a_1280.jpg",
   ];
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const sliderElem = sliderRef.current;
+      if (sliderElem && sliderElem.children.length>0) {
+        sliderElem.insertBefore(
+          sliderElem.children.item(sliderElem.children.length - 1) as Element,
+          sliderElem.children.item(0)
+        );
+      }
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, []);
+  const sliderRef = useRef<HTMLDivElement>(null);
   return (
     <div
       className={`w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
       // bg-[url('/images/roulette/carousel/${imageSrcs[0]}')] bg-no-repeat bg-center bg-cover`}
     >
-      <div className="w-full h-full flex flex-row">
+      <div
+        id="carousel-slider"
+        ref={sliderRef}
+        className="w-full h-full flex flex-row"
+      >
         {imageSrcs.map((src, i) => (
           <Image
             width={1280}
@@ -31,7 +50,7 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
             key={i}
             src={`/images/roulette/carousel/${src}`}
             // fill
-            style={{objectFit: "cover"}}
+            style={{ objectFit: "cover" }}
             alt=""
           ></Image>
         ))}
