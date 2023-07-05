@@ -3,8 +3,8 @@ id: "8"
 title: "마음코칭과 함께 정서적 능력을 향상"
 description: "28년 동안 쌓은 교육 노하우와 청소년을 잘 이해하고 있는 숙련된 전문 코치들의 1:1 멘토링."
 date: "2023-06-03T08:18:10.494Z"
-tags: ["Mindfulness","Tutoring","Sangsang"]
-category: ["Tutoring"]
+tags: ["마음키움","과외","상상코칭"]
+category: ["과외"]
 image: "/images/business/mindfulness/1.jpg"
 imageAlt: "Alex Green님의 사진: https://www.pexels.com/ko-kr/photo/5699864/"
 author: "실용주의 잡학사전"

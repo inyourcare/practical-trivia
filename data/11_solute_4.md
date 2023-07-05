@@ -3,8 +3,8 @@ id: "11"
 title: "2023년 여름캠프, 캐나다 마감, 뉴질랜드 연장 모집!!!"
 description: "쏠루트유학 캐나다캠프는 마감을 하고 뉴질랜드캠프는 6월 20일까지 연장 모집합니다."
 date: "2023-06-02T08:20:15.494Z"
-tags: ["Solute","Study_abroad"]
-category: ["Study_abroad"]
+tags: ["솔루트","유학"]
+category: ["유학"]
 image: "/images/business/solute/canada_newzealand.jpg"
 imageAlt: ""
 author: "실용주의 잡학사전"

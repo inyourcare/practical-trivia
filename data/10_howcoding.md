@@ -3,8 +3,8 @@ id: "10"
 title: "하우코딩으로 자기주도학습 습관을 만나다!"
 description: "입시 대비를 위한 완벽한 솔루션을 찾고 계신가요? 지금부터 소개해드릴 화상 입시 컨설팅 서비스는 정확하고 신속한 입시 대비를 위한 최적의 선택입니다."
 date: "2023-06-05T08:18:10.494Z"
-tags: ["Howcoding","Tutoring","Programming"]
-category: ["Tutoring"]
+tags: ["하우코딩","과외","프로그래밍"]
+category: ["과외"]
 image: "/images/business/howcoding/1.jpg"
 imageAlt: ""
 author: "실용주의 잡학사전"

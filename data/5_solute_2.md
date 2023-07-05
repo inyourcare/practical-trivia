@@ -3,8 +3,8 @@ id: "5"
 title: "텍사스주립대학 국제전형, 미국대학 준비하고 가세요."
 description: "텍사스주립대학 중 Texas A&M University, Commerce에 준비해서 갈 수 있는 방법 알아보겠습니다."
 date: "2023-06-03T08:18:10.494Z"
-tags: ["Solute","Study_abroad"]
-category: ["Study_abroad"]
+tags: ["솔루트","유학"]
+category: ["유학"]
 image: "/images/business/solute/texas_AM_Univ_1.jpg"
 imageAlt: ""
 author: "실용주의 잡학사전"

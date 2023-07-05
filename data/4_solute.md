@@ -3,8 +3,8 @@ id: "4"
 title: "한국에서 미국 교과과정으로 학교 다니기."
 description: "미국 교과과정과 동일하게 공부할 수 있는 프로그램을 국내에서 학습할 수 있습니다!"
 date: "2023-06-03T08:18:10.494Z"
-tags: ["Solute","Study_abroad"]
-category: ["Study_abroad"]
+tags: ["솔루트","유학"]
+category: ["유학"]
 image: "/images/business/solute/1.jpg"
 imageAlt: ""
 author: "실용주의 잡학사전"

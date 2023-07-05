@@ -3,8 +3,8 @@ id: "2"
 title: "와와학습코칭센터를 소개합니다."
 description: "참여형 학습을 통한 차별화된 학습 플랜, 와와학습코칭센터입니다!"
 date: "2023-06-07T09:18:10.494Z"
-tags: ["Wawa","Academy"]
-category: ["Academy"]
+tags: ["와와","학원"]
+category: ["학원"]
 # image: "/images/business/wawa/1.jpg"
 image: "/images/business/wawa/2.png"
 # imageAlt: "Max Fischer님의 사진: https://www.pexels.com/ko-kr/photo/5212345/"
