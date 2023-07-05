@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 export default function Carousel({ children }: { children: React.ReactNode }) {
   const imageSrcs = [
     "bibimbap-gb0ce9688b_1280.jpg",
-    "chicken-g95e14ed32_1280.jpg",
+    // "chicken-g95e14ed32_1280.jpg",
     "chinese-g8a0e5afdc_1280.jpg",
     "chinese-ga243a95e4_1280.jpg",
     "korean-gf4c70fb5b_1280.jpg",
@@ -29,13 +29,13 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
           sliderElem.children.item(0)
         );
       }
-    }, 3000);
+    }, 4500);
     return () => clearInterval(intervalId);
   }, []);
   const sliderRef = useRef<HTMLDivElement>(null);
   return (
     <div
-      className={`w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
+      className={`relative w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
       // bg-[url('/images/roulette/carousel/${imageSrcs[0]}')] bg-no-repeat bg-center bg-cover`}
     >
       <div
@@ -55,7 +55,7 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
           ></Image>
         ))}
       </div>
-      <div className="absolute">{children}</div>
+      <div className="absolute w-full">{children}</div>
     </div>
   );
 }
