@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
 export default function Carousel({ children }: { children: React.ReactNode }) {
@@ -19,10 +20,23 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
   ];
   return (
     <div
-      className={`w-full h-[40vh] flex justify-center items-center flex-col 
-    bg-[url('/images/roulette/carousel/${imageSrcs[0]}')] bg-no-repeat bg-center bg-cover`}
+      className={`w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
+      // bg-[url('/images/roulette/carousel/${imageSrcs[0]}')] bg-no-repeat bg-center bg-cover`}
     >
-      {children}
+      <div className="w-full h-full flex flex-row">
+        {imageSrcs.map((src, i) => (
+          <Image
+            width={1280}
+            height={853}
+            key={i}
+            src={`/images/roulette/carousel/${src}`}
+            // fill
+            style={{objectFit: "cover"}}
+            alt=""
+          ></Image>
+        ))}
+      </div>
+      <div className="absolute">{children}</div>
     </div>
   );
 }
