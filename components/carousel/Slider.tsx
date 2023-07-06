@@ -46,8 +46,7 @@ export default function Slider({ items, children }: Props) {
         );
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [items]);
 
   function getMaxIdx(len: number) {
     return len % 2 === 0 ? Math.floor(len / 2) - 1 : Math.floor(len / 2);
@@ -72,8 +71,7 @@ export default function Slider({ items, children }: Props) {
       }
     }, state.slideInterval);
     return () => clearInterval(interval);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state]);
 
   const transferSlider = useCallback(
     (len: number, nextIdx: number) => {

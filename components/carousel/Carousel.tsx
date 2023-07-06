@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import Slider from "./Slider";
 
 export default function Carousel({ children }: { children: React.ReactNode }) {
@@ -58,11 +55,11 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
     //   </div>
     //   <div className="absolute w-full">{children}</div>
     // </div>
-    <div
-      className={`relative w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
-    >
-      <Slider items={imageSrcs}></Slider>
-      <div className="absolute w-full">{children}</div>
-    </div>
+    // <div
+    //   className={`relative w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
+    // >
+      <Slider items={imageSrcs}>{children}</Slider>
+      // {/* <div className="absolute w-full">{children}</div> */}
+    // </div>
   );
 }
