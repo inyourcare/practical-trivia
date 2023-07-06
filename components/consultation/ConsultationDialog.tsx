@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ConsultationForm from "./ConsultationForm";
 import KakaoShare from "../kakao/KakaoShare";
+import Image from "next/image";
 
 export default function ConsultationDialog({}: // header,
 // children,
@@ -67,7 +68,22 @@ export default function ConsultationDialog({}: // header,
             <span className={`text-white font-semibold`}>{"문의하기"}</span>
           </button>
           <div className="absolute top-[10px] right-[6%] ">
-            <KakaoShare />
+            <KakaoShare>
+              <button
+                className={
+                  // `absolute top-[10px] right-[20px] bg-sul-btn rounded-full opacity-25 hover:opacity-100 min-h-[50px] min-w-[50px] my-10 overflow-hidden flex justify-center items-center`
+                  `rounded-full opacity-25 hover:opacity-100 min-h-[50px] min-w-[50px] my-10 overflow-hidden flex justify-center items-center`
+                }
+              >
+                <Image
+                  width={50}
+                  height={50}
+                  src={`/images/icons/kakaotalk_sharing_btn_medium_ov.png`}
+                  style={{ width: 50, height: 50 }}
+                  alt="kakao share icon"
+                />
+              </button>
+            </KakaoShare>
           </div>
         </div>
       </main>
