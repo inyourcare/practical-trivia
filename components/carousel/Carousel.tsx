@@ -22,12 +22,12 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
   ];
   useEffect(() => {
     var idx = 1;
-    var classString = `test`;
+    // var classString = `test`;
     // var prevClassString = "prev";
     const intervalId = setInterval(() => {
       const sliderElem = sliderRef.current;
       if (sliderElem && sliderElem.children.length > 1) {
-        console.log("carousel interval", idx, classString);
+        // console.log("carousel interval", idx, classString);
         // prevClassString = classString;
         // sliderElem.classList.remove(classString);
         // classString = `-translate-x-[${idx * 100}%]`;
