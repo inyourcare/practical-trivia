@@ -14,7 +14,7 @@ export default function FoodRouletteHome() {
 
   return (
     <>
-      <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)]">
+      <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,0)]">
         <Nav />
       </header>
       <div className="py-12 flex justify-center">
