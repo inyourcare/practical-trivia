@@ -121,6 +121,7 @@ export default function FoodRoulette() {
       });
   }, [state.lat, state.lng, state.radius, kinds, kindMap]);
 
+  // sortable
   useEffect(() => {
     const listItem = document.getElementById("list_item");
     console.log("rendering list item sorted");
