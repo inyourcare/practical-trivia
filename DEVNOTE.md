@@ -151,3 +151,14 @@ sitemap.xml 추가 host/sitemap.xml 에서 확인가능
 git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./.env" --prune-empty --tag-name-filter cat -- --all
 git push origin --force --all
 ```
+
+## Ineffective mark-compacts near heap limit Allocation failed
+```
+export NODE_OPTIONS="--max-old-space-size=(X * 1024)" # Increase to X GB
+export NODE_OPTIONS="--max-old-space-size=5120" # Increase to 5 GB
+export NODE_OPTIONS="--max-old-space-size=6144" # Increase to 6 GB
+export NODE_OPTIONS="--max-old-space-size=7168" # Increase to 7 GB
+export NODE_OPTIONS="--max-old-space-size=8192" # Increase to 8 GB
+node -e 'console.log(v8.getHeapStatistics().heap_size_limit/(1024*1024))' 조회
+```
+지금은 2048로 했다.
