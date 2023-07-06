@@ -19,7 +19,7 @@
   width: 100%;
   list-style: none;
   margin: 10px auto;
-  z-index: 1;
+  /* z-index: 1; */
   bottom: 0;
 }
 .controlDot {

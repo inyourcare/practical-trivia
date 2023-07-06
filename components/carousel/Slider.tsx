@@ -23,6 +23,7 @@ export default function Slider({ items, children }: Props) {
     itemMargin: "10px",
   });
   const sliderRef = useRef<HTMLDivElement>(null);
+  // initial image position
   useEffect(() => {
     if (Array.isArray(items)) {
       const len = items.length;
@@ -45,7 +46,8 @@ export default function Slider({ items, children }: Props) {
         );
       }
     }
-  }, [items]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function getMaxIdx(len: number) {
     return len % 2 === 0 ? Math.floor(len / 2) - 1 : Math.floor(len / 2);
@@ -70,7 +72,8 @@ export default function Slider({ items, children }: Props) {
       }
     }, state.slideInterval);
     return () => clearInterval(interval);
-  }, [state]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const transferSlider = useCallback(
     (len: number, nextIdx: number) => {
