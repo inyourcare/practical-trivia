@@ -127,11 +127,15 @@ export default function FoodRoulette() {
       filter: `.${notFilteredClassString}`,
     });
   }, []);
-  
+
   // initialize
   useEffect(()=>{
     if (restaurantsLoading === false) {
-      document.getElementById(filterBtnsContainerId)
+      const filterBtnsContainer = document.getElementById(filterBtnsContainerId)
+      const buttons = filterBtnsContainer?.getElementsByTagName('button')
+      if (buttons && buttons.length > 0){
+        buttons.item(0)?.click()
+      }
     }
   },[restaurantsLoading])
 
