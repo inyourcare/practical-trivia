@@ -369,7 +369,7 @@ export default function FoodRoulette() {
       <p className="text-sm ">
         ※단순 API 사용으로 지점의 리뷰나 별점을 참조하는 기능은 불가능합니다. 또한 왼쪽 이미지 로드가 느릴 수 있는 점 양해부탁드려요.
       </p>
-      {/* <br /> */}
+      <br />
 
       <div id={listItmeContainerId} className="relative border">
         {restaurantsLoading ? (
