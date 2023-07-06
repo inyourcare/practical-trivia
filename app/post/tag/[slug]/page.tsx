@@ -6,6 +6,7 @@ import getPostMetadata from "@/components/post/getPostMetadata";
 import PostPreview from "@/components/post/PostPreview";
 import Pagination from "@/components/Pagination";
 import { translateTagToKr } from "@/components/util/tag/tagToKr";
+import Nav from "@/components/Nav";
 
 export default function PostTagHome({ params }: { params: { slug: string } }) {
   const koreanTag = translateTagToKr(params.slug);
@@ -18,8 +19,11 @@ export default function PostTagHome({ params }: { params: { slug: string } }) {
   ));
   return (
     <>
-      <Header title="hidden" tag={`${params.slug}`} />
-      {/* <Header /> */}
+      {/* <Header title="hidden" tag={`${params.slug}`} /> */}
+      <Header title="hidden" tag="hidden" />
+      {/* <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)]">
+        <Nav />
+      </header> */}
 
       <main className="container mx-auto flex flex-col p-3">
         {/* {
