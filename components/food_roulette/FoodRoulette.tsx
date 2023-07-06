@@ -361,6 +361,9 @@ export default function FoodRoulette() {
       <p className="text-sm ">
         ※filter 항목을 누르면 음식점을 포함하거나 제외할 수 있습니다.
       </p>
+      <p className="text-sm ">
+        ※단순 API 사용으로 지점의 리뷰나 별점을 참조하는 기능은 불가능합니다. 또한 왼쪽 이미지 로드가 느릴 수 있는 점 양해부탁드려요.
+      </p>
       {/* <br /> */}
 
       <div id={"list_item"} className="relative border">
@@ -382,7 +385,7 @@ export default function FoodRoulette() {
                 >
                   <BiMove />
                 </div> */}
-                <div className="basis-4/12 min-h-[200px] relative hidden lg:block overflow-hidden">
+                <div className="hidden basis-4/12 min-h-[200px] relative hidden lg:block overflow-hidden">
                   <div className="w-[800px] h-[500px] pointer-events-none absolute top-[-150px] left-[-270px] scale-50">
                     <iframe
                       frameBorder="0"
