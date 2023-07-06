@@ -90,12 +90,12 @@ export default function Slider({ items, children }: Props) {
       return len % 2 === 0
         ? len - 1 - idx === state.carouselIdx + Math.floor(len / 2) - 1
           ? styles.controlDotSelected
-          // ? 'opacity-100'
-          : ""
+          : // ? 'opacity-100'
+            ""
         : len - 1 - idx === state.carouselIdx + Math.floor(len / 2)
         ? styles.controlDotSelected
-        // ? 'opacity-100'
-        : "";
+        : // ? 'opacity-100'
+          "";
     },
     [state]
   );
@@ -106,14 +106,14 @@ export default function Slider({ items, children }: Props) {
       const nextIdx = Math.min(state.carouselIdx + 1, getMaxIdx(len));
       transferSlider(len, nextIdx);
     }
-  }, [state, items]);
+  }, [state, items, transferSlider]);
   const nextCallback = useCallback(() => {
     if (Array.isArray(items)) {
       const len = items.length;
       const nextIdx = Math.max(state.carouselIdx - 1, getMinIdx(len));
       transferSlider(len, nextIdx);
     }
-  }, [state, items]);
+  }, [state, items, transferSlider]);
   return (
     // <div className={`${styles.container}`} style={{ width: state.width }}>
     <div
@@ -150,7 +150,9 @@ export default function Slider({ items, children }: Props) {
         </div>
       )}
       {/* <ul className={`${styles.controlDots}`}> */}
-      <ul className={`absolute bottom-0 text-center w-full list-none mx-auto my-[10px] `}>
+      <ul
+        className={`absolute bottom-0 text-center w-full list-none mx-auto my-[10px] `}
+      >
         {state.dotControl &&
           items &&
           items.length > 0 &&
