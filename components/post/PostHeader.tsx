@@ -6,7 +6,7 @@ import Image from "next/image";
 import { tagDict } from "../util/tag/tagToKr";
 function Header(props: PostHeaderComponent) {
   return (
-    <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)]">
+    <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)] text-white">
       <title>{props.title}</title>
       {/* <desc>{props.description}</desc> */}
       {/* <meta name="description" content={props.description} /> */}

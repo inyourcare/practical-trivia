@@ -3,7 +3,7 @@ import { tagDict } from "./util/tag/tagToKr";
 
 function Header(props: HeaderComponent) {
   return (
-    <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)]">
+    <header className="w-full flex flex-col py-5 bg-[rgba(35,46,82,1)] text-white">
       <Nav />
 
       <div className="container flex flex-col mx-auto my-32 p-10">
