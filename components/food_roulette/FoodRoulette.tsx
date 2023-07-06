@@ -38,6 +38,7 @@ export default function FoodRoulette() {
   );
   const notFilteredClassString = "not-filtered";
   const filteredClassString = "filtered";
+  const [filteredKinds] = useState(new Set<string>());
   useEffect(() => {
     const { geolocation } = navigator;
     // alert('getCurrentPosition use effect')
@@ -300,20 +301,40 @@ export default function FoodRoulette() {
               <button
                 key={k}
                 onClick={(e) => {
-                  // console.log(kindMap.get(k));
-                  const arr = kindMap.get(k);
-                  if (arr && arr.length > 0) {
-                    arr.map((item) => {
-                      const card = document.getElementById(item.id);
-                      // card && filteringElem(card);
-                      card && card.classList.remove(notFilteredClassString);
-                      card && card.classList.add(filteredClassString);
-                    });
+                  if (filteredKinds.has(k)) {
+                    const arr = kindMap.get(k);
+                    if (arr && arr.length > 0) {
+                      arr.map((item) => {
+                        const card = document.getElementById(item.id);
+                        // card && filteringElem(card);
+                        card && card.classList.remove(filteredClassString);
+                        card && card.classList.add(notFilteredClassString);
+                      });
+                    }
+                    e.currentTarget.classList.add("bg-blue-200");
+                    e.currentTarget.classList.remove("bg-blue-500");
+                    filteredKinds.delete(k)
+                  } else {
+                    const arr = kindMap.get(k);
+                    if (arr && arr.length > 0) {
+                      arr.map((item) => {
+                        const card = document.getElementById(item.id);
+                        // card && filteringElem(card);
+                        card && card.classList.remove(notFilteredClassString);
+                        card && card.classList.add(filteredClassString);
+                      });
+                    }
+                    e.currentTarget.classList.add("bg-blue-500");
+                    e.currentTarget.classList.remove("bg-blue-200");
+                    filteredKinds.add(k)
                   }
-                  e.currentTarget.classList.add("bg-blue-500");
-                  e.currentTarget.classList.remove("bg-blue-200");
-                  e.currentTarget.disabled = true;
+                  // console.log(kindMap.get(k));
+
+                  // e.currentTarget.classList.add("bg-blue-500");
+                  // e.currentTarget.classList.remove("bg-blue-200");
+                  // e.currentTarget.disabled = true;
                 }}
+                disabled={restaurantsLoading || state.lsLoading}
                 className="border ml-1 bg-blue-200 hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
               >
                 {k}
@@ -327,6 +348,12 @@ export default function FoodRoulette() {
       <p className="text-sm ">※주소를 클릭하면 지도를 보여줍니다.</p>
       <p className="text-sm ">
         ※콩신(한번 더)과 터키 아이스크림(반대로) 아저씨 이벤트를 추가했습니다.
+      </p>
+      <p className="text-sm ">
+        ※filter 항목은 검색된 음식점 종류에 따라 다릅니다.
+      </p>
+      <p className="text-sm ">
+        ※filter 항목을 누르면 음식점을 포함하거나 제외할 수 있습니다.
       </p>
       {/* <br /> */}
 
