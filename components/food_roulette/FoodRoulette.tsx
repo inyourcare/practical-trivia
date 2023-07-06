@@ -395,7 +395,7 @@ export default function FoodRoulette() {
                     <iframe
                       frameBorder="0"
                       scrolling="no"
-                      src={`${restaurant.place_url}`}
+                      src={`${restaurant.place_url.replace('http://','https://')}`}
                       style={{
                         // border: "1px solid black",
                         // position: "absolute",

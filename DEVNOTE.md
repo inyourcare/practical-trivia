@@ -161,4 +161,5 @@ export NODE_OPTIONS="--max-old-space-size=7168" # Increase to 7 GB
 export NODE_OPTIONS="--max-old-space-size=8192" # Increase to 8 GB
 node -e 'console.log(v8.getHeapStatistics().heap_size_limit/(1024*1024))' 조회
 ```
-지금은 2048로 했다.
+이거했는데 에러만 나고... 의미가 없는거같음...
+그냥 똑같은 환경에서 안되다가 되다가 그럼;
