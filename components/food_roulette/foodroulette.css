@@ -8,6 +8,14 @@
   /* animation-fill-mode: forwards; */
   animation-iteration-count: infinite;
 }
+.not-filtered {
+  /* visibility: collapse; */
+  display: none;
+}
+.filtered {
+  /* visibility: visible; */
+  display: block;
+}
 
 @keyframes selected-animation {
   from {

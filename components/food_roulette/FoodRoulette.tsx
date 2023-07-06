@@ -36,6 +36,8 @@ export default function FoodRoulette() {
   const [mapRestaurant, setMapRestaurant] = useState(
     undefined as unknown as RestaurantInterface
   );
+  const notFilteredClassString = "not-filtered";
+  const filteredClassString = "filtered";
   useEffect(() => {
     const { geolocation } = navigator;
     // alert('getCurrentPosition use effect')
@@ -127,7 +129,7 @@ export default function FoodRoulette() {
       // dragClass: "sortable-drag",
       handle: ".handle", // handle's class
       ghostClass: "bg-gray-100", // 배경 색
-      filter: ".filtered",
+      filter: `.${notFilteredClassString}`,
     });
   }, []);
 
@@ -178,7 +180,7 @@ export default function FoodRoulette() {
       const arr = new Array<Element>();
       for (var i = 0; i < listItem?.children.length; i++) {
         const item = listItem?.children[i];
-        if (!item.classList.contains("filtered")) arr.push(item);
+        if (item.classList.contains(filteredClassString)) arr.push(item);
       }
       // const selectingClass = `${styles.selecting}`;
       const selectingClass = `roulette-selecting`;
@@ -190,10 +192,10 @@ export default function FoodRoulette() {
     }
   }
 
-  function filteringElem(elem: HTMLElement) {
-    elem.classList.add("filtered");
-    elem.classList.add("bg-gray-400");
-  }
+  // function filteringElem(elem: HTMLElement) {
+  //   elem.classList.add(filteredClassString);
+  //   // elem.classList.add("bg-gray-400");
+  // }
 
   function onTitleClick(url: string) {
     // const openPopup = () =>
@@ -303,7 +305,9 @@ export default function FoodRoulette() {
                   if (arr && arr.length > 0) {
                     arr.map((item) => {
                       const card = document.getElementById(item.id);
-                      card && filteringElem(card);
+                      // card && filteringElem(card);
+                      card && card.classList.remove(notFilteredClassString);
+                      card && card.classList.add(filteredClassString);
                     });
                   }
                   e.currentTarget.classList.add("bg-blue-500");
@@ -334,7 +338,7 @@ export default function FoodRoulette() {
             <div
               // draggable
               key={i}
-              className={`border border-gray-300 p-4 w-full mx-auto ${nanumGothic.className}`}
+              className={`border border-gray-300 p-4 w-full mx-auto ${nanumGothic.className} not-filtered`}
               id={restaurant.id}
             >
               {/* <div className="animate-pulse flex space-x-4"> */}
@@ -375,7 +379,7 @@ export default function FoodRoulette() {
                   </div>
                 </div>
                 <div
-                  className="hidden lg:block rounded-full hover:bg-gray-200 h-12 w-12 flex justify-center items-center hover:cursor-pointer"
+                  className="hidden lg:block rounded-full  h-12 w-12 flex lg:flex justify-center lg:justify-center items-center lg:items-center hover:cursor-pointer hover:bg-gray-200"
                   onClick={(e) => {
                     if (state.lsLoading === false) {
                       // e.currentTarget.parentElement?.parentElement?.classList.add(
@@ -386,7 +390,8 @@ export default function FoodRoulette() {
                       // );
                       const elem =
                         e.currentTarget?.parentElement?.parentElement;
-                      elem && filteringElem(elem);
+                      elem && elem.classList.remove(filteredClassString);
+                      elem && elem.classList.add(notFilteredClassString);
                     }
                   }}
                 >
