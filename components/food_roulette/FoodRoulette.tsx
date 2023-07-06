@@ -10,6 +10,7 @@ import KakaoRestaurant from "../map/KakaoRestaurant";
 import Dialog from "../dialog/Dialog";
 import Carousel from "../carousel/Carousel";
 import Image from "next/image";
+import KakaoShare from "../kakao/KakaoShare";
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -229,7 +230,7 @@ export default function FoodRoulette() {
       {/* </div> */}
       <br />
       <br />
-      <div className="flex flex-row justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
+      <div className="relative flex flex-row justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg flex-wrap">
         {`지금 위치로 부터 반경 `}
         <select
           onChange={(e) =>
@@ -252,10 +253,15 @@ export default function FoodRoulette() {
         >
           찾기
         </button>
+        <div className="ml-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow disabled:cursor-not-allowed">
+          <KakaoShare>
+            <button>카카오 공유</button>
+          </KakaoShare>
+        </div>
         {/* <button onClick={() => drawKong()}>kong test</button> */}
         {/* <button onClick={() => addEffect()}>effect test</button> */}
         {restaurants.length > 0 && (
-          <>
+          <div className="ml-1 ">
             {`total: ${restaurants.length}`}
             <button
               disabled={restaurantsLoading || state.lsLoading}
@@ -278,7 +284,7 @@ export default function FoodRoulette() {
             >
               줄이기
             </button> */}
-          </>
+          </div>
         )}
       </div>
       <br />
