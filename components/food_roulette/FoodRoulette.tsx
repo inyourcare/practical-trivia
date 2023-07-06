@@ -80,7 +80,7 @@ export default function FoodRoulette() {
 
   const fetchingRestaurants = useCallback(() => {
     setRestaurantsLoading(true);
-    fetch(`/api/kakao/map`, {
+    fetch(`/api/kakao/local`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
