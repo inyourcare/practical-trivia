@@ -422,7 +422,7 @@ export default function FoodRoulette() {
                     </div>
                     {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
                     <div className="no-cursor cursor-auto h-4 rounded w-5/6">
-                      거리: {restaurant.distance}m / 번호: {restaurant.phone} 
+                      거리: {restaurant.distance}m / 번호: <a href={`tel:${restaurant.phone}`}>{restaurant.phone}</a>
                       {/* url: {restaurant.place_url} */}
                     </div>
                   </div>
