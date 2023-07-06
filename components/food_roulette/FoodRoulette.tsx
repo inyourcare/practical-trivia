@@ -233,6 +233,12 @@ export default function FoodRoulette() {
         </p>
       </Carousel>
       {/* </div> */}
+      {/* <div className="w-full h-[500px] bg-gray-300">
+        <iframe
+          className="w-full h-[500px]"
+          src="https://place.map.kakao.com/1643013789"
+        />
+      </div> */}
       <br />
       <br />
       <div className="relative flex flex-row justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg flex-wrap">
@@ -313,7 +319,7 @@ export default function FoodRoulette() {
                     }
                     e.currentTarget.classList.add("bg-blue-200");
                     e.currentTarget.classList.remove("bg-blue-500");
-                    filteredKinds.delete(k)
+                    filteredKinds.delete(k);
                   } else {
                     const arr = kindMap.get(k);
                     if (arr && arr.length > 0) {
@@ -326,7 +332,7 @@ export default function FoodRoulette() {
                     }
                     e.currentTarget.classList.add("bg-blue-500");
                     e.currentTarget.classList.remove("bg-blue-200");
-                    filteredKinds.add(k)
+                    filteredKinds.add(k);
                   }
                   // console.log(kindMap.get(k));
 
@@ -370,12 +376,28 @@ export default function FoodRoulette() {
             >
               {/* <div className="animate-pulse flex space-x-4"> */}
               <div className="w-full flex space-x-4">
-                <div
-                  className={`${
-                    state.lsLoading === false ? "handle" : ""
-                  } hidden lg:block hover:cursor-move hover:bg-gray-100 lg:rounded-full lg:h-12 lg:w-12 lg:flex lg:justify-center lg:items-center`}
+                {/* <div
+                  className={`${state.lsLoading === false ? "handle" : ""}
+                  hidden lg:block hover:cursor-move hover:bg-gray-100 lg:rounded-full lg:h-12 lg:w-12 lg:flex lg:justify-center lg:items-center overflow-hidden`}
                 >
                   <BiMove />
+                </div> */}
+                <div className="basis-4/12 min-h-[200px] relative hidden lg:block overflow-hidden">
+                  <div className="w-[800px] h-[500px] pointer-events-none absolute top-[-150px] left-[-270px] scale-50">
+                    <iframe
+                      frameBorder="0"
+                      scrolling="no"
+                      src={`${restaurant.place_url}`}
+                      style={{
+                        // border: "1px solid black",
+                        // position: "absolute",
+                        // bottom: "84px",
+                        width:'800px',
+                        height: '800px',
+                        // scale: '0.5'
+                      }}
+                    />
+                  </div>
                 </div>
                 {/* <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap "> */}
                 <div className="flex-1 space-y-4 py-1 overflow-hidden text-ellipsis whitespace-nowrap ">
@@ -400,7 +422,7 @@ export default function FoodRoulette() {
                     </div>
                     {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
                     <div className="no-cursor cursor-auto h-4 rounded w-5/6">
-                      거리: {restaurant.distance}m / 번호: {restaurant.phone} /
+                      거리: {restaurant.distance}m / 번호: {restaurant.phone} 
                       {/* url: {restaurant.place_url} */}
                     </div>
                   </div>
