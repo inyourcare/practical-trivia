@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
+import Slider from "./Slider";
 
 export default function Carousel({ children }: { children: React.ReactNode }) {
   const imageSrcs = [
@@ -20,41 +20,48 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
     "meat-g15ca3b422_1280.jpg",
     "tteokbokki-g0c7fc890a_1280.jpg",
   ];
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const sliderElem = sliderRef.current;
-      if (sliderElem && sliderElem.children.length>0) {
-        sliderElem.insertBefore(
-          sliderElem.children.item(sliderElem.children.length - 1) as Element,
-          sliderElem.children.item(0)
-        );
-      }
-    }, 4500);
-    return () => clearInterval(intervalId);
-  }, []);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     const sliderElem = sliderRef.current;
+  //     if (sliderElem && sliderElem.children.length > 0) {
+  //       sliderElem.insertBefore(
+  //         sliderElem.children.item(sliderElem.children.length - 1) as Element,
+  //         sliderElem.children.item(0)
+  //       );
+  //       // sliderElem.setAttribute('style','`transform: translate3d(20px,0px, 0px); transition-duration: 350ms;')
+  //     }
+  //   }, 4500);
+  //   return () => clearInterval(intervalId);
+  // }, []);
+  // const sliderRef = useRef<HTMLDivElement>(null);
   return (
+    // <div
+    //   className={`relative w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
+    //   // bg-[url('/images/roulette/carousel/${imageSrcs[0]}')] bg-no-repeat bg-center bg-cover`}
+    // >
+    //   <div
+    //     id="carousel-slider"
+    //     ref={sliderRef}
+    //     className="w-full h-full flex flex-row "
+    //   >
+    //     {imageSrcs.map((src, i) => (
+    //       <Image
+    //         width={1280}
+    //         height={853}
+    //         key={i}
+    //         src={`/images/roulette/carousel/${src}`}
+    //         // fill
+    //         style={{ objectFit: "cover" }}
+    //         alt=""
+    //       ></Image>
+    //     ))}
+    //   </div>
+    //   <div className="absolute w-full">{children}</div>
+    // </div>
     <div
       className={`relative w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
-      // bg-[url('/images/roulette/carousel/${imageSrcs[0]}')] bg-no-repeat bg-center bg-cover`}
     >
-      <div
-        id="carousel-slider"
-        ref={sliderRef}
-        className="w-full h-full flex flex-row"
-      >
-        {imageSrcs.map((src, i) => (
-          <Image
-            width={1280}
-            height={853}
-            key={i}
-            src={`/images/roulette/carousel/${src}`}
-            // fill
-            style={{ objectFit: "cover" }}
-            alt=""
-          ></Image>
-        ))}
-      </div>
+      <Slider items={imageSrcs}></Slider>
       <div className="absolute w-full">{children}</div>
     </div>
   );
