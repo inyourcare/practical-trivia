@@ -5,8 +5,9 @@ import styles from "./Slider.module.css";
 
 type Props = {
   items: string[];
+  children: React.ReactNode;
 };
-export default function Slider({ items }: Props) {
+export default function Slider({ items, children }: Props) {
   const [state, setState] = useState({
     carouselIdx: 0,
     //짝수개 이미지인 경우
@@ -89,9 +90,11 @@ export default function Slider({ items }: Props) {
       return len % 2 === 0
         ? len - 1 - idx === state.carouselIdx + Math.floor(len / 2) - 1
           ? styles.controlDotSelected
+          // ? 'opacity-100'
           : ""
         : len - 1 - idx === state.carouselIdx + Math.floor(len / 2)
         ? styles.controlDotSelected
+        // ? 'opacity-100'
         : "";
     },
     [state]
@@ -112,29 +115,10 @@ export default function Slider({ items }: Props) {
     }
   }, [state, items]);
   return (
-    <div className={`${styles.container}`} style={{ width: state.width }}>
-      <ul className={`${styles.controlDots}`}>
-        {state.dotControl &&
-          items &&
-          items.length > 0 &&
-          items.map((item, idx) => {
-            return (
-              <li
-                key={idx}
-                className={`${styles.controlDot} ${detectSelected(
-                  items.length,
-                  idx
-                )}`}
-                onClick={() => {
-                  transferSlider(
-                    items.length,
-                    items.length - 1 - idx - Math.floor(items.length / 2)
-                  );
-                }}
-              ></li>
-            );
-          })}
-      </ul>
+    // <div className={`${styles.container}`} style={{ width: state.width }}>
+    <div
+      className={`relative w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
+    >
       <div className={`${styles.slider}`} ref={sliderRef}>
         {items &&
           items.length > 0 &&
@@ -165,6 +149,30 @@ export default function Slider({ items }: Props) {
           </button>
         </div>
       )}
+      {/* <ul className={`${styles.controlDots}`}> */}
+      <ul className={`absolute bottom-0 text-center w-full list-none mx-auto my-[10px] `}>
+        {state.dotControl &&
+          items &&
+          items.length > 0 &&
+          items.map((item, idx) => {
+            return (
+              <li
+                key={idx}
+                className={`${styles.controlDot} ${detectSelected(
+                  items.length,
+                  idx
+                )}`}
+                onClick={() => {
+                  transferSlider(
+                    items.length,
+                    items.length - 1 - idx - Math.floor(items.length / 2)
+                  );
+                }}
+              ></li>
+            );
+          })}
+      </ul>
+      <div className="absolute w-full">{children}</div>
     </div>
   );
 }
