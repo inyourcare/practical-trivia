@@ -41,30 +41,23 @@ export default function FoodRoulette() {
   const [filteredKinds] = useState(new Set<string>());
   const listItmeContainerId = 'list_item';
   const filterBtnsContainerId = 'filter-btns-container';
+
+  // get geo info
   useEffect(() => {
     const { geolocation } = navigator;
-    // alert('getCurrentPosition use effect')
 
     geolocation.getCurrentPosition(
       (position) => {
-        // alert('getCurrentPosition' + position.coords.latitude + ',' + position.coords.latitude)
-        // success.
-        // console.log("success", state, position.coords);
         setState({
           ...state,
           lat: position.coords.latitude,
           lng: position.coords.longitude,
           lsLoading: false,
         });
-        // setState({ ...state, lng: position.coords.longitude });
-        // setState({ ...state, lsLoading: false });
       },
       (error) => {
         console.warn("Fail to fetch current location", error);
-        // alert(error.PERMISSION_DENIED + ',' + error.POSITION_UNAVAILABLE + ',' + error.TIMEOUT + ',' + error.code + ',' + error.message)
         setState({ ...state, lat: 37, lng: 127, lsLoading: false });
-        // setState({ ...state, lng: 127 });
-        // setState({ ...state, lsLoading: false });
       },
       {
         // enableHighAccuracy: false,
@@ -75,8 +68,6 @@ export default function FoodRoulette() {
         timeout: 5000,
       }
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -136,6 +127,7 @@ export default function FoodRoulette() {
       filter: `.${notFilteredClassString}`,
     });
   }, []);
+  
   // initialize
   useEffect(()=>{
     if (restaurantsLoading === false) {
