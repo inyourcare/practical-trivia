@@ -39,6 +39,8 @@ export default function FoodRoulette() {
   const notFilteredClassString = "not-filtered";
   const filteredClassString = "filtered";
   const [filteredKinds] = useState(new Set<string>());
+  const listItmeContainerId = 'list_item';
+  const filterBtnsContainerId = 'filter-btns-container';
   useEffect(() => {
     const { geolocation } = navigator;
     // alert('getCurrentPosition use effect')
@@ -123,7 +125,7 @@ export default function FoodRoulette() {
 
   // sortable
   useEffect(() => {
-    const listItem = document.getElementById("list_item");
+    const listItem = document.getElementById(listItmeContainerId);
     console.log("rendering list item sorted");
     new window.Sortable(listItem, {
       animation: 350,
@@ -134,9 +136,15 @@ export default function FoodRoulette() {
       filter: `.${notFilteredClassString}`,
     });
   }, []);
+  // initialize
+  useEffect(()=>{
+    if (restaurantsLoading === false) {
+      document.getElementById(filterBtnsContainerId)
+    }
+  },[restaurantsLoading])
 
   function mingle() {
-    const listItem = document.getElementById("list_item");
+    const listItem = document.getElementById(listItmeContainerId);
     console.log("mingling");
     if (listItem && listItem?.children.length > 0) {
       const itemLen = listItem.children.length;
@@ -162,7 +170,7 @@ export default function FoodRoulette() {
     }
   }
   function reduce() {
-    const listItem = document.getElementById("list_item");
+    const listItem = document.getElementById(listItmeContainerId);
     console.log("mingling");
     if (listItem && listItem?.children.length > 0) {
       const arr = new Array<Element>();
@@ -176,7 +184,7 @@ export default function FoodRoulette() {
   function selectOne() {
     // drawKong()
     setState({ ...state, lsLoading: true });
-    const listItem = document.getElementById("list_item");
+    const listItem = document.getElementById(listItmeContainerId);
     console.log("selectOne");
     if (listItem && listItem?.children.length > 0) {
       const arr = new Array<Element>();
@@ -302,7 +310,7 @@ export default function FoodRoulette() {
       <br />
       <div>
         {restaurantsLoading === false && kinds.size > 0 && (
-          <div className="flex justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
+          <div id={filterBtnsContainerId} className="flex justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
             filter:
             {Array.from(kinds).map((k) => (
               <button
@@ -367,7 +375,7 @@ export default function FoodRoulette() {
       </p>
       {/* <br /> */}
 
-      <div id={"list_item"} className="relative border">
+      <div id={listItmeContainerId} className="relative border">
         {restaurantsLoading ? (
           <>Now loading</>
         ) : (
