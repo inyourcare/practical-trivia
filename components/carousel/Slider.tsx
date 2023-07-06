@@ -151,30 +151,31 @@ export default function Slider({ items, children }: Props) {
         </div>
       )}
       {/* <ul className={`${styles.controlDots}`}> */}
-      <ul
-        className={`absolute bottom-0 text-center w-full list-none mx-auto my-[10px] `}
-      >
-        {state.dotControl &&
-          items &&
-          items.length > 0 &&
-          items.map((item, idx) => {
-            return (
-              <li
-                key={idx}
-                className={`${styles.controlDot} ${detectSelected(
-                  items.length,
-                  idx
-                )}`}
-                onClick={() => {
-                  transferSlider(
+      {state.dotControl && (
+        <ul
+          className={`absolute bottom-0 text-center w-full list-none mx-auto my-[10px] `}
+        >
+          {items &&
+            items.length > 0 &&
+            items.map((item, idx) => {
+              return (
+                <li
+                  key={idx}
+                  className={`${styles.controlDot} ${detectSelected(
                     items.length,
-                    items.length - 1 - idx - Math.floor(items.length / 2)
-                  );
-                }}
-              ></li>
-            );
-          })}
-      </ul>
+                    idx
+                  )}`}
+                  onClick={() => {
+                    transferSlider(
+                      items.length,
+                      items.length - 1 - idx - Math.floor(items.length / 2)
+                    );
+                  }}
+                ></li>
+              );
+            })}
+        </ul>
+      )}
       <div className="absolute w-full">{children}</div>
     </div>
   );
