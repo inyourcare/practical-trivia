@@ -11,6 +11,8 @@ import Dialog from "../dialog/Dialog";
 import Carousel from "../carousel/Carousel";
 import Image from "next/image";
 import KakaoShare from "../kakao/KakaoShare";
+import { Nanum_Gothic } from "next/font/google";
+const nanumGothic = Nanum_Gothic({ weight: "400", subsets: ["latin"] });
 
 // class MyDraggable extends Draggable {
 //   onDragEnter:DraggableEventHandler
@@ -332,7 +334,7 @@ export default function FoodRoulette() {
             <div
               // draggable
               key={i}
-              className="border border-gray-300 p-4 w-full mx-auto "
+              className={`border border-gray-300 p-4 w-full mx-auto ${nanumGothic.className}`}
               id={restaurant.id}
             >
               {/* <div className="animate-pulse flex space-x-4"> */}
