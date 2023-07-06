@@ -120,15 +120,18 @@ export default function Slider({ items, children }: Props) {
     <div
       className={`relative w-full h-[40vh] flex justify-center items-center flex-col overflow-hidden`}
     >
-      <div className={`${styles.slider}`} ref={sliderRef}>
+      {/* <div className={`${styles.slider}`} ref={sliderRef}> */}
+      <div className={`flex flex-nowrap`} ref={sliderRef}>
         {items &&
           items.length > 0 &&
           items.map((item, idx) => {
             return (
               <div
                 key={idx}
-                className={styles.itemContainer}
+                // className={styles.itemContainer}
+                className={`grow-0  shrink-0 basis-auto`}
                 style={{ margin: state.itemMargin, width: state.itemWidth }}
+                // style={{ margin: state.itemMargin, width: '100%' }}
               >
                 <div
                   className={styles.item}
