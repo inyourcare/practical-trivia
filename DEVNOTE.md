@@ -144,3 +144,10 @@ docker save -o [save file name].tar [image name]
 
 2023-06-08
 sitemap.xml 추가 host/sitemap.xml 에서 확인가능
+
+2023-07-06
+## git history 제거
+```
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./.env" --prune-empty --tag-name-filter cat -- --all
+git push origin --force --all
+```
