@@ -22,7 +22,7 @@ export default function KakaoShare({
   const kakaoSendScrap = () => {
     const { Kakao, location } = window;
     Kakao.Link.sendScrap({
-      templateId: 94996,
+      // templateId: 94996,
       requestUrl: location.href,
     });
   };
