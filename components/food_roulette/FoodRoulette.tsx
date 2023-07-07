@@ -42,6 +42,9 @@ export default function FoodRoulette() {
   const listItmeContainerId = "list_item";
   const filterBtnsContainerId = "filter-btns-container";
   const filterBtnElems = useRef<HTMLButtonElement[]>([]);
+  const restaurantsDivElems = useRef<HTMLDivElement[]>([]);
+  const [filteredRestaurantCntTrigger,setFilteredRestaurantCntTrigger] = useState(true)
+  const [filteredRestaurantCnt, setFilteredRestaurantCnt] = useState(0)
 
   // get geo info
   useEffect(() => {
@@ -71,6 +74,34 @@ export default function FoodRoulette() {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // sortable
+  useEffect(() => {
+    const listItem = document.getElementById(listItmeContainerId);
+    console.log("rendering list item sorted");
+    new window.Sortable(listItem, {
+      animation: 350,
+      // chosenClass: "sortable-chosen",
+      // dragClass: "sortable-drag",
+      handle: ".handle", // handle's class
+      ghostClass: "bg-gray-100", // 배경 색
+      filter: `.${notFilteredClassString}`,
+    });
+  }, []);
+
+  // initialize
+  useEffect(() => {
+    if (filterBtnElems.current[0]) {
+      // console.log('hi',filterBtnElems.current[0].classList);
+      filterBtnElems.current[0].click();
+    }
+  }, [restaurantsLoading, filterBtnElems, kinds.size]);
+
+  // 후보 음식점 개수
+  useEffect(()=>{
+    // console.log(restaurantsDivElems.current.filter(elem=>elem.classList.contains(filteredClassString)).length)
+    setFilteredRestaurantCnt(restaurantsDivElems.current.filter(elem=>elem.classList.contains(filteredClassString)).length)
+  },[filteredRestaurantCntTrigger])
 
   const fetchingRestaurants = useCallback(() => {
     setRestaurantsLoading(true);
@@ -115,28 +146,6 @@ export default function FoodRoulette() {
         filteredKinds.clear();
       });
   }, [state.lat, state.lng, state.radius, kinds, kindMap, filteredKinds]);
-
-  // sortable
-  useEffect(() => {
-    const listItem = document.getElementById(listItmeContainerId);
-    console.log("rendering list item sorted");
-    new window.Sortable(listItem, {
-      animation: 350,
-      // chosenClass: "sortable-chosen",
-      // dragClass: "sortable-drag",
-      handle: ".handle", // handle's class
-      ghostClass: "bg-gray-100", // 배경 색
-      filter: `.${notFilteredClassString}`,
-    });
-  }, []);
-
-  // initialize
-  useEffect(() => {
-    if (filterBtnElems.current[0]) {
-      // console.log('hi',filterBtnElems.current[0].classList);
-      filterBtnElems.current[0].click();
-    }
-  }, [restaurantsLoading, filterBtnElems, kinds.size]);
 
   function mingle() {
     const listItem = document.getElementById(listItmeContainerId);
@@ -278,7 +287,8 @@ export default function FoodRoulette() {
         {restaurants.length > 0 && (
           <div className="ml-1 ">
             {`total: ${restaurants.length} / 후보: ${
-              document.getElementsByClassName(filteredClassString).length
+              // document.getElementsByClassName(filteredClassString).length
+              filteredRestaurantCnt
             }`}
             <button
               disabled={restaurantsLoading || state.lsLoading}
@@ -345,6 +355,7 @@ export default function FoodRoulette() {
                     e.currentTarget.classList.remove("bg-blue-200");
                     filteredKinds.add(k);
                   }
+                  setFilteredRestaurantCntTrigger(!filteredRestaurantCntTrigger)
                 }}
                 disabled={restaurantsLoading || state.lsLoading}
                 className="border ml-1 bg-blue-200 hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
@@ -386,6 +397,9 @@ export default function FoodRoulette() {
               key={i}
               className={`border border-gray-300 p-4 w-full mx-auto ${nanumGothic.className} not-filtered`}
               id={restaurant.id}
+              ref={(elem) => {
+                restaurantsDivElems.current[i] = elem as HTMLDivElement;
+              }}
             >
               {/* <div className="animate-pulse flex space-x-4"> */}
               <div className="w-full flex space-x-4">
@@ -448,16 +462,11 @@ export default function FoodRoulette() {
                   className="hidden lg:block rounded-full  h-12 w-12 flex lg:flex justify-center lg:justify-center items-center lg:items-center hover:cursor-pointer hover:bg-gray-200"
                   onClick={(e) => {
                     if (state.lsLoading === false) {
-                      // e.currentTarget.parentElement?.parentElement?.classList.add(
-                      //   "filtered"
-                      // );
-                      // e.currentTarget.parentElement?.parentElement?.classList.add(
-                      //   "bg-gray-400"
-                      // );
                       const elem =
                         e.currentTarget?.parentElement?.parentElement;
                       elem && elem.classList.remove(filteredClassString);
                       elem && elem.classList.add(notFilteredClassString);
+                      setFilteredRestaurantCntTrigger(!filteredRestaurantCntTrigger)
                     }
                   }}
                 >
