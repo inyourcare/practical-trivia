@@ -285,7 +285,8 @@ export default function FoodRoulette() {
         {/* <button onClick={() => drawKong()}>kong test</button> */}
         {/* <button onClick={() => addEffect()}>effect test</button> */}
         {restaurants.length > 0 && (
-          <div className="ml-1 ">
+          <div className="flex flex-wrap ml-1 ">
+            {/* {`total: ${restaurants.length}`} */}
             {`total: ${restaurants.length} / 후보: ${
               // document.getElementsByClassName(filteredClassString).length
               filteredRestaurantCnt
