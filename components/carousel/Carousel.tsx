@@ -53,8 +53,10 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
       >
         {imageSrcs.map((src, i) => (
           <Image
-            width={1280}
-            height={853}
+            // width={1280}
+            width={3200}
+            // height={853}
+            height={1800}
             key={i}
             src={`/images/roulette/carousel/${src}`}
             // fill
