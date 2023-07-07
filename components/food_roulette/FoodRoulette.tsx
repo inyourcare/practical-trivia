@@ -39,8 +39,9 @@ export default function FoodRoulette() {
   const notFilteredClassString = "not-filtered";
   const filteredClassString = "filtered";
   const [filteredKinds] = useState(new Set<string>());
-  const listItmeContainerId = 'list_item';
-  const filterBtnsContainerId = 'filter-btns-container';
+  const listItmeContainerId = "list_item";
+  const filterBtnsContainerId = "filter-btns-container";
+  const filterBtnElems = useRef<HTMLButtonElement[]>([]);
 
   // get geo info
   useEffect(() => {
@@ -111,8 +112,9 @@ export default function FoodRoulette() {
       })
       .finally(() => {
         setRestaurantsLoading(false);
+        filteredKinds.clear();
       });
-  }, [state.lat, state.lng, state.radius, kinds, kindMap]);
+  }, [state.lat, state.lng, state.radius, kinds, kindMap, filteredKinds]);
 
   // sortable
   useEffect(() => {
@@ -129,15 +131,12 @@ export default function FoodRoulette() {
   }, []);
 
   // initialize
-  useEffect(()=>{
-    if (restaurantsLoading === false) {
-      const filterBtnsContainer = document.getElementById(filterBtnsContainerId)
-      const buttons = filterBtnsContainer?.getElementsByTagName('button')
-      if (buttons && buttons.length > 0){
-        buttons.item(0)?.click()
-      }
+  useEffect(() => {
+    if (filterBtnElems.current[0]) {
+      // console.log('hi',filterBtnElems.current[0].classList);
+      filterBtnElems.current[0].click();
     }
-  },[restaurantsLoading])
+  }, [restaurantsLoading, filterBtnElems, kinds.size]);
 
   function mingle() {
     const listItem = document.getElementById(listItmeContainerId);
@@ -278,7 +277,9 @@ export default function FoodRoulette() {
         {/* <button onClick={() => addEffect()}>effect test</button> */}
         {restaurants.length > 0 && (
           <div className="ml-1 ">
-            {`total: ${restaurants.length}`}
+            {`total: ${restaurants.length} / 후보: ${
+              document.getElementsByClassName(filteredClassString).length
+            }`}
             <button
               disabled={restaurantsLoading || state.lsLoading}
               onClick={() => selectOne()}
@@ -306,13 +307,17 @@ export default function FoodRoulette() {
       <br />
       <div>
         {restaurantsLoading === false && kinds.size > 0 && (
-          <div id={filterBtnsContainerId} className="flex justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg">
+          <div
+            id={filterBtnsContainerId}
+            className="flex justify-center items-center flex-wrap text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"
+          >
             filter:
-            {Array.from(kinds).map((k) => (
+            {Array.from(kinds).map((k, i) => (
               <button
                 key={k}
                 onClick={(e) => {
                   if (filteredKinds.has(k)) {
+                    // console.log("removing kind");
                     const arr = kindMap.get(k);
                     if (arr && arr.length > 0) {
                       arr.map((item) => {
@@ -326,6 +331,7 @@ export default function FoodRoulette() {
                     e.currentTarget.classList.remove("bg-blue-500");
                     filteredKinds.delete(k);
                   } else {
+                    // console.log("adding kind");
                     const arr = kindMap.get(k);
                     if (arr && arr.length > 0) {
                       arr.map((item) => {
@@ -339,14 +345,12 @@ export default function FoodRoulette() {
                     e.currentTarget.classList.remove("bg-blue-200");
                     filteredKinds.add(k);
                   }
-                  // console.log(kindMap.get(k));
-
-                  // e.currentTarget.classList.add("bg-blue-500");
-                  // e.currentTarget.classList.remove("bg-blue-200");
-                  // e.currentTarget.disabled = true;
                 }}
                 disabled={restaurantsLoading || state.lsLoading}
                 className="border ml-1 bg-blue-200 hover:bg-blue-500 text-white font-bold px-4 rounded disabled:cursor-not-allowed"
+                ref={(elem) => {
+                  filterBtnElems.current[i] = elem as HTMLButtonElement;
+                }}
               >
                 {k}
               </button>
@@ -367,7 +371,8 @@ export default function FoodRoulette() {
         ※filter 항목을 누르면 음식점을 포함하거나 제외할 수 있습니다.
       </p>
       <p className="text-sm ">
-        ※단순 API 사용으로 지점의 리뷰나 별점을 참조하는 기능은 불가능합니다. 또한 왼쪽 이미지 로드가 느릴 수 있는 점 양해부탁드려요.
+        ※단순 API 사용으로 지점의 리뷰나 별점을 참조하는 기능은 불가능합니다.
+        또한 왼쪽 이미지는 로딩이 느려요.
       </p>
       <br />
 
@@ -395,13 +400,16 @@ export default function FoodRoulette() {
                     <iframe
                       frameBorder="0"
                       scrolling="no"
-                      src={`${restaurant.place_url.replace('http://','https://')}`}
+                      src={`${restaurant.place_url.replace(
+                        "http://",
+                        "https://"
+                      )}`}
                       style={{
                         // border: "1px solid black",
                         // position: "absolute",
                         // bottom: "84px",
-                        width:'800px',
-                        height: '800px',
+                        width: "800px",
+                        height: "800px",
                         // scale: '0.5'
                       }}
                     />
@@ -430,7 +438,8 @@ export default function FoodRoulette() {
                     </div>
                     {/* <div className="h-4 bg-gray-400 rounded w-5/6">{script2}</div> */}
                     <div className="no-cursor cursor-auto h-4 rounded w-5/6">
-                      거리: {restaurant.distance}m / 번호: <a href={`tel:${restaurant.phone}`}>{restaurant.phone}</a>
+                      거리: {restaurant.distance}m / 번호:{" "}
+                      <a href={`tel:${restaurant.phone}`}>{restaurant.phone}</a>
                       {/* url: {restaurant.place_url} */}
                     </div>
                   </div>
